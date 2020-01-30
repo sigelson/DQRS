@@ -19,7 +19,6 @@ class UsersTableSeeder extends Seeder
                     'email' => 'admin@dqrs.com',
                     'email_verified_at' => now(),
                     'role'=>'admin',
-
                     'password' => Hash::make('password'),
                     'created_at' => now(),
                     'updated_at' => now()
