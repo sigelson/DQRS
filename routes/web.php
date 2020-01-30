@@ -15,27 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/admin', 'HomeController@index')->name('home');
-Auth::routes();
-
+Auth::routes([
+    'register' => false
+]);
 Route::get('/admin', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+    Route::resource('departments', 'DepartmentController',['except' => ['show']]);
+    Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
 });
 
-Route::get('/department', function(){
-    return view('departments.index')->name('department');
-});
-Route::get('/counter', function(){
-    return view('counters.index')->name('counter');
-});
 
 
 

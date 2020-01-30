@@ -114,7 +114,7 @@
                 </li> --}}
                 @if(\Auth::user()->id==1)
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">
+                    <a class="nav-link text-dark" href="{{ route('departments.index') }}">
                         <strong><i class="far fa-building"></i>
                         {{ __('Departments') }}</strong>
                     </a>

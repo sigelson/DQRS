@@ -23,7 +23,7 @@
                     <div class="card-body px-lg-5 py-lg-5">
 
                         <div class="text-center text-muted mb-3">
-                            <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid">
+                            <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInUp">
                             {{-- <small>
                                 <a href="{{ route('register') }}"><strong>{{ __('Create new account') }}</strong></a> {{ __('OR Sign in with these credentials:') }}
                             </small>
@@ -34,7 +34,7 @@
                             </small> --}}
                         </div>
                         <div class="text-center mb-4">
-                            <h1 class="text-dark lead">Login into your account</h1>
+                            <h1 class="text-dark lead animated fadeInUp">Login into your account</h1>
                         </div>
 
                         <form role="form" method="POST" action="{{ route('login') }}">
