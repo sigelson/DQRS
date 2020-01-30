@@ -44,6 +44,42 @@
                                         </span>
                                     @endif
                                 </div>
+
+                                <div class="form-group{{ $errors->has('department') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-department">{{ __('Department') }}</label>
+                                    <select class="form-control form-control-md" name="department">
+                                        <option hidden>Choose Department...</option>
+                                        @foreach ($departments as $department)
+                                        <option name="department" value="{{ $department->name}}">{{$department->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('department'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('department') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+
+                                <label class="form-control-label" for="input-role">{{ __('Account Role') }}</label>
+                                <div class="form-group">
+
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="role" id="userradio" value="user" class="sr-only" required>
+                                            <label class="form-check-label" for="userradio1">
+                                              User Account
+                                            </label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="role" id="adminradio" value="admin" class="sr-only" required>
+                                            <label class="form-check-label" for="adminradio2">
+                                             Admin Account
+                                            </label>
+                                          </div>
+                                </div>
+
+
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
                                     <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="">

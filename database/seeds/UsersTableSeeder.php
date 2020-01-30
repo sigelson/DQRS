@@ -18,6 +18,8 @@ class UsersTableSeeder extends Seeder
                     'name' => 'DQRS Admin',
                     'email' => 'admin@dqrs.com',
                     'email_verified_at' => now(),
+                    'role'=>'admin',
+
                     'password' => Hash::make('password'),
                     'created_at' => now(),
                     'updated_at' => now()
@@ -25,6 +27,7 @@ class UsersTableSeeder extends Seeder
                 [
                     'name' => 'Accounting User',
                     'email' => 'accounting@dqrs.com',
+                    'role'=>'user',
                     'email_verified_at' => now(),
                     'password' => Hash::make('password'),
                     'created_at' => now(),

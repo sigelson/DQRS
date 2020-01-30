@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Department;
 
 class UserController extends Controller
 {
@@ -16,7 +17,9 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
-        return view('users.index', ['users' => $model->paginate(10)]);
+
+        $departments=Department::all();
+        return view('users.index',['users' => $model->paginate(5), 'departments' => $departments]);
     }
 
     /**
@@ -26,7 +29,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $departments=Department::all();
+
+        return view('users.create',['departments' => $departments]);
     }
 
     /**
@@ -51,7 +56,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+
+        $departments=Department::all();
+        return view('users.edit', compact('user'),['departments' => $departments]);
     }
 
     /**

@@ -110,6 +110,21 @@
                                     @endif
                                 </div>
 
+                                <div class="form-group{{ $errors->has('department') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-department">{{ __('Department') }}</label>
+                                    <select class="form-control form-control-md" name="department">
+                                        <option hidden>Choose Department...</option>
+                                        @foreach ($departments as $department)
+                                        <option name="department" value="{{ $department->name}}">{{$department->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('department'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('department') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                                 </div>

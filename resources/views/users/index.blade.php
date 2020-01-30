@@ -60,8 +60,8 @@
                                         <td>
                                             <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                         </td>
-                                        <td>{{-- Not implemented yet --}}</td>
-                                        <td>{{-- Not implemented yet --}}</td>
+                                        <td>{{ $user->department}}</td>
+                                        <td>{{$user->role}}</td>
                                         <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
                                         <td class="text-right">
                                             <div class="dropdown">

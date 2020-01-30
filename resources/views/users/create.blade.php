@@ -43,27 +43,39 @@
                                         </span>
                                     @endif
                                 </div>
+
+                                <div class="form-group{{ $errors->has('department') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-department">{{ __('Department') }}</label>
+                                    <select class="form-control form-control-md" name="department">
+                                        <option hidden>Choose Department...</option>
+                                        @foreach ($departments as $department)
+                                        <option name="department" value="{{ $department->name}}">{{$department->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('department'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('department') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+
                                 <label class="form-control-label" for="input-role">{{ __('Account Role') }}</label>
                                 <div class="form-group">
 
 
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="role" id="userradio" value="option1" class="sr-only" disabled>
+                                            <input class="form-check-input" type="radio" name="role" id="userradio" value="user" class="sr-only" required>
                                             <label class="form-check-label" for="userradio1">
                                               User Account
                                             </label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="role" id="adminradio" value="option2" class="sr-only" disabled>
+                                            <input class="form-check-input" type="radio" name="role" id="adminradio" value="admin" class="sr-only" required>
                                             <label class="form-check-label" for="adminradio2">
                                              Admin Account
                                             </label>
                                           </div>
-
-
-
-
-
                                 </div>
 
 
