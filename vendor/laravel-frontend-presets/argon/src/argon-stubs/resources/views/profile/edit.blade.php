@@ -5,7 +5,7 @@
         'title' => __('Hello') . ' '. auth()->user()->name,
         'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
         'class' => 'col-lg-7'
-    ])   
+    ])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -15,7 +15,7 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <img src="{{ asset('argon') }}/img/brand/logo_in_white.jpg" class="rounded-circle">
                                 </a>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                             @method('put')
 
                             <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
-                            
+
                             @if (session('status'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     {{ session('status') }}
@@ -135,7 +135,7 @@
                                 <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-current-password">{{ __('Current Password') }}</label>
                                     <input type="password" name="old_password" id="input-current-password" class="form-control form-control-alternative{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="{{ __('Current Password') }}" value="" required>
-                                    
+
                                     @if ($errors->has('old_password'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('old_password') }}</strong>
@@ -145,7 +145,7 @@
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('New Password') }}</label>
                                     <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('New Password') }}" value="" required>
-                                    
+
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('password') }}</strong>
@@ -166,7 +166,7 @@
                 </div>
             </div>
         </div>
-        
+
         @include('layouts.footers.auth')
     </div>
 @endsection

@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Redirect;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,6 +30,20 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
+});
+
+Route::get('send-mail', function () {
+
+    $details = [
+        'title' => 'Hi student!',
+        'body' => 'Thank you for using DQRS. Here is your Queue number. Please wait for your turn.'
+    ];
+
+    \Mail::to('dqrshelper@gmail.com')->send(new \App\Mail\MyTestMail($details));
+
+
+
+    return view('emails.sent');
 });
 
 

@@ -15,7 +15,7 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="{{ asset('assets/argon') }}/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <img src="{{ asset('assets/argon') }}/img/brand/logo_in_white.jpg" class="rounded-circle img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="card-profile-stats d-flex justify-content-center mt-md-5">
-                                    <div>
+                                    {{-- <div>
                                         <span class="heading">22</span>
                                         <span class="description">{{ __('Friends') }}</span>
                                     </div>
@@ -41,7 +41,7 @@
                                     <div>
                                         <span class="heading">89</span>
                                         <span class="description">{{ __('Comments') }}</span>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -49,18 +49,27 @@
                             <h3>
                                 {{ auth()->user()->name }}{{-- <span class="font-weight-light">, 25</span> --}}
                             </h3>
-                            <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2"></i>{{ __('Manila, Philippines') }}
-                            </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ __('Accounting Administrator - St. Dominic College of Asia') }}
-                            </div>
+
+                            <h4>
+                                {{ auth()->user()->email }}{{-- <span class="font-weight-light">, 25</span> --}}
+                            </h4>
+
+
+
                             <div>
-                                <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}
+                                <i class="ni education_hat mr-2 mt-4"></i>{{ auth()->user()->department }}
                             </div>
+                            <div class="h5">
+                                <i class="ni business_briefcase-24 mr-2"></i>{{ __('Department') }}
+                            </div>
+
+
                             <hr class="my-4" />
-                            <p>{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nam id explicabo accusamus soluta asperiores in error expedita pariatur ratione?') }}</p>
-                            {{-- <a href="#">{{ __('Show more') }}</a> --}}
+                            <h4 class="text-uppercase text-gray">
+                                {{ auth()->user()->role }}{{-- <span class="font-weight-light">, 25</span> --}}
+                            </h4>
+                            {{-- <p>{{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nam id explicabo accusamus soluta asperiores in error expedita pariatur ratione?') }}</p>
+                            <a href="#">{{ __('Show more') }}</a> --}}
                         </div>
                     </div>
                 </div>
