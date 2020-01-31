@@ -17,20 +17,24 @@ class DepartmentTableSeeder extends Seeder
                     'name' => 'Cashier',
                     'letter' => 'C',
                     'number' => 1,
-
+                    'created_at' => now(),
+                    'updated_at' => now()
 
                 ],
                 [
                     'name' => 'Accounting',
                     'letter' => 'A',
                     'number' => 1,
-
+                    'created_at' => now(),
+                    'updated_at' => now()
 
                 ],
                 [
                     'name' => 'Registrar',
                     'letter' => 'R',
                     'number' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now()
 
 
                 ],

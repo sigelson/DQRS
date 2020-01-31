@@ -18,9 +18,16 @@ Route::get('/', function () {
 });
 
 
+Route::resource('queues', 'QueueController');
+
+
+
+
 Auth::routes([
     'register' => false
 ]);
+
+
 Route::get('/admin', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -31,6 +38,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
 });
+
+Route::resource('counters','CounterController');
+
+
+
+
+
 
 Route::get('send-mail', function () {
 

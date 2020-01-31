@@ -120,7 +120,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#"><strong>
+                    <a class="nav-link text-dark" href="{{ route('counters.index') }}"><strong>
                         <i class="fas fa-desktop"></i>
                         {{ __('Counters') }}</strong>
                     </a>

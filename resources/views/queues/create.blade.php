@@ -5,22 +5,28 @@
         <div class="container">
             <div class="header-body text-center mt-7 mb-7">
                 <div class="row justify-content-center mb-5">
-                    <div class="col-sm-8 col-md-7 text-center">
+                    <div class="col-sm-12 col-md-7 text-center">
                         {{-- <h1 class="text-white">{{ __('Dominican Queue Reservation System') }}</h1> --}}
-                        <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInDown">
+                        <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInDown w-50">
 
                     </div>
-                    @auth
-                    <div class="col-sm-12 text-center">
-                        <h1 class="display-1 text-gray mt-5 text-center">A D M I N</h1>
-                    </div>
-                    @endauth
+
                 </div>
 
                 <div class="row justify-content-center mb-5">
                     @guest
-                    <div class="col-sm-12 col-md-6 text-center mt-5">
-                        <a href="#" class="btn btn-success btn-lg w-100 animated pulse infinite slower delay-1s">Get Started</a>
+                    <div class="col-sm-12">
+                        <h1 class="text-dark">Get Started</h2>
+                    </div>
+                    <div class="col-sm-12 text-center mt-5">
+                        <a href="{{ route('/student') }}" class="btn btn-primary btn-lg text-xl animated pulse fadeInUp w-50">Student</a>
+                    </div>
+                    <div class="col-sm-12 text-center mt-5">
+                        <a href="{{ ('../guest') }}" class="btn btn-default btn-lg text-xl animated pulse fadeInUp w-50">Guest</a>
+                    </div>
+
+                    <div class="col-sm-12 text-center mt-5">
+                        <a href="{{('dqrs')}}" class="btn btn-outline-warning btn-lg text-sm animated pulse fadeInUp">Go Back</a>
                     </div>
 
                     <!--choose modal-->
