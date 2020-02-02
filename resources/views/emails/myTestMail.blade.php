@@ -846,6 +846,7 @@ a.es-button {
                                                                                     <td class="esd-block-text es-p25t es-p40r es-p40l" align="center">
                                                                                         <p>Thank you for using DQRS.</p>
                                                                                         <p>If you have concerns or suggestions please feel free to contacts.</p>
+                                                                                        <p>BAHO LOBOT GIRL</p>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
