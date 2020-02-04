@@ -37,7 +37,7 @@
                                         <div class="btn-group-toggle" data-toggle="buttons">
 
                                             @foreach ($departments as $department)
-                                            <label class="btn btn-secondary btn-lg w-25">
+                                            <label class="btn btn-secondary btn-lg w-25" onclick="getdept({{$department}})">
                                               <input type="radio" name="department" value="{{ $department->name}}" sr-only required> {{ $department->name}}
                                             </label>
                                             @endforeach
@@ -100,18 +100,18 @@
 
                                     <div class="form-group{{ $errors->has('transaction') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-transaction">{{ __('Transaction') }}</label>
-                                        <select class="form-control form-control-md" name="transaction">
-                                            <option hidden>Choose Transaction...</option>
+                                        <select class="form-control form-control-md" name="transaction" required>
+                                            <option hidden value="">Choose Transaction...</option>
                                             <option >Transaction 1</option>
                                             <option >Transaction 2</option>
-                                            <option value="3">Transaction 3</option>
+                                            <option>Transaction 3</option>
                                             {{-- @foreach ($departments as $department)
                                             <option name="department" value="{{ $department->name}}">{{$department->name}}</option>
                                             @endforeach --}}
                                         </select>
                                         @if ($errors->has('transaction'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('transaction') }}</strong>
+                                                <strong>{{ $errors->first('transaction') }}test</strong>
                                             </span>
                                         @endif
                                     </div>
@@ -131,8 +131,8 @@
 
 
 
-                                    <input type="hidden" name="letter" value="{{$department->letter}}">
-                                    <input type="hidden" name="number" value="{{$department->number}}">
+                                    <input type="hidden" name="letter" id="letter" value="">
+                                    <input type="hidden" name="number" id="number" value="">
 
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
@@ -153,4 +153,22 @@
     </div>
 
     <div class="container mt--10 pb-5"></div>
+
+    <script>
+        function getdept(dept) {
+            document.getElementById('letter').value = dept.letter;
+            document.getElementById('number').value = dept.number;
+        }
+    </script>
+
+{{-- <script>
+function IsEmpty() {
+  if (document.frm.transaction.value === "") {
+    alert("Please choose transaction");
+    return false;
+  }
+  return true;
+}
+</script> --}}
 @endsection
+

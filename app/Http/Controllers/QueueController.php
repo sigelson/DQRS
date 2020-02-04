@@ -67,7 +67,7 @@ class QueueController extends Controller
 
         ]);
         $queue->save();
-        return redirect('/')->withStatus(__('Queue added successfully.'));
+        return redirect('send-mail')->withStatus(__('Queue added successfully.'));
     }
 
     /**

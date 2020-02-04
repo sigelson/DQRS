@@ -53,7 +53,7 @@ Route::get('send-mail', function () {
         'body' => 'Thank you for using DQRS. Here is your Queue number. Please wait for your turn.'
     ];
 
-    \Mail::to('dqrshelper@gmail.com')->send(new \App\Mail\MyTestMail($details));
+    \Mail::to('outrich.gherrera@gmail.com')->send(new \App\Mail\MyTestMail($details));
 
 
 
