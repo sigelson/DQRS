@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Queue;
+use App\DB;
 
 class HomeController extends Controller
 {
@@ -21,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+
+        $queues=Queue::paginate(15);
+        return view('dashboard',compact('queues'));
     }
 }

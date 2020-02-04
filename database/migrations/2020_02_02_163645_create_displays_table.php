@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQueuesTable extends Migration
+class CreateDisplaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateQueuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('queues', function (Blueprint $table) {
+        Schema::create('displays', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('snumber');
-            $table->string('email');
             $table->string('department');
-            $table->string('transaction');
             $table->string('letter');
             $table->integer('number');
+            $table->string('counter');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateQueuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('queues');
+        Schema::dropIfExists('displays');
     }
 }

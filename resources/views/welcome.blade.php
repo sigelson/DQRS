@@ -3,6 +3,11 @@
 @section('content')
     <div class="header bg-gradient-lighter py-7 py-lg-8">
         <div class="container">
+            @if(session()->get('success'))
+    <div class="alert alert-success">
+      {{ session()->get('success') }}
+    </div><br />
+  @endif
             <div class="header-body text-center mt-7 mb-7">
                 <div class="row justify-content-center mb-5">
                     <div class="col-sm-8 col-md-7 text-center">
@@ -20,17 +25,14 @@
                 <div class="row justify-content-center mb-5">
                     @guest
                     <div class="col-sm-12 col-md-6 text-center mt-5">
-                        <a href="#" class="btn btn-success btn-lg w-100 animated pulse infinite slower delay-1s">Get Started</a>
+                    <a href="{{ route('queues.create') }}" class="btn btn-success btn-lg w-100 animated pulse infinite slower delay-1s" {{-- data-toggle="modal" data-target="#startModal" --}} >Get Started</a>
                     </div>
 
                     <!--choose modal-->
-                    <div class="modal fade bd-example-modal-sm" id="startModal" tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true">
+                    {{-- <div class="modal fade bd-example-modal-sm" id="startModal" tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                                {{-- <div class="col-3">
-                                    <img src="{{ asset('assets/argon') }}/img/brand/logo-dark.png" alt="" class="img-fluid">
-                                </div> --}}
 
                               <button type="button" class="close btn-lg" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -52,17 +54,15 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> --}}
                       <!--end modal-->
 
                       {{-- student modal --}}
-                      <div class="modal fade bd-example-modal-sm" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModalLabel" aria-hidden="true">
+                      {{-- <div class="modal fade bd-example-modal-sm" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                                {{-- <div class="col-3">
-                                    <img src="{{ asset('assets/argon') }}/img/brand/logo-dark.png" alt="" class="img-fluid">
-                                </div> --}}
+
 
                               <button type="button" class="close btn-lg" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -89,18 +89,16 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> --}}
                       {{-- end student modal --}}
 
 
                       {{-- guest modal --}}
-                      <div class="modal fade bd-example-modal-sm" id="guestModal" tabindex="-1" role="dialog" aria-labelledby="guestModalLabel" aria-hidden="true">
+                      {{-- <div class="modal fade bd-example-modal-sm" id="guestModal" tabindex="-1" role="dialog" aria-labelledby="guestModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                                {{-- <div class="col-3">
-                                    <img src="{{ asset('assets/argon') }}/img/brand/logo-dark.png" alt="" class="img-fluid">
-                                </div> --}}
+
 
                               <button type="button" class="close btn-lg" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -127,7 +125,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> --}}
                       {{-- end guest modal --}}
                       @endguest
 

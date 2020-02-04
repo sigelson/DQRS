@@ -28,118 +28,45 @@
                                     <th scope="col">Student name</th>
                                     <th scope="col">Student number</th>
                                     <th scope="col">Transaction</th>
+                                    <th scope="col">Remarks</th>
                                     <th scope="col">Called</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($queues as $queue)
                                 <tr>
                                     <th scope="row">
-                                        A-05
+                                        {{ $queue->letter }}-{{ $queue->number }}
                                     </th>
                                     <th scope="row">
-                                        Gelson Herrera
+                                        {{ $queue->name }}
                                     </th>
                                     <td>
-                                        20160338
+                                        {{ $queue->snumber }}
                                     </td>
                                     <td>
-                                        Tuition Fee
+                                        {{ $queue->transaction }}
                                     </td>
                                     <td>
-                                       <strong>Yes</strong>
+                                        {{ $queue->remarks }}
+                                    </td>
+                                    <td>
+                                        {{ $queue->called }}
                                     </td>
                                     <td>
                                         <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
                                         <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i>  Remove</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">
-                                        A-05
-                                    </th>
-                                    <th scope="row">
-                                        Will Smith
-                                    </th>
-                                    <td>
-                                        20185243
-                                    </td>
-                                    <td>
-                                        Other
-                                    </td>
-                                    <td>
-                                        <strong>Yes</strong>
-                                     </td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
-                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i>  Remove</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        A-05
-                                    </th>
-                                    <th scope="row">
-                                       John Smith
-                                    </th>
-                                    <td>
-                                        20160552
-                                    </td>
-                                    <td>
-                                        Tuition Breakdown
-                                    </td>
-                                    <td>
-                                        <strong>No</strong>
-                                     </td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-primary disabled"><i class="fas fa-redo-alt"></i> Recall</a>
-                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i>  Remove</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        A-05
-                                    </th>
-                                    <th scope="row">
-                                        John Doe
-                                    </th>
-                                    <td>
-                                        20175243
-                                    </td>
-                                    <td>
-                                        Assessment form
-                                    </td>
-                                    <td>
-                                        <strong>No</strong>
-                                     </td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-primary disabled"><i class="fas fa-redo-alt"></i> Recall</a>
-                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i>  Remove</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        A-05
-                                    </th>
-                                    <th scope="row">
-                                        Girl Girl
-                                    </th>
-                                    <td>
-                                        20175422
-                                    </td>
-                                    <td>
-                                        Exam Permit
-                                    </td>
-                                    <td>
-                                        <strong>Yes</strong>
-                                     </td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
-                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i>  Remove</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="card-footer py-4">
+                        <nav class="d-flex justify-content-end" aria-label="...">
+                            {{ $queues->links() }}
+                        </nav>
                     </div>
                 </div>
             </div>
