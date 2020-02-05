@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Department;
 use App\Queue;
+use App\LastID;
 
 class QueueController extends Controller
 {
@@ -16,10 +17,9 @@ class QueueController extends Controller
      */
     public function index()
     {
+        $queues=Queue::orderBy('id', 'DESC')->first();
 
-        $departments=Department::all();
-
-        return view('queues.index',['departments' => $departments]);
+        return view('queues.index',['queues' => $queues]);
     }
 
     /**
@@ -54,6 +54,10 @@ class QueueController extends Controller
             'number' => 'required|max:255',
             'remarks' => 'nullable|max:255'
         ]);
+
+        //get the last number in the database
+        $number = Queue::orderBy('number', 'DESC')->first();
+
         $queue = new Queue([
             'name' => $request->get('name'),
             'snumber' => $request->get('snumber'),
@@ -61,13 +65,14 @@ class QueueController extends Controller
             'department' => $request->get('department'),
             'transaction' => $request->get('transaction'),
             'letter' => $request->get('letter'),
-            'number' => $request->get('number'),
+            'number' =>  $request->get('number'),
             'remarks' => $request->get('remarks'),
             'called' => 'no',
 
         ]);
+
         $queue->save();
-        return redirect('/')->withStatus(__('Queue added successfully.'));
+        return redirect('queues')->withStatus(__('Queue added successfully.'));
     }
 
     /**
@@ -78,7 +83,7 @@ class QueueController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

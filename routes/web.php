@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::resource('queues', 'QueueController');
 // Route::get('queues',['as' => 'queues.create2', 'uses' => 'QueueController@create2']);
+Route::get('queues/{id}', 'QueueController@show');
+
 
 
 

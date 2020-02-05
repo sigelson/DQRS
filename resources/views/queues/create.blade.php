@@ -127,8 +127,28 @@
                                     <input type="hidden" name="number" id="number" value="">
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
+                                        <button type="submit" class="btn btn-success mt-4" data-toggle="modal" data-target="#exampleModal">{{ __('Save') }}</button>
                                     </div>
+
+                                    {{-- MODAL --}}
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-sm" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">DQRS</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                             Processing...
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    {{-- END MODAL --}}
                                 </div>
                             </form>
                         </div>
@@ -152,15 +172,5 @@
             document.getElementById('number').value = dept.number;
         }
     </script>
-
-{{-- <script>
-function IsEmpty() {
-  if (document.frm.transaction.value === "") {
-    alert("Please choose transaction");
-    return false;
-  }
-  return true;
-}
-</script> --}}
 @endsection
 

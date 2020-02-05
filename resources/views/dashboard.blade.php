@@ -7,7 +7,7 @@
         <div class="row">
 
 
-            <div class="col-sm-12 py-5 mb-xl-0">
+            <div class="col-sm-12 py-5 mb-xl-0" id=queuetable>
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -378,6 +378,8 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+
 
 @push('js')
     <script src="{{ asset('assets/argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
