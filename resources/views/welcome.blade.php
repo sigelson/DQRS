@@ -3,11 +3,16 @@
 @section('content')
     <div class="header bg-gradient-lighter py-7 py-lg-8">
         <div class="container">
-            @if(session()->get('success'))
-    <div class="alert alert-success">
-      {{ session()->get('success') }}
-    </div><br />
-  @endif
+            <div class="col-12">
+                @if (session('status'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('status') }} {{ session('name') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+            </div>
             <div class="header-body text-center mt-7 mb-7">
                 <div class="row justify-content-center mb-5">
                     <div class="col-sm-8 col-md-7 text-center">

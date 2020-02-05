@@ -34,25 +34,16 @@
                                         </select> --}}
                                     </div>
 
-                                        <div class="btn-group-toggle" data-toggle="buttons">
-
-                                            @foreach ($departments as $department)
-                                            <label class="btn btn-secondary btn-lg w-25" onclick="getdept({{$department}})">
-                                              <input type="radio" name="department" value="{{ $department->name}}" sr-only required> {{ $department->name}}
-                                            </label>
-                                            @endforeach
-
-                                            {{-- @foreach ($departments as $department)
-                                            <label class="btn btn-secondary btn-lg w-25">
-                                            <input type="radio" name="department[]" value="{{ $department->name}}" sr-only required>
-                                                            {{ $department->name}}
-                                                </label>
-                                            <input type="hidden" name="letter[]" value="{{$department->letter}}">
-                                            <input type="hidden" name="number[]" value="{{$department->number}}">
-                                            @endforeach --}}
-
-                                          </div>
-
+                                            <div class="col text-center" data-toggle="buttons">
+                                                <div class="row text-center">
+                                                    @foreach ($departments as $department)
+                                                    <div class=" btn-group-toggle col-sm-12 col-md-4 text-center mt-2">
+                                                        <label class="btn btn-secondary btn-lg w-100" onclick="getdept({{$department}})">
+                                                            <input type="radio" name="department" value="{{ $department->name}}" sr-only required> {{ $department->name}}
+                                                        </label>
+                                                    </div>
+                                                    @endforeach
+                                                </div>
 
                                         @if ($errors->has('department'))
                                             <span class="invalid-feedback" role="alert">
@@ -60,6 +51,7 @@
                                             </span>
                                         @endif
                                     </div>
+                                </div>
 
 
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
