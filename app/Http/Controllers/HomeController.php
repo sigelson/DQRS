@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Queue;
 use App\DB;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $queues=Queue::orderBy('id', 'desc')->paginate(10);
+        $queues=Queue::whereDate('created_at', Carbon::today())->orderBy('id', 'desc')->paginate(10);
         return view('dashboard',compact('queues'));
     }
 }
