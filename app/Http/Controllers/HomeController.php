@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $queues=Queue::paginate(15);
+        $queues=Queue::orderBy('id', 'desc')->paginate(10);
         return view('dashboard',compact('queues'));
     }
 }

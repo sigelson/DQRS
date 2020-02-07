@@ -17,11 +17,10 @@ class QueueController extends Controller
      */
     public function index()
     {
-        {
+
             $queues=Queue::orderBy('id', 'DESC')->first();
 
             return view('queues.index',['queues' => $queues]);
-        }
     }
 
     /**
