@@ -17,30 +17,30 @@
                 <div class="row justify-content-center mb-5">
                     <div class="col-sm-12 col-md-5 text-center">
                     <div class="card shadow text-center">
-                        <div class="card-header text-center">
-                            <div class="row justify-content-center">
-                                <div class="col-sm-12 col-md-6 text-center">
-                                    <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInDown">
-                                </div>
-                            </div>
 
-                        </div>
                         <div class="card-body">
                             <div class="col-sm-12">
-                            <p>Name: <strong>{{$queues->name}}</strong></p>
-                            <p>student number: <strong>{{$queues->snumber}}</strong></p>
+
                                 <h3>Your Queue number</h3>
-                                <h1 class="display-1"><strong>{{$queues->letter}}-{{$queues->number}}</strong></h1>
+                                <h1 class="display-1 text-dark"><strong>{{$queues->letter}}-{{$queues->number}}</strong></h1>
                                 <h3>{{$queues->department}}</h3>
                                     <br>
+                                    <p class="small">Name: <br><strong>{{$queues->name}}</strong></p>
+                                    <p class="small">student number: <br><strong>{{$queues->snumber}}</strong></p>
+                                    <p class="small">Transaction: <br><strong>{{$queues->transaction}}</strong></p>
+
+
+                                    <p class="small">Remarks: <br><strong>{{$queues->remarks}}</strong></p>
+
                                     <br>
-                                    <p>Transaction:</p>
-                                    <p><strong>{{$queues->transaction}}</strong></p>
-                                    <br>
-                                    <p>Remarks:</p>
-                                    <p><strong>{{$queues->remarks}}</strong></p>
-                                    <br>
-                                    <p class="text-muted">{{$queues->created_at}}</p>
+                                    <p class="text-muted small">{{$queues->created_at}}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-sm-12 col-md-4 text-center">
+                                    <img src="{{ asset('assets/argon') }}/img/brand/logo-dark.png" alt="" class="img-fluid animated fadeInDown">
+                                </div>
                             </div>
                         </div>
                     </div>

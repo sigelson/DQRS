@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Department;
 use App\Queue;
-use App\LastID;
+use Mail;
 
 class QueueController extends Controller
 {
@@ -17,9 +17,11 @@ class QueueController extends Controller
      */
     public function index()
     {
-        $queues=Queue::orderBy('id', 'DESC')->first();
+        {
+            $queues=Queue::orderBy('id', 'DESC')->first();
 
-        return view('queues.index',['queues' => $queues]);
+            return view('queues.index',['queues' => $queues]);
+        }
     }
 
     /**
@@ -56,7 +58,7 @@ class QueueController extends Controller
         ]);
 
         //get the last number in the database
-        $number = Queue::orderBy('number', 'DESC')->first();
+        // $number = Queue::orderBy('number', 'DESC')->first();
 
         $queue = new Queue([
             'name' => $request->get('name'),
@@ -72,6 +74,27 @@ class QueueController extends Controller
         ]);
 
         $queue->save();
+
+        $data=array(
+
+            'name'=>$request->name,
+            'snumber'=>$request->snumber,
+            'email'=>$request->email,
+            'department'=>$request->department,
+            'letter'=>$request->letter,
+            'number'=>$request->number,
+            'transaction'=>$request->transaction,
+            'remarks'=>$request->remarks
+
+        );
+
+        Mail::send('emails.queue', $data, function ($message) use ($data){
+            $message->from('dqrshelper@gmail.com');
+            $message->to($data['email']);
+            $message->subject('DQRS: Your Queue number');
+        });
+
+
         return redirect('queues')->withStatus(__('Queue added successfully.'));
     }
 
