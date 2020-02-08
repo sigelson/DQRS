@@ -25,6 +25,7 @@ class CreateQueuesTable extends Migration
             $table->string('remarks')->nullable();
             $table->string('called');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

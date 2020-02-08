@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Queue extends Model
 {
@@ -17,4 +18,6 @@ class Queue extends Model
         'number',
         'called'
     ];
+
+    use SoftDeletes;
 }
