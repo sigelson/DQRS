@@ -11,4 +11,6 @@ class Department extends Model
         'letter',
         'number'
     ];
+
+
 }

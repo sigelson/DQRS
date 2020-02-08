@@ -35,6 +35,7 @@ Route::get('/admin', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
     Route::resource('departments', 'DepartmentController',['except' => ['show']]);
+    Route::resource('transactions', 'TransactionController',['except' => ['show']]);
     Route::resource('counters','CounterController',['except' => ['show']]);
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);

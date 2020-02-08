@@ -9,4 +9,7 @@ class Transaction extends Model
     protected $fillable = [
         'name',
         'department'
-    ];}
+    ];
+
+
+}

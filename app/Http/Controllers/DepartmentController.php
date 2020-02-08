@@ -58,7 +58,7 @@ class DepartmentController extends Controller
 
         ]);
         $department->save();
-        return redirect('departments')->withStatus(__('Database added successfully.'));
+        return redirect('departments')->withStatus(__('Department added successfully.'));
     }
 
     /**
@@ -107,7 +107,7 @@ class DepartmentController extends Controller
         $department->number = $request->get('number');
         $department->save();
 
-        return redirect('departments')->withStatus(__('Database updated successfully.'));
+        return redirect('departments')->withStatus(__('Department updated successfully.'));
     }
 
     /**
@@ -121,6 +121,6 @@ class DepartmentController extends Controller
         $department = Department::find($id);
         $department->delete();
 
-        return redirect('departments')->withStatus(__('Database successfully deleted.'));
+        return redirect('departments')->withStatus(__('Department successfully deleted.'));
     }
 }
