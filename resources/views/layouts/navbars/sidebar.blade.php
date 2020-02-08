@@ -26,18 +26,18 @@
                         {{-- <i class="ni ni-single-02"></i> --}}
                         <span>{{ __('My profile') }}</span>
                     </a>
-                    <a href="#" class="dropdown-item">
-                        {{-- <i class="ni ni-settings-gear-65"></i> --}}
+                    {{-- <a href="#" class="dropdown-item">
+                         <i class="ni ni-settings-gear-65"></i>
                         <span>{{ __('Settings') }}</span>
                     </a>
                     <a href="#" class="dropdown-item">
-                        {{-- <i class="ni ni-calendar-grid-58"></i> --}}
+                        <i class="ni ni-calendar-grid-58"></i>
                         <span>{{ __('Activity') }}</span>
                     </a>
                     <a href="#" class="dropdown-item">
-                        {{-- <i class="ni ni-support-16"></i> --}}
+                         <i class="ni ni-support-16"></i>
                         <span>{{ __('Support') }}</span>
-                    </a>
+                    </a> --}}
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -112,7 +112,7 @@
                         <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
                     </a>
                 </li> --}}
-                @if(\Auth::user()->id==1)
+                @if(\Auth::user()->role=='admin')
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('departments.index') }}">
                         <strong><i class="far fa-building"></i>
@@ -126,9 +126,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#"><strong>
+                    <a class="nav-link text-dark" href="{{ route('transactions.index') }}"><strong>
                         <i class="fas fa-cog"></i>
-                        {{ __('Settings') }}</strong>
+                        {{ __('Transactions') }}</strong>
                     </a>
                 </li>
                 @endif

@@ -28,7 +28,7 @@
         @endauth
 
         <div class="main-content">
-            @include('layouts.navbars.navs.welcome')
+            {{-- @include('layouts.navbars.navs.welcome') --}}
             @yield('content')
         </div>
 

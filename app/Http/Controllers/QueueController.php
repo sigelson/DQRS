@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Department;
 use App\Queue;
+use App\Transaction;
 use Mail;
+use DB;
 
 class QueueController extends Controller
 {
@@ -31,8 +33,8 @@ class QueueController extends Controller
     public function create()
     {
         $departments=Department::all();
-
-        return view('queues.create',['departments' => $departments]);
+        $transactions=Transaction::all();
+        return view('queues.create',['departments' => $departments],['transactions' => $transactions]);
     }
 
 
@@ -87,11 +89,15 @@ class QueueController extends Controller
 
         );
 
+        // DB::table('departments')->increment('number', 1, ['name' => $request->department]);
+
+
         Mail::send('emails.queue', $data, function ($message) use ($data){
             $message->from('dqrshelper@gmail.com');
             $message->to($data['email']);
             $message->subject('DQRS: Your Queue number');
         });
+
 
 
         return redirect('queues')->withStatus(__('Queue added successfully.'));

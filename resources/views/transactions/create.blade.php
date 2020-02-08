@@ -35,8 +35,8 @@
                                 </div>
                                 <div class="form-group{{ $errors->has('department') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-department">{{ __('Department') }}</label>
-                                    <select class="form-control form-control-md" name="department">
-                                        <option hidden>Choose Department...</option>
+                                    <select class="form-control form-control-md" name="department" required>
+                                        <option hidden value="">Choose Department...</option>
                                         @foreach ($departments as $department)
                                         <option name="department" value="{{ $department->name}}">{{$department->name}}</option>
                                         @endforeach
