@@ -22,6 +22,7 @@ Route::resource('queues', 'QueueController');
 // Route::get('queues',['as' => 'queues.create2', 'uses' => 'QueueController@create2']);
 Route::get('queues/{id}', 'QueueController@show');
 
+Route::resource('display','DisplayController');
 
 
 
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('departments', 'DepartmentController',['except' => ['show']]);
     Route::resource('transactions', 'TransactionController',['except' => ['show']]);
     Route::resource('counters','CounterController',['except' => ['show']]);
+    Route::resource('notifications','NotificationController');
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);

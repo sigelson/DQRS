@@ -14,29 +14,29 @@ class TransactionTableSeeder extends Seeder
         DB::table('transactions')->insert([
 
                 [
-                    'name' => 'Accounting',
-                    'transaction' => 'Statement of Account',
+                    'department' => 'Accounting',
+                    'name' => 'Statement of Account',
                     'created_at' => now(),
                     'updated_at' => now()
 
                 ],
                 [
-                    'name' => 'Accounting',
-                    'transaction' => 'Examination Permit',
+                    'department' => 'Accounting',
+                    'name' => 'Examination Permit',
                     'created_at' => now(),
                     'updated_at' => now()
 
                 ],
                 [
-                    'name' => 'Accounting',
-                    'transaction' => 'Payment Breakdown',
+                    'department' => 'Accounting',
+                    'name' => 'Payment Breakdown',
                     'created_at' => now(),
                     'updated_at' => now()
 
                 ],
                 [
-                    'name' => 'Registrar',
-                    'transaction' => 'Request document',
+                    'department' => 'Registrar',
+                    'name' => 'Request document',
                     'created_at' => now(),
                     'updated_at' => now()
 
