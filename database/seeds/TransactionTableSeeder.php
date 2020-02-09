@@ -49,6 +49,28 @@ class TransactionTableSeeder extends Seeder
 
                 ],
 
+                [
+                    'name' => 'Cashier',
+                    'transaction' => 'Tuition Fee',
+                    'created_at' => now(),
+                    'updated_at' => now()
+
+                ],
+                [
+                    'name' => 'Cashier',
+                    'transaction' => 'Miscellaneous Fee',
+                    'created_at' => now(),
+                    'updated_at' => now()
+
+                ],
+                [
+                    'name' => 'Cashier',
+                    'transaction' => 'Business Centre',
+                    'created_at' => now(),
+                    'updated_at' => now()
+
+                ],
+
 
 
 
