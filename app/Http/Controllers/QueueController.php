@@ -98,6 +98,7 @@ class QueueController extends Controller
             $message->subject('DQRS: Your Queue number');
         });
 
+        Department::where('name', $request->department)->increment('number', 1);
 
 
         return redirect('queues')->withStatus(__('Queue added successfully.'));
