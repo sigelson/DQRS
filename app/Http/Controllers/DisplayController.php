@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Queue;
+use DB;
 
 class DisplayController extends Controller
 {
@@ -14,8 +16,20 @@ class DisplayController extends Controller
      */
     public function index()
     {
+        $cashier=DB::table('queues')->where([
+            ['department', '=', 'cashier'],
+            ['called', '=', 'yes'],])->first();
 
-        return view('display.index');
+        $accounting=DB::table('queues')->where([
+            ['department', '=', 'accounting'],
+            ['called', '=', 'yes'],])->first();
+
+        $registrar=DB::table('queues')->where([
+            ['department', '=', 'registrar'],
+            ['called', '=', 'yes'],])->first();
+
+        return view('display.index',compact('cashier','accounting','registrar')
+        );
     }
 
     /**

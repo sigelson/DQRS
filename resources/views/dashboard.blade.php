@@ -79,7 +79,7 @@
                                   </form>
                                   <div class="row">
                                     <div class="col col-fluid text-left mt-3">
-                                        <p class="text-muted"><small>This message will be displayed at the bottom of the <a href="#" class="text-info">Queue Display</a>.</small></p>
+                                    <p class="text-muted"><small>This message will be displayed at the bottom of the <a href="{{route('display.index')}}" class="text-info" target="_blank">Queue Display</a>.</small></p>
                                       </div>
 
                                       <div class="col col-fluid text-right mt-3">

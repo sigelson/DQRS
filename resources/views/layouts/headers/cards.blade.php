@@ -9,7 +9,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Today's Queue</h5>
-                                <span class="h2 font-weight-bold mb-0">{{ \DB::table('queues')->count()}}</span>
+                                <span class="h2 font-weight-bold mb-0">{{ \DB::table('queues')->whereDate('created_at', Carbon::today())->count()}}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Today's Served</h5>
-                                    <span class="h2 font-weight-bold mb-0">{{ \DB::table('queues')->where('called', '=', 'yes')->count()}}</span>
+                                    <span class="h2 font-weight-bold mb-0">{{ \DB::table('queues')->whereDate('created_at', Carbon::today())->where('called', '=', 'yes')->count()}}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -51,7 +51,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Missed Queue</h5>
-                                    <span class="h2 font-weight-bold mb-0">{{ \DB::table('queues')->where('called', '=', 'no')->count()}}</span>
+                                    <span class="h2 font-weight-bold mb-0">{{ \DB::table('queues')->whereDate('created_at', Carbon::today())->where('called', '=', 'no')->count()}}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gray text-white rounded-circle shadow">
