@@ -11,6 +11,7 @@ class Queue extends Model
         'name',
         'snumber',
         'email',
+        'mobile',
         'department',
         'transaction',
         'remarks',

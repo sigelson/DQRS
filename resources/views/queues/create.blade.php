@@ -88,6 +88,23 @@
                                         @endif
                                     </div>
 
+                                    <div class="form-group{{ $errors->has('mobile') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="input-mobile">{{ __('Mobile number') }}</label>
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">+63</div>
+                                            </div>
+                                            <input type="number" name="mobile" class="form-control" id="inlineFormInputGroup" placeholder="Ex. 9151234567">
+                                          </div>
+
+
+                                        @if ($errors->has('mobile'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('mobile') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
 
 
                                     <div class="form-group{{ $errors->has('transaction') ? ' has-danger' : '' }}">

@@ -18,6 +18,7 @@ class CreateQueuesTable extends Migration
             $table->string('snumber');
             $table->string('name');
             $table->string('email');
+            $table->string('mobile');
             $table->string('department');
             $table->string('transaction');
             $table->string('letter');

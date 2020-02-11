@@ -9,6 +9,7 @@ use App\Queue;
 use App\Transaction;
 use Mail;
 use DB;
+use Nexmo;
 
 class QueueController extends Controller
 {
@@ -51,6 +52,7 @@ class QueueController extends Controller
             'name' => 'required|max:255',
             'snumber' => 'required|max:255',
             'email' => 'required|max:255',
+            'mobile' => 'required|max:255',
             'department' => 'required|max:255',
             'transaction' => 'required|max:255',
             'letter' => 'required|max:255',
@@ -65,6 +67,7 @@ class QueueController extends Controller
             'name' => $request->get('name'),
             'snumber' => $request->get('snumber'),
             'email' => $request->get('email'),
+            'mobile' => $request->get('mobile'),
             'department' => $request->get('department'),
             'transaction' => $request->get('transaction'),
             'letter' => $request->get('letter'),
@@ -95,8 +98,14 @@ class QueueController extends Controller
         Mail::send('emails.queue', $data, function ($message) use ($data){
             $message->from('dqrshelper@gmail.com');
             $message->to($data['email']);
-            $message->subject('DQRS: Your Queue number');
+            $message->subject('DQRS: Here is your Queue number');
         });
+
+        Nexmo::message()->send([
+            'to'   => '63'.$request->mobile,
+            'from' => 'DQRS',
+            'text' => ('Hi! Your Queue number is '.$request->letter.'-'.$request->number.'. Thank you for using DQRS.')
+        ]);
 
         Department::where('name', $request->department)->increment('number', 1);
 

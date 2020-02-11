@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'app' => ['name' => function_exists('env') ? env('NEXMO_APP_NAME', 'NexmoLaravel') : 'NexmoLaravel',
+    'app' => ['name' => function_exists('env') ? env('NEXMO_APP_NAME', 'DQRS') : 'DQRS',
         'version' => function_exists('env') ? env('NEXMO_APP_VERSION', '1.1.2') : '1.1.2'],
 
     /*
