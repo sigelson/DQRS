@@ -18,15 +18,15 @@ class DisplayController extends Controller
     {
         $cashier=DB::table('queues')->where([
             ['department', '=', 'cashier'],
-            ['called', '=', 'yes'],])->first();
+            ['called', '=', 'yes'],])->orderBy('number', 'DESC')->first();
 
         $accounting=DB::table('queues')->where([
             ['department', '=', 'accounting'],
-            ['called', '=', 'yes'],])->first();
+            ['called', '=', 'yes'],])->orderBy('number', 'DESC')->first();
 
         $registrar=DB::table('queues')->where([
             ['department', '=', 'registrar'],
-            ['called', '=', 'yes'],])->first();
+            ['called', '=', 'yes'],])->orderBy('number', 'DESC')->first();
 
         return view('display.index',compact('cashier','accounting','registrar')
         );

@@ -5,11 +5,14 @@
 
             <div class="row">
                 <div class="col-sm-12">
+                    {{-- <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="img img-fluid w-25" alt="..."> --}}
+                </div>
+                <div class="col-sm-12">
                     <div class="card bg-secondary shadow">
                         <div class="card-header bg-white border-0">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h2 class="mb-0">{{ __('Queue Management') }}</h2>
+                                    <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="img img-fluid w-25" alt="...">
                                 </div>
                                 <div class="col-4 text-right">
                                     <a href="{{('/dqrs')}}" class="btn btn-md btn-dark">{{ __('Go Back') }}</a>
@@ -71,7 +74,7 @@
 
                                         @if ($errors->has('snumber'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('snumber') }}</strong>
+                                                <strong>student number must be numeric and exactly 8 numbers.</strong>
                                             </span>
                                         @endif
                                     </div>
@@ -79,7 +82,7 @@
 
                                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
-                                        <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}" required>
+                                        <input type="email" name="email" id="input-email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}" required>
 
                                         @if ($errors->has('email'))
                                             <span class="invalid-feedback" role="alert">
@@ -90,19 +93,19 @@
 
                                     <div class="form-group{{ $errors->has('mobile') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-mobile">{{ __('Mobile number') }}</label>
-                                        <div class="input-group mb-2">
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                               <div class="input-group-text">+63</div>
                                             </div>
-                                            <input type="number" name="mobile" class="form-control" id="inlineFormInputGroup" placeholder="Ex. 9151234567">
+                                            {{-- <input type="number" name="mobile" class="form-control" placeholder="Ex. 9151234567"> --}}
+                                            <input type="number" name="mobile" id="input-mobile" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" placeholder="{{ __('Ex. 9151234567') }}" value="{{ old('mobile') }}" required autofocus>
                                           </div>
-
-
-                                        @if ($errors->has('mobile'))
+                                          @if ($errors->has('mobile'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('mobile') }}</strong>
+                                                <strong>mobile number must be numeric and exactly 10 numbers</strong>
                                             </span>
                                         @endif
+
                                     </div>
 
 
@@ -140,6 +143,11 @@
 
                                     <input type="hidden" name="letter" id="letter" value="">
                                     <input type="hidden" name="number" id="number" value="">
+
+                                    <div class="custom-control custom-control-alternative custom-checkbox mb-3">
+                                        <input class="custom-control-input" id="customCheck6" type="checkbox" required>
+                                        <label class="custom-control-label" for="customCheck6">I confirm that the information given in this form is true, complete and accurate.</label>
+                                      </div>
 
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
