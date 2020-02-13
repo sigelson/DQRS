@@ -34,6 +34,7 @@
 
                                     <br>
                                     <p class="text-muted small">{{$queues->created_at}}</p>
+                                    <p>You will receive an SMS and/or an email to confirm your transaction.</p>
                             </div>
                         </div>
                         <div class="card-footer text-center">

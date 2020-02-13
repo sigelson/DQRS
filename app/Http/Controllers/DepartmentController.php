@@ -96,9 +96,9 @@ class DepartmentController extends Controller
         $request->validate([
             'name'=>['required','max:255',
             Rule::unique('departments')->ignore($id)],
-            'letter'=>['required','max:1',
+            'letter'=>['required','max:255',
             Rule::unique('departments')->ignore($id)],
-            'number'=>['required','max:1'],
+            'number'=>['required','max:255'],
         ]);
 
         $department = Department::find($id);

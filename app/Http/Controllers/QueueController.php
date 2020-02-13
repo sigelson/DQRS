@@ -10,6 +10,7 @@ use App\Transaction;
 use Mail;
 use DB;
 use Nexmo;
+use Carbon\Carbon;
 
 class QueueController extends Controller
 {
@@ -47,6 +48,7 @@ class QueueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
@@ -56,7 +58,6 @@ class QueueController extends Controller
             'department' => 'required|max:255',
             'transaction' => 'required|max:255',
             'letter' => 'required|max:255',
-            'number' => 'required|max:255',
             'remarks' => 'nullable|max:255'
         ]);
 
@@ -71,43 +72,44 @@ class QueueController extends Controller
             'department' => $request->get('department'),
             'transaction' => $request->get('transaction'),
             'letter' => $request->get('letter'),
-            'number' =>  $request->get('number'),
+            'number' =>  DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count()+1,
             'remarks' => $request->get('remarks'),
             'called' => 'no',
 
         ]);
-
         $queue->save();
-        Department::where('name', $request->department)->increment('number', 1);
 
-        $data=array(
+        $count=DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
+        DB::table('departments')->where('name', $request->department)->update(['number'=> $count]);
 
-            'name'=>$request->name,
-            'snumber'=>$request->snumber,
-            'email'=>$request->email,
-            'department'=>$request->department,
-            'letter'=>$request->letter,
-            'number'=>$request->number,
-            'transaction'=>$request->transaction,
-            'remarks'=>$request->remarks
+        // $data=array(
 
-        );
+        //     'name'=>$request->name,
+        //     'snumber'=>$request->snumber,
+        //     'email'=>$request->email,
+        //     'department'=>$request->department,
+        //     'letter'=>$request->letter,
+        //     'number'=>$request->number,
+        //     'transaction'=>$request->transaction,
+        //     'remarks'=>$request->remarks
 
-        // DB::table('departments')->increment('number', 1, ['name' => $request->department]);
+        // );
 
-        Mail::send('emails.queue', $data, function ($message) use ($data){
-            $message->from('dqrshelper@gmail.com');
-            $message->to($data['email']);
-            $message->subject('DQRS: Here is your Queue number');
-        });
+        //NOT IN CODE // DB::table('departments')->increment('number', 1, ['name' => $request->department]);
 
-        Nexmo::message()->send([
-            'to'   => '63'.$request->mobile,
-            'from' => 'DQRS',
-            'text' => ('Hi! Your Queue number is '.$request->letter.'-'.$request->number.'. Thank you for using DQRS.')
-        ]);
+        // Mail::send('emails.queue', $data, function ($message) use ($data){
+        //     $message->from('dqrshelper@gmail.com');
+        //     $message->to($data['email']);
+        //     $message->subject('DQRS: Here is your Queue number');
+        // });
 
-        return redirect('queues')->withStatus(__('Queue added successfully. Your Queue number will be sent to you via Email or SMS shortly.'));
+        // Nexmo::message()->send([
+        //     'to'   => '63'.$request->mobile,
+        //     'from' => 'DQRS',
+        //     'text' => ('Hi! Your Queue number is '.$request->letter.'-'.$request->number.'. Thank you for using DQRS.')
+        // ]);
+
+        return redirect('queues')->withStatus(__('Queue added successfully. You will receive an SMS and/or an email to confirm your transaction.'));
     }
 
     /**
