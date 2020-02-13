@@ -1,62 +1,131 @@
 @extends('layouts.appd', ['class' => 'bg-gradient-white'])
 
 @section('content')
-    <div class="header bg-gradient-white pt-3">
+    <div class="header bg-gradient-white mt-4">
         <div class="container-fluid">
            <div class="row">
-               <div class="col-sm-12 d-none d-md-block mb-3">
-                <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="img-fluid" width="15%"  alt="...">
-                <p id="time" class="display-1 text-red float-right"></p>
-               </div>
+               <div class="col-sm-12 col-md-8 d-none d-md-block">
+                <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="img-fluid" width="25%"  alt="...">
+            </div>
+                <div class="col-sm-12 col-md-4 d-none d-md-block">
+                    <p id="time" class="display-1 text-red text-right"></p>
+                </div>
+
                <div class="col-sm-12 d-sm-block d-md-none text-center mb-3">
                 <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="img-fluid w-50" alt="...">
 
                </div>
                <div class="col-sm-12 col-md-8  d-none d-md-block text-center">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/1Q1cZYhobhc?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-               </div>
-               <div class="col sm-12 col-md-3 offset-md-1 text-center">
-                    <h1 class="display 1 font-weight-bold"><strong>NOW SERVING</strong></h1>
-                  <div class="card bg-lighter mt-3 shadow">
+                {{-- <iframe width="100%" height="100%" src="{{ asset('assets') }}/vid/sdca-vid.mp4" frameborder="0" controls=0 onloadstart="this.volume=0.05" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                <video onloadstart="this.volume=0.05" width="100%" loop="true" autoplay="autoplay">
+                    <source src="{{ asset('assets') }}/vid/sdca-vid.mp4" type="video/mp4" >
+                  </video>
+            </div>
+               <div class="col-sm-12 col-md-4 text-center">
+                   <div class="card shadow bg-gradient-red">
+                    <h1 class="display 1 font-weight-bold text-white"><strong>NOW SERVING</strong></h1>
+                    </div>
+                  <div class="row">
 
-                      <div class="card-header-lg">
-                      <h3 class="text-default ">{{$cashier->department ?? ''}}</h3>
+                      <div class="col-sm-6">
+                        <div class="card bg-lighter mt-3 shadow">
+                            <div class="card-header-lg">
+                            <h3 class="text-default text-uppercase">{{$cashier->department ?? 'cashier'}}</h3>
+                            </div>
+                            <div class="card-body-sm">
+                                <h1 class="display-1 font-weight-bold"><strong>{{$cashier->letter ?? ''}}-{{$cashier->number ?? ''}}</strong></h1>
+                            </div>
+                            <div class="card-footer-sm">
+                              <p class="text-warning font-weight-bold">COUNTER 1</p>
+                            </div>
+                        </div>
                       </div>
-                      <div class="card-body-sm">
-                          <h1 class="display-1 font-weight-bold"><strong>{{$cashier->letter ?? ''}}-{{$cashier->number ?? ''}}</strong></h1>
+                      <div class="col-sm-6">
+                        <div class="card bg-lighter shadow mt-3">
+                            <div class="card-header-lg">
+                                <h3 class="text-default text-uppercase">{{$cashier->department ?? 'cashier'}}</h3>
+                            </div>
+                            <div class="card-body-sm">
+                                <h1 class="display-1 font-weight-bold"><strong>{{$cashier->letter ?? ''}}-{{$cashier->number ?? ''}}</strong></h1>
+                            </div>
+                            <div class="card-footer-sm">
+                                <p class="text-warning font-weight-bold">COUNTER 2</p>
+                            </div>
+                        </div>
                       </div>
-                      <div class="card-footer-sm">
-                        <p class="text-warning font-weight-bold">Please proceed to CASHIER 2</p>
+                  </div>
+
+
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card bg-lighter shadow mt-3">
+                                    <div class="card-header-lg">
+                                        <h3 class="text-default text-uppercase">{{$accounting->department ?? 'accounting'}}</h3>
+                                    </div>
+                                    <div class="card-body-sm">
+                                        <h1 class="display-1 font-weight-bold"><strong>{{$accounting->letter ?? ''}}-{{$accounting->number ?? ''}}</strong></h1>
+                                    </div>
+                                    <div class="card-footer-sm">
+                                        <p class="text-warning font-weight-bold">COUNTER 1</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                      <div class="col-sm-6">
+                        <div class="card bg-lighter mt-3 shadow">
+                            <div class="card-header-lg">
+                            <h3 class="text-default text-uppercase">{{$accounting->department ?? 'accounting'}}</h3>
+                            </div>
+                            <div class="card-body-sm">
+                                <h1 class="display-1 font-weight-bold"><strong>{{$accounting->letter ?? ''}}-{{$accounting->number ?? ''}}</strong></h1>
+                            </div>
+                            <div class="card-footer-sm">
+                              <p class="text-warning font-weight-bold">COUNTER 2</p>
+                            </div>
+                        </div>
+                      </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card bg-lighter shadow mt-3">
+                                <div class="card-header-lg">
+                                    <h3 class="text-default text-uppercase">{{$registrar->department ?? 'registrar'}}</h3>
+                                </div>
+                                <div class="card-body-sm">
+                                    <h1 class="display-1 font-weight-bold"><strong>{{$registrar->letter ?? ''}}-{{$registrar->number ?? ''}}</strong></h1>
+                                </div>
+                                <div class="card-footer-sm">
+                                    <p class="text-warning font-weight-bold">COUNTER 1</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="card bg-lighter shadow mt-3">
+                                <div class="card-header-lg">
+                                    <h3 class="text-default text-uppercase">{{$registrar->department ?? 'registrar'}}</h3>
+                                </div>
+                                <div class="card-body-sm">
+                                    <h1 class="display-1 font-weight-bold"><strong>{{$registrar->letter ?? ''}}-{{$registrar->number ?? ''}}</strong></h1>
+                                </div>
+                                <div class="card-footer-sm">
+                                    <p class="text-warning font-weight-bold">COUNTER 2</p>
+                                </div>
+                            </div>
+                        </div>
+
                       </div>
 
                   </div>
-                  <div class="card bg-lighter shadow mt-3">
-                    <div class="card-header-lg">
-                        <h3 class="text-default ">{{$accounting->department ?? ''}}</h3>
-                    </div>
-                    <div class="card-body-sm">
-                        <h1 class="display-1 font-weight-bold"><strong>{{$accounting->letter ?? ''}}-{{$accounting->number ?? ''}}</strong></h1>
-                    </div>
-                    <div class="card-footer-sm">
-                        <p class="text-warning font-weight-bold">Please proceed to CASHIER 1</p>
-                    </div>
-                </div>
-                <div class="card bg-lighter shadow mt-3">
-                    <div class="card-header-lg">
-                        <h3 class="text-default ">{{$registrar->department ?? ''}}</h3>
-                    </div>
-                    <div class="card-body-sm">
-                        <h1 class="display-1 font-weight-bold"><strong>{{$registrar->letter ?? ''}}-{{$registrar->number ?? ''}}</strong></h1>
-                    </div>
-                    <div class="card-footer-sm">
-                        <p class="text-warning font-weight-bold">Please proceed to CASHIER 2</p>
-                    </div>
-                </div>
+
                </div>
 
            </div>
 
-           <div class="py-5"></div>
+           <div class="py-2"></div>
 
            <div class="d-none d-md-block bg-dark p-0">
             {{-- <marquee behavior="" direction="left"><h1 class="display-1 text-white">TESTING NOTIFICATION DQRS TESTING</h1></marquee> --}}
