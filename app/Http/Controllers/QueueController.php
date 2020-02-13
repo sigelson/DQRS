@@ -78,6 +78,7 @@ class QueueController extends Controller
         ]);
 
         $queue->save();
+        Department::where('name', $request->department)->increment('number', 1);
 
         $data=array(
 
@@ -94,7 +95,6 @@ class QueueController extends Controller
 
         // DB::table('departments')->increment('number', 1, ['name' => $request->department]);
 
-
         Mail::send('emails.queue', $data, function ($message) use ($data){
             $message->from('dqrshelper@gmail.com');
             $message->to($data['email']);
@@ -107,10 +107,7 @@ class QueueController extends Controller
             'text' => ('Hi! Your Queue number is '.$request->letter.'-'.$request->number.'. Thank you for using DQRS.')
         ]);
 
-        Department::where('name', $request->department)->increment('number', 1);
-
-
-        return redirect('queues')->withStatus(__('Queue added successfully.'));
+        return redirect('queues')->withStatus(__('Queue added successfully. Your Queue number will be sent to you via Email or SMS shortly.'));
     }
 
     /**
