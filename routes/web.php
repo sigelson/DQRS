@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('departments', 'DepartmentController',['except' => ['show']]);
     Route::resource('transactions', 'TransactionController',['except' => ['show']]);
     Route::resource('counters','CounterController',['except' => ['show']]);
+    Route::put('home',['as'=>'home.updatenotif','uses'=>'HomeController@updatenotif']);
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);

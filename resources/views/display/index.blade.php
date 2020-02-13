@@ -132,7 +132,7 @@
 
             <nav class="navbar-lg bg-white">
                 <div class="p-0">
-             <marquee behavior="" direction="left"><h1 class=" display-1 text-dark">TESTING NOTIFICATION DQRS TESTING</h1></marquee>
+             <marquee behavior="" direction="left"><h1 class=" display-1 text-dark">{{$notification}}</h1></marquee>
                  </div>
           </nav>
 
@@ -141,7 +141,7 @@
         <div class="d-sm-block d-md-none p-0">
            <nav class="navbar-sm fixed-bottom bg-lighter">
                <div>
-            <marquee behavior="" direction="left"><h1 class="display-md-1 text-red">TESTING NOTIFICATION DQRS TESTING</h1></marquee>
+            <marquee behavior="" direction="left"><h1 class="display-md-1 text-red">{{$notification}}</h1></marquee>
                 </div>
          </nav>
         </div>

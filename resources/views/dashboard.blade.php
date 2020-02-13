@@ -70,22 +70,34 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12">
+                @if (session('status'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('status') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+            </div>
             <div class="col-sm-12">
                 <div class="card shadow">
                     <div class="card-body">
                                 <h2 class="mb-2">Notification message</h2>
-                                <form>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Write your notification message here ..."></textarea>
+                                <form method="post" action="{{ route('home.updatenotif') }}" autocomplete="off">
+                                    @csrf
+                                @method('put')
+                                    <textarea class="form-control" name="text" id="notif" rows="1" placeholder="{{$notification}}"></textarea>
+                                    <div class="row mt-3 align-items-center">
+                                        <div class="col-sm-12 col-md-6">
+                                            <p class="text-muted"><small>This message will be displayed at the bottom of the <a href="{{route('display.index')}}" class="text-info" target="_blank">Queue Display</a>.</small></p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6 text-right">
+                                            <button type="submit" class="btn btn-success">Apply</button>
+                                        </div>
+                                    </div>
                                   </form>
-                                  <div class="row">
-                                    <div class="col col-fluid text-left mt-3">
-                                    <p class="text-muted"><small>This message will be displayed at the bottom of the <a href="{{route('display.index')}}" class="text-info" target="_blank">Queue Display</a>.</small></p>
-                                      </div>
 
-                                      <div class="col col-fluid text-right mt-3">
-                                        <a href="#" class="btn btn-success">Apply</a>
-                                      </div>
-                                  </div>
 
 
                             {{-- <div class="col-auto">

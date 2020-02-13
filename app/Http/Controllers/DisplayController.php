@@ -28,7 +28,9 @@ class DisplayController extends Controller
             ['department', '=', 'registrar'],
             ['called', '=', 'yes'],])->orderBy('number', 'DESC')->first();
 
-        return view('display.index',compact('cashier','accounting','registrar')
+        $notification=DB::table('notifications')->where('id', '1')->value('text');
+
+        return view('display.index',compact('cashier','accounting','registrar','notification')
         );
     }
 
