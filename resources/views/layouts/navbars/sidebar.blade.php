@@ -80,7 +80,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('home') }}">
-                        <strong><i class="ni ni-tv-2"></i> {{ __('Dashboard') }}</strong>
+                        <strong><i class="fas fa-tachometer-alt"></i> {{ __('Dashboard') }}</strong>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -93,12 +93,14 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="{{ route('profile.edit') }}">
+                                    <i class="fas fa-angle-right"></i>
                                     {{ __('User profile') }}
                                 </a>
                             </li>
-                            @if(\Auth::user()->id==1)
+                            @if(\Auth::user()->role=='admin')
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="{{ route('user.index') }}">
+                                    <i class="fas fa-angle-right"></i>
                                     {{ __('User Management') }}
                                 </a>
                             </li>
@@ -119,16 +121,22 @@
                         {{ __('Departments') }}</strong>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('counters.index') }}"><strong>
                         <i class="fas fa-desktop"></i>
                         {{ __('Counters') }}</strong>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('transactions.index') }}"><strong>
-                        <i class="fas fa-cog"></i>
+                        <i class="fas fa-project-diagram"></i>
                         {{ __('Transactions') }}</strong>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="{{ route('reports.index') }}"><strong>
+                        <i class="far fa-file-alt"></i>
+                        {{ __('Reports') }}</strong>
                     </a>
                 </li>
                 @endif

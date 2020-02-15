@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([DepartmentTableSeeder::class]);
         $this->call([CounterTableSeeder::class]);
         $this->call([TransactionTableSeeder::class]);
+        $this->call([NotificationTableSeeder::class]);
 
     }
 }

@@ -47,7 +47,7 @@
                             <tr>
                                 <th scope="col">{{ __('Name') }}</th>
                                 <th scope="col">{{ __('Letter') }}</th>
-                                <th scope="col">{{ __('Number') }}</th>
+                                {{-- <th scope="col">{{ __('Number') }}</th> --}}
                                 <th scope="col">{{ __('Created at') }}</th>
                                 <th scope="col"></th>
                             </tr>
@@ -59,9 +59,9 @@
                                     <td>
                                         {{ $department->letter }}</a>
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         {{ $department->number }}</a>
-                                    </td>
+                                    </td> --}}
 
                                     <td>{{ $department->created_at }}</td>
                                     <td class="text-right">
