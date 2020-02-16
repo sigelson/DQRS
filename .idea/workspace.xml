@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b22ba58-6ef8-4749-8801-1a59dccaf6be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footers/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footers/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reports/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,17 +19,22 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="542">
-              <caret line="123" column="50" selection-start-line="123" selection-start-column="40" selection-end-line="123" selection-end-column="50" />
+              <caret line="123" column="50" selection-start-line="123" selection-start-column="50" selection-end-line="123" selection-end-column="50" />
               <folding>
                 <element signature="e#40#76#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -266,17 +272,17 @@
       <workItem from="1580362418462" duration="2831000" />
       <workItem from="1580365777786" duration="7449000" />
       <workItem from="1580387347419" duration="44000" />
+      <workItem from="1581785103089" duration="37000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10868000" />
+    <option name="totallyTimeSpent" value="10905000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25321338" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25642672" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -488,12 +494,15 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="542">
-          <caret line="123" column="50" selection-start-line="123" selection-start-column="40" selection-end-line="123" selection-end-column="50" />
+          <caret line="123" column="50" selection-start-line="123" selection-start-column="50" selection-end-line="123" selection-end-column="50" />
           <folding>
             <element signature="e#40#76#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

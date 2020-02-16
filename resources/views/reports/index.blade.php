@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Transaction Records')])
+@extends('layouts.app', ['title' => __('Reports')])
 
 @section('content')
     {{-- @include('layouts.headers.cards') --}}
@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="header-body">
                 <!-- Card stats -->
-                <h1 class="text-white display-2">Transaction Records</h1>
+                <h1 class="text-white display-2">Reports</h1>
             </div>
         </div>
     </div>
@@ -21,12 +21,18 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
-                            <div class="col-8">
-                                <h3 class="mb-0">{{ __('Queue Records') }}</h3>
+                            <div class="col-sm-12 col-md-9">
+                                <h3>{{ __('Record Logs') }}</h3>
                             </div>
-                            {{-- <div class="col-4 text-right">
-                                <a href="{{ route('departments.create') }}" class="btn btn-md btn-success"><i class="fas fa-plus"> </i> {{ __(' Add Department') }}</a>
-                            </div> --}}
+                            <div class="col-sm-12 col-md-3 form-group">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input class="form-control datepicker" placeholder="Select date" type="text" id="date" value="">
+                                    <button class="btn btn-outline-default">Search</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -82,3 +88,4 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
+

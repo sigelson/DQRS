@@ -38,6 +38,7 @@
 
         <script src="{{ asset('assets/argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('assets/argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ asset('assets/argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
         @stack('js')
 
