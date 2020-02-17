@@ -15,8 +15,12 @@
                                 <h2 class="mb-0">Queue list</h2>
                             </div>
                             <div class="col text-right">
-                                <a href="#!" class="btn btn-md btn-success">Call Next</a>
+                                @foreach ($counters as $counter)
+                                <a href="#!" class="btn btn-md btn-success">Call Next: {{$counter->name}}</a>
+                               @endforeach
                             </div>
+
+
                         </div>
                     </div>
                     <div class="table-responsive">
