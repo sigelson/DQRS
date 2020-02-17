@@ -23,6 +23,7 @@ class CreateQueuesTable extends Migration
             $table->string('transaction');
             $table->string('letter');
             $table->integer('number');
+            $table->string('counter')->nullable();
             $table->string('remarks')->nullable();
             $table->string('called');
             $table->timestamps();

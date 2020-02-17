@@ -16,21 +16,39 @@ class DisplayController extends Controller
      */
     public function index()
     {
-        $cashier=DB::table('queues')->where([
+        $cashier1=DB::table('queues')->where([
             ['department', '=', 'cashier'],
-            ['called', '=', 'yes'],])->orderBy('number', 'DESC')->first();
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
-        $accounting=DB::table('queues')->where([
+        $cashier2=DB::table('queues')->where([
+            ['department', '=', 'cashier'],
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
+
+        $accounting1=DB::table('queues')->where([
             ['department', '=', 'accounting'],
-            ['called', '=', 'yes'],])->orderBy('number', 'DESC')->first();
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
-        $registrar=DB::table('queues')->where([
+        $accounting2=DB::table('queues')->where([
+            ['department', '=', 'accounting'],
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
+
+        $registrar1=DB::table('queues')->where([
             ['department', '=', 'registrar'],
-            ['called', '=', 'yes'],])->orderBy('number', 'DESC')->first();
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
+
+        $registrar2=DB::table('queues')->where([
+            ['department', '=', 'registrar'],
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
         $notification=DB::table('notifications')->where('id', '1')->value('text');
 
-        return view('display.index',compact('cashier','accounting','registrar','notification')
+        return view('display.index',compact('cashier1','cashier2','accounting1','accounting2','registrar1','registrar2','notification')
         );
     }
 

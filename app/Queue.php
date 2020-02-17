@@ -17,6 +17,7 @@ class Queue extends Model
         'remarks',
         'letter',
         'number',
+        'counter',
         'called'
     ];
 

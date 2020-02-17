@@ -39,7 +39,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('transactions', 'TransactionController',['except' => ['show']]);
     Route::resource('counters','CounterController',['except' => ['show']]);
     Route::resource('reports','ReportController');
-    Route::put('admin',['as'=>'home.updatenotif','uses'=>'HomeController@updatenotif']);
+    Route::put('admin/call',['as'=>'home.callqueue','uses'=>'HomeController@callqueue']);
+    Route::put('admin/notif',['as'=>'home.updatenotif','uses'=>'HomeController@updatenotif']);
+
+
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);

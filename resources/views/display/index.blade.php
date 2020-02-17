@@ -32,10 +32,10 @@
                       <div class="col-sm-6">
                         <div class="card bg-gradient-lighter mt-3 shadow">
                             <div class="card-header-lg">
-                            <h3 class="text-default text-uppercase">{{$cashier->department ?? 'cashier'}}</h3>
+                            <h3 class="text-default text-uppercase">{{$cashier1->department ?? 'cashier'}}</h3>
                             </div>
                             <div class="card-body-sm">
-                                <h1 class="display-1 font-weight-bold"><strong>{{$cashier->letter ?? ''}}-{{$cashier->number ?? ''}}</strong></h1>
+                                <h1 class="display-1 font-weight-bold"><strong>{{$cashier1->letter ?? ''}}-{{$cashier1->number ?? ''}}</strong></h1>
                             </div>
                             <div class="card-footer-sm">
                               <p class="text-warning font-weight-bold">COUNTER 1</p>
@@ -45,10 +45,10 @@
                       <div class="col-sm-6">
                         <div class="card bg-gradient-lighter shadow mt-3">
                             <div class="card-header-lg">
-                                <h3 class="text-default text-uppercase">{{$cashier->department ?? 'cashier'}}</h3>
+                                <h3 class="text-default text-uppercase">{{$cashier2->department ?? 'cashier'}}</h3>
                             </div>
                             <div class="card-body-sm">
-                                <h1 class="display-1 font-weight-bold"><strong>{{$cashier->letter ?? ''}}-{{$cashier->number ?? ''}}</strong></h1>
+                                <h1 class="display-1 font-weight-bold"><strong>{{$cashier2->letter ?? ''}}-{{$cashier2->number ?? ''}}</strong></h1>
                             </div>
                             <div class="card-footer-sm">
                                 <p class="text-warning font-weight-bold">COUNTER 2</p>
@@ -63,10 +63,10 @@
                             <div class="col-sm-6">
                                 <div class="card bg-gradient-lighter shadow mt-3">
                                     <div class="card-header-lg">
-                                        <h3 class="text-default text-uppercase">{{$accounting->department ?? 'accounting'}}</h3>
+                                        <h3 class="text-default text-uppercase">{{$accounting1->department ?? 'accounting'}}</h3>
                                     </div>
                                     <div class="card-body-sm">
-                                        <h1 class="display-1 font-weight-bold"><strong>{{$accounting->letter ?? ''}}-{{$accounting->number ?? ''}}</strong></h1>
+                                        <h1 class="display-1 font-weight-bold"><strong>{{$accounting1->letter ?? ''}}-{{$accounting1->number ?? ''}}</strong></h1>
                                     </div>
                                     <div class="card-footer-sm">
                                         <p class="text-warning font-weight-bold">COUNTER 1</p>
@@ -78,10 +78,10 @@
                       <div class="col-sm-6">
                         <div class="card bg-gradient-lighter mt-3 shadow">
                             <div class="card-header-lg">
-                            <h3 class="text-default text-uppercase">{{$accounting->department ?? 'accounting'}}</h3>
+                            <h3 class="text-default text-uppercase">{{$accounting2->department ?? 'accounting'}}</h3>
                             </div>
                             <div class="card-body-sm">
-                                <h1 class="display-1 font-weight-bold"><strong>{{$accounting->letter ?? ''}}-{{$accounting->number ?? ''}}</strong></h1>
+                                <h1 class="display-1 font-weight-bold"><strong>{{$accounting2->letter ?? ''}}-{{$accounting2->number ?? ''}}</strong></h1>
                             </div>
                             <div class="card-footer-sm">
                               <p class="text-warning font-weight-bold">COUNTER 2</p>
@@ -94,10 +94,10 @@
                         <div class="col-sm-6">
                             <div class="card bg-gradient-lighter shadow mt-3">
                                 <div class="card-header-lg">
-                                    <h3 class="text-default text-uppercase">{{$registrar->department ?? 'registrar'}}</h3>
+                                    <h3 class="text-default text-uppercase">{{$registrar1->department ?? 'registrar'}}</h3>
                                 </div>
                                 <div class="card-body-sm">
-                                    <h1 class="display-1 font-weight-bold"><strong>{{$registrar->letter ?? ''}}-{{$registrar->number ?? ''}}</strong></h1>
+                                    <h1 class="display-1 font-weight-bold"><strong>{{$registrar1->letter ?? ''}}-{{$registrar1->number ?? ''}}</strong></h1>
                                 </div>
                                 <div class="card-footer-sm">
                                     <p class="text-warning font-weight-bold">COUNTER 1</p>
@@ -108,10 +108,10 @@
                         <div class="col-sm-6">
                             <div class="card bg-gradient-lighter mt-3">
                                 <div class="card-header-lg">
-                                    <h3 class="text-default text-uppercase">{{$registrar->department ?? 'registrar'}}</h3>
+                                    <h3 class="text-default text-uppercase">{{$registrar2->department ?? 'registrar'}}</h3>
                                 </div>
                                 <div class="card-body-sm">
-                                    <h1 class="display-1 font-weight-bold"><strong>{{$registrar->letter ?? ''}}-{{$registrar->number ?? ''}}</strong></h1>
+                                    <h1 class="display-1 font-weight-bold"><strong>{{$registrar2->letter ?? ''}}-{{$registrar2->number ?? ''}}</strong></h1>
                                 </div>
                                 <div class="card-footer-sm">
                                     <p class="text-warning font-weight-bold">COUNTER 2</p>

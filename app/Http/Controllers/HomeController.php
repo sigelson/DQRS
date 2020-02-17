@@ -52,6 +52,34 @@ class HomeController extends Controller
         DB::table('notifications')->where('id', '1')->update(['text'=>$request->text]);
 
         return redirect('admin')->withStatus(__('Notification message updated successfully.'));
+
     }
 
+
+    public function callqueue(Request $request)
+
+    {
+
+
+
+        $request->validate([
+            'called'=>['max:255'],
+            'counter'=>['max:255']
+        ]);
+
+        $dept=Auth::user()->department;
+        Queue::where([
+            ['department',$dept],
+            ['called', 'no']
+            ])
+                       ->whereDate('created_at', Carbon::today())
+                       ->orderBy('id', 'asc')
+                       ->first()
+                       ->update(['called'=>$request->called,'counter'=>$request->counter]);
+
+                       return redirect('admin')->withStatus(__('Queue has been called.'));
+
+
+
+    }
 }

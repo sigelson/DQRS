@@ -6,19 +6,44 @@
     <div class="container-fluid mt--7">
         <div class="row">
 
-
+            <div class="col-12">
+                @if (session('status'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('status') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+            </div>
             <div class="col-sm-12 py-5 mb-xl-0">
+
                 <div class="card shadow">
+
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
                                 <h2 class="mb-0">Queue list</h2>
                             </div>
                             <div class="col text-right">
+                                <div class="row">
+
+
                                 @foreach ($counters as $counter)
-                                <a href="#!" class="btn btn-md btn-success">Call Next: {{$counter->name}}</a>
+                                <div class="col">
+                            {{-- <a href="{{ route('home.callqueue')}}" class="btn btn-md btn-success">Call Next: {{$counter->name}}</a> --}}
+
+                            <form method="post" action="{{ route('home.callqueue') }}" autocomplete="off">
+                                @csrf
+                            @method('put')
+                            <input type="hidden" name="called" value="yes">
+                            <input type="hidden" name="counter" value="{{$counter->name}}">
+                            <button type="submit" class="btn btn-md btn-success">Call Next: {{$counter->name}}</button>
+                              </form>
+                            </div>
                                @endforeach
                             </div>
+                        </div>
 
 
                         </div>
@@ -74,16 +99,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                @if (session('status'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('status') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
-            </div>
+
             <div class="col-sm-12">
                 <div class="card shadow">
                     <div class="card-body">
