@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Validator,Redirect,Response;
 use App\Report;
 class ReportController extends Controller
 {
@@ -14,10 +15,33 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports=Report::orderBy('id', 'DESC')->paginate(10);
+        // $reports=Report::orderBy('id', 'DESC')->paginate(10);
+        {
+            if(request()->ajax()) {
 
-        return view('reports.index',['reports' => $reports]);
+                $query = Report::query();
+
+                $from_date = (!empty($_GET["from_date"])) ? ($_GET["from_date"]) : ('');
+                $to_date = (!empty($_GET["to_date"])) ? ($_GET["to_date"]) : ('');
+
+                if($from_date && $to_date){
+
+                 $from_date = date('Y-m-d', strtotime($from_date));
+                 $to_date = date('Y-m-d', strtotime($to_date));
+
+                 $query->whereRaw("date(reports.created_at) >= '" . $from_date . "' AND date(reports.created_at) <= '" . $to_date . "'");
+                }
+                $table = $query->select('*');
+                return datatables()->of($table)
+                    ->make(true);
+            }
+        // return view('reports.index',['reports' => $reports]);
+        return view('reports.index');
+
+
+
     }
+}
 
     /**
      * Show the form for creating a new resource.

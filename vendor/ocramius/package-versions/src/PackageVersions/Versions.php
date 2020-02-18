@@ -86,6 +86,7 @@ final class Versions
   'symfony/var-dumper' => 'v4.4.3@7cfa470bc3b1887a7b2a47c0a702a84ad614fa92',
   'tijsverkoyen/css-to-inline-styles' => '2.2.2@dda2ee426acd6d801d5b7fd1001cde9b5f790e15',
   'vlucas/phpdotenv' => 'v3.6.0@1bdf24f065975594f6a117f0f1f6cabf1333b156',
+  'yajra/laravel-datatables-oracle' => 'v9.8.0@9797a5f1b962b9ebf6bb087c88314dd724b3d5c0',
   'zendframework/zend-diactoros' => '2.2.1@de5847b068362a88684a55b0dbb40d85986cfa52',
   'doctrine/instantiator' => '1.3.0@ae466f726242e637cebdd526a7d991b9433bacf1',
   'facade/flare-client-php' => '1.3.1@24444ea0e1556f0a4b5fc8e61802caf72ae9a408',
@@ -125,7 +126,7 @@ final class Versions
   'sebastian/version' => '2.0.1@99732be0ddb3361e16ad77b68ba41efc8e979019',
   'theseer/tokenizer' => '1.1.3@11336f6f84e16a720dae9d8e6ed5019efa85a0f9',
   'webmozart/assert' => '1.6.0@573381c0a64f155a0d9a23f4b0c797194805b925',
-  'laravel/laravel' => 'dev-master@68efd6b8c0b8ec25b26827f1e1c42c83f4beff0c',
+  'laravel/laravel' => 'dev-master@245537afabb3a04117044c5d3cb3aeb835926559',
 );
 
     private function __construct()

@@ -18,6 +18,13 @@
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('assets/argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
         <link type="text/css" href="{{ asset('assets/argon') }}/css/animate.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+<link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -36,7 +43,7 @@
             @include('layouts.footers.guest')
         @endguest
 
-        <script src="{{ asset('assets/argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+        {{-- <script src="{{ asset('assets/argon') }}/vendor/jquery/dist/jquery.min.js"></script> --}}
         <script src="{{ asset('assets/argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('assets/argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
