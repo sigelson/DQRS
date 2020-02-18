@@ -44,14 +44,16 @@
             <table class="table align-items-center table-flush"  id="reporttable">
                 <thead class="thead-light">
                 <tr>
-                <th>Name</th>
-                 <th>Student number</th>
-                 <th>Email</th>
-                 <th>Mobile number</th>
-                 <th>Department</th>
-                 <th>Transaction</th>
-                 <th>Remarks</th>
-                 <th>Created at</th>
+                <th scope="col">Name</th>
+                 <th scope="col">Student number</th>
+                 <th scope="col">Email</th>
+                 <th scope="col">Mobile number</th>
+                 <th scope="col">Department</th>
+                 <th scope="col">Transaction</th>
+                 <th scope="col">Remarks</th>
+                 <th scope="col">Created at</th>
+
+
                 </tr>
                 </thead>
             </table>
