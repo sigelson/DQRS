@@ -48,6 +48,7 @@ final class Versions
   'ocramius/package-versions' => '1.5.1@1d32342b8c1eb27353c8887c366147b4c2da673c',
   'opis/closure' => '3.5.1@93ebc5712cdad8d5f489b500c59d122df2e53969',
   'paragonie/random_compat' => 'v9.99.99@84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95',
+  'paragonie/sodium_compat' => 'v1.12.2@3b953109fdfc821c1979bc829c8b7421721fef82',
   'php-http/guzzle6-adapter' => 'v2.0.1@6074a4b1f4d5c21061b70bab3b8ad484282fe31f',
   'php-http/httplug' => '2.1.0@72d2b129a48f0490d55b7f89be0d6aa0597ffb06',
   'php-http/promise' => 'v1.0.0@dc494cdc9d7160b9a09bd5573272195242ce7980',
@@ -59,6 +60,7 @@ final class Versions
   'psr/log' => '1.1.2@446d54b4cb6bf489fc9d75f55843658e6f25d801',
   'psr/simple-cache' => '1.0.1@408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
   'psy/psysh' => 'v0.9.12@90da7f37568aee36b116a030c5f99c915267edd4',
+  'pusher/pusher-php-server' => 'v4.1.1@3c05ef64839845b6114396ff8406712cba052750',
   'ralouphie/getallheaders' => '3.0.3@120b605dfeb996808c31b6477290a714d356e822',
   'ramsey/uuid' => '3.9.2@7779489a47d443f845271badbdcedfe4df8e06fb',
   'swiftmailer/swiftmailer' => 'v6.2.3@149cfdf118b169f7840bbe3ef0d4bc795d1780c9',
@@ -126,7 +128,7 @@ final class Versions
   'sebastian/version' => '2.0.1@99732be0ddb3361e16ad77b68ba41efc8e979019',
   'theseer/tokenizer' => '1.1.3@11336f6f84e16a720dae9d8e6ed5019efa85a0f9',
   'webmozart/assert' => '1.6.0@573381c0a64f155a0d9a23f4b0c797194805b925',
-  'laravel/laravel' => 'dev-master@245537afabb3a04117044c5d3cb3aeb835926559',
+  'laravel/laravel' => 'dev-master@c7ca65d86289120571dd49165f0136b677d4d2f7',
 );
 
     private function __construct()
