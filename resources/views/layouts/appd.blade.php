@@ -18,6 +18,8 @@
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('assets/argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
         <link type="text/css" href="{{ asset('assets/argon') }}/css/animate.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
     <body class="{{ $class ?? '' }}">
 
@@ -30,7 +32,7 @@
 
 
         <script src="{{ asset('assets/argon') }}/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="{{ asset('assets/argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 
         @stack('js')
 
