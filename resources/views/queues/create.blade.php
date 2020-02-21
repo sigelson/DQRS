@@ -15,7 +15,7 @@
                                     <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="img img-fluid w-25" alt="...">
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="{{('/dqrs')}}" class="btn btn-md btn-dark">{{ __('Go Back') }}</a>
+                                    <a href="{{url('/')}}" class="btn btn-md btn-dark">{{ __('Go Back') }}</a>
                                 </div>
                             </div>
                         </div>
