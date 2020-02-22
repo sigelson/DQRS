@@ -133,13 +133,14 @@
                         {{ __('Transactions') }}</strong>
                     </a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('reports.index') }}"><strong>
                         <i class="far fa-file-alt"></i>
                         {{ __('Reports') }}</strong>
                     </a>
                 </li>
-                @endif
+
                 {{-- <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}

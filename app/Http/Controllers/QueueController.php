@@ -62,8 +62,7 @@ class QueueController extends Controller
             'remarks' => 'nullable|max:255'
         ]);
 
-        //get the last number in the database
-        // $number = Queue::orderBy('number', 'DESC')->first();
+
 
         $queue = new Queue([
             'name' => $request->get('name'),
@@ -80,6 +79,31 @@ class QueueController extends Controller
         ]);
         $queue->save();
 
+
+        $count=DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
+        DB::table('departments')->where('name', $request->department)->update(['number'=> $count]);
+        // EMAIL FUNCTION
+        // $data=array(
+
+        //     'name'=>$request->name,
+        //     'snumber'=>$request->snumber,
+        //     'email'=>$request->email,
+        //     'department'=>$request->department,
+        //     'letter'=>$request->letter,
+        //     'number'=>DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count(),
+        //     'transaction'=>$request->transaction,
+        //     'remarks'=>$request->remarks
+
+        // );
+
+
+        // Mail::send('emails.queue', $data, function ($message) use ($data){
+        //     $message->from('dqrshelper@gmail.com');
+        //     $message->to($data['email']);
+        //     $message->subject('DQRS: Here is your Queue number');
+        // });
+        // END EMAIL FUNCTION
+
         $report = new Report([
             'name' => $request->get('name'),
             'snumber' => $request->get('snumber'),
@@ -93,29 +117,7 @@ class QueueController extends Controller
         ]);
         $report->save();
 
-        $count=DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
-        DB::table('departments')->where('name', $request->department)->update(['number'=> $count]);
 
-        // $data=array(
-
-        //     'name'=>$request->name,
-        //     'snumber'=>$request->snumber,
-        //     'email'=>$request->email,
-        //     'department'=>$request->department,
-        //     'letter'=>$request->letter,
-        //     'number'=>$request->number,
-        //     'transaction'=>$request->transaction,
-        //     'remarks'=>$request->remarks
-
-        // );
-
-        //NOT IN CODE // DB::table('departments')->increment('number', 1, ['name' => $request->department]);
-
-        // Mail::send('emails.queue', $data, function ($message) use ($data){
-        //     $message->from('dqrshelper@gmail.com');
-        //     $message->to($data['email']);
-        //     $message->subject('DQRS: Here is your Queue number');
-        // });
 
         // Nexmo::message()->send([
         //     'to'   => '63'.$request->mobile,

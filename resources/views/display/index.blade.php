@@ -213,7 +213,7 @@
                                 var bleep = new Audio();
                                 bleep.src = '{{ url('assets/sound/sound1.mp3') }}';
                                 bleep.play();
-                                msg1 = 'Queue number '+this.calldata.call.letter+'-'+this.calldata.call.number+' Please proceed to '+this.calldata.call.counter+' please.';
+                                msg1 = 'Queue number '+this.calldata.call.letter+'-'+this.calldata.call.number+' Please proceed to '+this.calldata.call.department+' '+this.calldata.call.counter+' please.';
 
                                 setTimeout(function() {
                                 responsiveVoice.speak(msg1, "UK English Female", {rate: .85});

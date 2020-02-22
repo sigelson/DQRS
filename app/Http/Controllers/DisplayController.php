@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Queue;
 use DB;
+use Carbon\Carbon;
 
 class DisplayController extends Controller
 {
@@ -16,32 +17,32 @@ class DisplayController extends Controller
      */
     public function index()
     {
-        $cashier1=DB::table('queues')->where([
+        $cashier1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'cashier'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
-        $cashier2=DB::table('queues')->where([
+        $cashier2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'cashier'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
-        $accounting1=DB::table('queues')->where([
+        $accounting1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'accounting'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
-        $accounting2=DB::table('queues')->where([
+        $accounting2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'accounting'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
-        $registrar1=DB::table('queues')->where([
+        $registrar1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'registrar'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
-        $registrar2=DB::table('queues')->where([
+        $registrar2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'registrar'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
@@ -55,32 +56,32 @@ class DisplayController extends Controller
     public function showqueue(){
 
 
-        $cashier1=DB::table('queues')->where([
+        $cashier1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'cashier'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
-        $cashier2=DB::table('queues')->where([
+        $cashier2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'cashier'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
-        $accounting1=DB::table('queues')->where([
+        $accounting1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'accounting'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
-        $accounting2=DB::table('queues')->where([
+        $accounting2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'accounting'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
-        $registrar1=DB::table('queues')->where([
+        $registrar1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'registrar'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
-        $registrar2=DB::table('queues')->where([
+        $registrar2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'registrar'],
             ['called', '=', 'yes'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
