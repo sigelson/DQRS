@@ -10,6 +10,7 @@ return array(
     'App\\Counter' => $baseDir . '/app/Counter.php',
     'App\\Department' => $baseDir . '/app/Department.php',
     'App\\Display' => $baseDir . '/app/Display.php',
+    'App\\Events\\NewQueue' => $baseDir . '/app/Events/NewQueue.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

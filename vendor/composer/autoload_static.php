@@ -526,6 +526,7 @@ class ComposerStaticInit8796793646f5ce81e72679e50b10c845
         'App\\Counter' => __DIR__ . '/../..' . '/app/Counter.php',
         'App\\Department' => __DIR__ . '/../..' . '/app/Department.php',
         'App\\Display' => __DIR__ . '/../..' . '/app/Display.php',
+        'App\\Events\\NewQueue' => __DIR__ . '/../..' . '/app/Events/NewQueue.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

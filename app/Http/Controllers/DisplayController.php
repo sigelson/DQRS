@@ -52,6 +52,71 @@ class DisplayController extends Controller
         );
     }
 
+    public function showqueue(){
+
+
+        $cashier1=DB::table('queues')->where([
+            ['department', '=', 'cashier'],
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
+
+        $cashier2=DB::table('queues')->where([
+            ['department', '=', 'cashier'],
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
+
+        $accounting1=DB::table('queues')->where([
+            ['department', '=', 'accounting'],
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
+
+        $accounting2=DB::table('queues')->where([
+            ['department', '=', 'accounting'],
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
+
+        $registrar1=DB::table('queues')->where([
+            ['department', '=', 'registrar'],
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
+
+        $registrar2=DB::table('queues')->where([
+            ['department', '=', 'registrar'],
+            ['called', '=', 'yes'],
+            ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
+
+            $notification=DB::table('notifications')->where('id', '1')->value('text');
+
+        return response()->json(compact('cashier1','cashier2','accounting1','accounting2','registrar1','registrar2','notification'));
+    }
+
+    public function call(Request $request){
+        $request->validate([
+            'called'=>['max:255'],
+            'counter'=>['max:255']
+        ]);
+
+        $dept=Auth::user()->department;
+        Queue::where([
+            ['department',$dept],
+            ['called', 'no']
+            ])
+                       ->whereDate('created_at', Carbon::today())
+                       ->orderBy('id', 'asc')
+                       ->first()
+                       ->update(['called'=>$request->called,'counter'=>$request->counter]);
+
+                            $call=Queue::where([
+                            ['department',$dept],
+                            ['called', 'yes']
+                            ])
+                           ->whereDate('created_at', Carbon::today())
+                           ->orderBy('id', 'asc')
+                           ->first();
+
+                       event(new NewQueue);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

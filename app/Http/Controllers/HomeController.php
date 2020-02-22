@@ -8,6 +8,8 @@ use App\Counter;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\User;
+use App\Events\NewQueue;
+use App\Events\NewNotif;
 
 
 
@@ -44,13 +46,10 @@ class HomeController extends Controller
     public function updatenotif(Request $request)
 
     {
-        $request->validate([
-            'text'=>['max:255']
 
-        ]);
 
         DB::table('notifications')->where('id', '1')->update(['text'=>$request->text]);
-
+        event(new NewNotif());
         return redirect('admin')->withStatus(__('Notification message updated successfully.'));
 
     }
@@ -68,16 +67,29 @@ class HomeController extends Controller
         ]);
 
         $dept=Auth::user()->department;
-        Queue::where([
+        $call=Queue::where([
             ['department',$dept],
             ['called', 'no']
             ])
-                       ->whereDate('created_at', Carbon::today())
-                       ->orderBy('id', 'asc')
-                       ->first()
-                       ->update(['called'=>$request->called,'counter'=>$request->counter]);
+            ->whereDate('created_at', Carbon::today())
+            ->orderBy('id', 'asc')
+            ->first();
+            // ->update(['called'=>$request->called,'counter'=>$request->counter]);
+
+                    if ( ! is_null($call))
+                    {
+                        $call->update(['called'=>$request->called,'counter'=>$request->counter]);
+                        $call->save();
+                        event(new NewQueue($call));
 
                        return redirect('admin')->withStatus(__('Queue has been called.'));
+                    }
+                    else{
+                        return redirect('admin')->withStatus(__('No available queue for calling.'));
+                    }
+
+
+
 
 
 

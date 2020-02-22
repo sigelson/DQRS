@@ -59,7 +59,7 @@
                                     <th scope="col">Transaction</th>
                                     <th scope="col">Remarks</th>
                                     <th scope="col">Called</th>
-                                    <th scope="col">Actions</th>
+                                    {{-- <th scope="col">Actions</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,10 +83,10 @@
                                     <td>
                                         {{ $queue->called }}
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
                                         <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i>  Remove</a>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -107,7 +107,7 @@
                                 <form method="post" action="{{ route('home.updatenotif') }}" autocomplete="off">
                                     @csrf
                                 @method('put')
-                                    <textarea class="form-control" name="text" id="notif" rows="1" placeholder="{{$notification}}"></textarea>
+                                    <textarea class="form-control" name="text" id="notif" rows="1" placeholder="Notification text">{{$notification}}</textarea>
                                     <div class="row mt-3 align-items-center">
                                         <div class="col-sm-12 col-md-6">
                                             <p class="text-muted"><small>This message will be displayed at the bottom of the <a href="{{route('display.index')}}" class="text-info" target="_blank">Queue Display</a>.</small></p>
