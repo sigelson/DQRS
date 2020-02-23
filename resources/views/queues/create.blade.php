@@ -70,7 +70,7 @@
 
                                     <div class="form-group{{ $errors->has('snumber') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-snumber">{{ __('Student number') }}</label>
-                                        <input type="number" name="snumber" id="input-snumber" class="form-control form-control-alternative{{ $errors->has('snumber') ? ' is-invalid' : '' }}" placeholder="{{ __('Student number') }}" value="{{ old('snumber') }}" required autofocus>
+                                        <input type="number" name="snumber" id="input-snumber" class="form-control form-control-alternative{{ $errors->has('snumber') ? ' is-invalid' : '' }}" placeholder="{{ __('Student number') }}" value="{{ old('snumber') }}" autofocus>
 
                                         @if ($errors->has('snumber'))
                                             <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@
 
                                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
-                                        <input type="email" name="email" id="input-email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}" required>
+                                        <input type="email" name="email" id="input-email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}" autofocus>
 
                                         @if ($errors->has('email'))
                                             <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@
                                             <div class="input-group-prepend">
                                               <div class="input-group-text">+63</div>
                                             </div>
-                                            <input type="number" name="mobile" id="input-mobile" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" placeholder="{{ __('Ex. 9151234567') }}" value="{{ old('mobile') }}" required autofocus>
+                                            <input type="number" name="mobile" id="input-mobile" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" placeholder="{{ __('Ex. 9151234567') }}" value="{{ old('mobile') }}" autofocus>
                                             @if ($errors->has('mobile'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>mobile number must be numeric and exactly 10 numbers. Ex: 9151234567</strong>

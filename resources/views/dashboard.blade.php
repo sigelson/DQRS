@@ -54,7 +54,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Queue number</th>
-                                    <th scope="col">Student name</th>
+                                    <th scope="col">name</th>
                                     <th scope="col">Student number</th>
                                     <th scope="col">Transaction</th>
                                     <th scope="col">Remarks</th>

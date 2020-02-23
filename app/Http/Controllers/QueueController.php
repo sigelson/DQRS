@@ -53,9 +53,9 @@ class QueueController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'snumber' => 'required|digits:8',
-            'email' => 'required|max:255',
-            'mobile' => 'required|digits:10',
+            'snumber' => 'nullable|digits:8',
+            'email' => 'nullable|max:255',
+            'mobile' => 'nullable|digits:10',
             'department' => 'required|max:255',
             'transaction' => 'required|max:255',
             'letter' => 'required|max:255',

@@ -15,10 +15,10 @@ class CreateQueuesTable extends Migration
     {
         Schema::create('queues', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('snumber');
+            $table->string('snumber')->nullable();
             $table->string('name');
-            $table->string('email');
-            $table->string('mobile');
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
             $table->string('department');
             $table->string('transaction');
             $table->string('letter');

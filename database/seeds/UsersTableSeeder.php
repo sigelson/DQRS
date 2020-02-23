@@ -31,6 +31,24 @@ class UsersTableSeeder extends Seeder
                     'password' => Hash::make('password'),
                     'created_at' => now(),
                     'updated_at' => now()
+                ],
+                [
+                    'name' => 'Registrar User',
+                    'email' => 'registrar@dqrs.com',
+                    'role'=>'user',
+                    'email_verified_at' => now(),
+                    'password' => Hash::make('password'),
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'Cashier User',
+                    'email' => 'cashier@dqrs.com',
+                    'role'=>'user',
+                    'email_verified_at' => now(),
+                    'password' => Hash::make('password'),
+                    'created_at' => now(),
+                    'updated_at' => now()
                 ]
             ]
         );

@@ -15,10 +15,10 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('snumber');
+            $table->string('snumber')->nullable();
             $table->string('name');
-            $table->string('email');
-            $table->string('mobile');
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
             $table->string('department');
             $table->string('letter');
             $table->integer('number');

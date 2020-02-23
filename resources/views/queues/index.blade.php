@@ -34,7 +34,9 @@
 
                                     <br>
                                     <p class="text-muted small">{{$queues->created_at}}</p>
-                                    <p>You will receive an SMS and/or an email to confirm your transaction.</p>
+                                    <hr>
+                                    <p class="text-sm">You will receive an <strong class="font-weight-bold">SMS</strong> and/or an <strong class="font-weight-bold">email</strong> to confirm your transaction.</p>
+                                    <p class=" text-sm text-danger"><strong>In case you don't have access to your mobile and email, please remember your <strong>Queue number</strong> and present your ID for confirmation.</strong></p>
                             </div>
                         </div>
                         <div class="card-footer text-center">
