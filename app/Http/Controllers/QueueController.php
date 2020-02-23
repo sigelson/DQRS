@@ -84,27 +84,48 @@ class QueueController extends Controller
         DB::table('departments')->where('name', $request->department)->update(['number'=> $count]);
         $currnum=DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
 
-        // EMAIL FUNCTION
-        // $data=array(
-
-        //     'name'=>$request->name,
-        //     'snumber'=>$request->snumber,
-        //     'email'=>$request->email,
-        //     'department'=>$request->department,
-        //     'letter'=>$request->letter,
-        //     'number'=>$currnum,
-        //     'transaction'=>$request->transaction,
-        //     'remarks'=>$request->remarks
-
-        // );
 
 
-        // Mail::send('emails.queue', $data, function ($message) use ($data){
-        //     $message->from('dqrshelper@gmail.com');
-        //     $message->to($data['email']);
-        //     $message->subject('DQRS: Here is your Queue number');
-        // });
-        // END EMAIL FUNCTION
+                        // START EMAIL
+                        if ( ! is_null($request->email))
+                        {
+
+                        $data=array(
+                            'name'=>$request->name,
+                            'snumber'=>$request->snumber,
+                            'email'=>$request->email,
+                            'department'=>$request->department,
+                            'letter'=>$request->letter,
+                            'number'=>$currnum,
+                            'transaction'=>$request->transaction,
+                            'remarks'=>$request->remarks
+                        );
+
+                         Mail::send('emails.queue', $data, function ($message) use ($data){
+                        $message->from('dqrshelper@gmail.com');
+                        $message->to($data['email']);
+                        $message->subject('DQRS: Here is your Queue number');
+                        });
+
+                        }
+                        // END EMAIL
+
+
+                        // START SMS
+                        if ( ! is_null($request->mobile))
+                        {
+
+                        Nexmo::message()->send([
+                        //'to'   => '63'.$request->mobile, //for live with full functioning SMS API
+
+                        'to'   => '639972255631', //for testing purposes
+                        'from' => 'DQRS',
+                        'text' => ("Hi! Your Queue number is\n".$request->letter."-".$currnum."\nThank you for using DQRS.\n \n")
+                            ]);
+
+                        }
+                        // END SMS
+
 
         $report = new Report([
             'name' => $request->get('name'),
@@ -120,15 +141,10 @@ class QueueController extends Controller
         $report->save();
 
 
-        //    SEND SMS FUNCTION
-        // Nexmo::message()->send([
-        //     'to'   => '639972255631', //for testing purposes
-        //     // 'to'   => '639972255631', //for live with full functioning SMS API
-        //     'from' => 'DQRS',
-        //     'text' => ("Hi! Your Queue number is\n".$request->letter."-".$currnum."\nThank you for using DQRS.\n \n")
-        // ]);
 
-        return redirect('queues')->withStatus(__('Queue added successfully. You will receive an SMS and/or an email to confirm your transaction.'));
+
+
+        return redirect('queues')->withStatus(__('Queue added successfully.'));
     }
 
     /**
