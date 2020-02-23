@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::get('display/showqueue','DisplayController@showqueue');
+Route::get('transactions','QueueController@transactions');
 Route::middleware('auth:api')->group(function () {
 
     Route::post('display/call','DisplayController@call');

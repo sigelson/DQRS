@@ -10,6 +10,7 @@
         <title>{{ config('app.name', 'DQRS') }}</title>
         <!-- Favicon -->
         <link href="{{ asset('assets/argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
+        <script src="{{ asset('assets') }}/js/app.js"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <!-- Icons -->

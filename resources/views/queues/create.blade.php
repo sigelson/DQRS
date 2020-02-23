@@ -28,7 +28,7 @@
 
                                     <div class="form-group{{ $errors->has('department') ? ' has-danger' : '' }} text-center">
                                         <div class="col">
-                                        <label class="form-control-label text-lg" for="input-department">{{ __('Department') }}</label>
+                                        <label class="form-control-label text-lg" for="input-department">{{ __('Choose Department') }}</label>
                                         {{-- <select class="form-control form-control-lg" name="department" required>
                                             <option class="text-lg" hidden>Choose Department...</option>
                                             @foreach ($departments as $department)
@@ -108,18 +108,19 @@
 
 
 
-                                    <div class="form-group{{ $errors->has('transaction') ? ' has-danger' : '' }}">
+                                    <div id="transactions" class="form-group{{ $errors->has('transaction') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-transaction">{{ __('Transaction') }}</label>
                                         <select class="form-control form-control-md" name="transaction" required>
                                             <option hidden value="">Choose Transaction...</option>
-                                            @foreach ($transactions as $transaction)
+                                            {{-- @foreach ($transactions as $transaction)
                                         <option>{{$transaction->name}}</option>
-                                        @endforeach
+                                        @endforeach --}}
+
                                         <option>Other</option>
                                         </select>
                                         @if ($errors->has('transaction'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('transaction') }}test</strong>
+                                                <strong>{{ $errors->first('transaction') }}</strong>
                                             </span>
                                         @endif
                                     </div>
@@ -172,8 +173,33 @@
     <script>
         function getdept(dept) {
             document.getElementById('letter').value = dept.letter;
-            // document.getElementById('number').value = {{DB::table('queues')->where('department','accounting')->whereDate('created_at',Carbon::today())->count()}};
         }
+    </script>
+    <script>
+        const app = new Vue({
+            el:'#transactions',
+            data:{
+                trans:{}
+
+            },
+            mounted(){
+                this.getTrans();
+            },
+            methods:{
+                getTrans(){
+                    axios.get('http://localhost/dqrs/api/transactions')
+                    .then((response)=>{
+                        this.trans=response.data
+                        console.log(this.trans.acc);
+                    })
+
+                    .catch(function (error){
+                        console.log(error);
+                    });
+                }
+
+            }
+        })
     </script>
 @endsection
 

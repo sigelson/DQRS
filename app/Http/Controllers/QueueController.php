@@ -145,6 +145,22 @@ class QueueController extends Controller
 
 
         return redirect('queues')->withStatus(__('Queue added successfully.'));
+
+
+    }
+
+    public function transactions()
+    {
+
+        $accounting=Transaction::where('department','accounting')->get();
+        $acc=$accounting->pluck('name')->all();
+        $registrar=Transaction::where('department','registrar')->get();
+        $reg=$registrar->pluck('name')->all();
+        $cashier=Transaction::where('department','cashier')->get();
+        $cas=$cashier->pluck('name')->all();
+
+        return response()->json(compact('acc','reg','cas'));
+
     }
 
     /**
