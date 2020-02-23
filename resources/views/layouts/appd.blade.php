@@ -22,6 +22,7 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
         <script src="{{ asset('assets') }}/js/app.js"></script>
 
+
     </head>
     <body class="{{ $class ?? '' }}">
 
