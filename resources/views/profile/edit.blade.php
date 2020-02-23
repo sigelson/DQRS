@@ -3,8 +3,8 @@
 @section('content')
     @include('users.partials.header', [
         'title' => __('Hello') . ' '. auth()->user()->name,
-        'description' => __('This is your profile page. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, minima! Quo fugit impedit ipsum facere. '),
-        'class' => 'col-lg-7'
+
+        'class' => 'col-sm-12'
     ])
 
     <div class="container-fluid mt--7">

@@ -203,7 +203,7 @@
                             .listen('NewQueue', (call) => {
 
                                 this.calldata=call
-                                console.log(this.calldata.call.number);
+                                // console.log(this.calldata.call.number);
 
                                 axios.get('api/display/showqueue')
                                 .then((response)=>{
