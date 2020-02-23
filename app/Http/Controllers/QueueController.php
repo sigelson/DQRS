@@ -82,6 +82,8 @@ class QueueController extends Controller
 
         $count=DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
         DB::table('departments')->where('name', $request->department)->update(['number'=> $count]);
+        $currnum=DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
+
         // EMAIL FUNCTION
         // $data=array(
 
@@ -90,7 +92,7 @@ class QueueController extends Controller
         //     'email'=>$request->email,
         //     'department'=>$request->department,
         //     'letter'=>$request->letter,
-        //     'number'=>DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count(),
+        //     'number'=>$currnum,
         //     'transaction'=>$request->transaction,
         //     'remarks'=>$request->remarks
 
@@ -118,11 +120,12 @@ class QueueController extends Controller
         $report->save();
 
 
-
+        //    SEND SMS FUNCTION
         // Nexmo::message()->send([
-        //     'to'   => '63'.$request->mobile,
+        //     'to'   => '639972255631', //for testing purposes
+        //     // 'to'   => '639972255631', //for live with full functioning SMS API
         //     'from' => 'DQRS',
-        //     'text' => ('Hi! Your Queue number is '.$request->letter.'-'.$request->number.'. Thank you for using DQRS.')
+        //     'text' => ("Hi! Your Queue number is\n".$request->letter."-".$currnum."\nThank you for using DQRS.\n \n")
         // ]);
 
         return redirect('queues')->withStatus(__('Queue added successfully. You will receive an SMS and/or an email to confirm your transaction.'));

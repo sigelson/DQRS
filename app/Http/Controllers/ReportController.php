@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator,Redirect,Response;
 use App\Report;
+
 class ReportController extends Controller
 {
     /**

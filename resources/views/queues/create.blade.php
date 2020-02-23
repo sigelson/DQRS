@@ -23,7 +23,7 @@
                             <form method="post" action="{{ route('queues.store') }}" autocomplete="off">
                                 @csrf
 
-                                <h6 class="heading-small text-muted mb-4">{{ __('Queue information') }}</h6>
+                                <h6 class="heading-small text-muted mb-4">{{ __('Queue Fill-up form') }}</h6>
                                 <div class="pl-lg-4">
 
                                     <div class="form-group{{ $errors->has('department') ? ' has-danger' : '' }} text-center">
@@ -97,15 +97,13 @@
                                             <div class="input-group-prepend">
                                               <div class="input-group-text">+63</div>
                                             </div>
-                                            {{-- <input type="number" name="mobile" class="form-control" placeholder="Ex. 9151234567"> --}}
                                             <input type="number" name="mobile" id="input-mobile" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" placeholder="{{ __('Ex. 9151234567') }}" value="{{ old('mobile') }}" required autofocus>
-                                          </div>
-                                          @if ($errors->has('mobile'))
+                                            @if ($errors->has('mobile'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>mobile number must be numeric and exactly 10 numbers</strong>
+                                                <strong>mobile number must be numeric and exactly 10 numbers. Ex: 9151234567</strong>
                                             </span>
-                                        @endif
-
+                                            @endif
+                                          </div>
                                     </div>
 
 
