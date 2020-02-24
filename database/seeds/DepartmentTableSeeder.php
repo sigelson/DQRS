@@ -14,7 +14,7 @@ class DepartmentTableSeeder extends Seeder
         DB::table('departments')->insert([
 
                 [
-                    'name' => 'Cashier',
+                    'name' => 'cashier',
                     'letter' => 'C',
                     'number' => 1,
                     'created_at' => now(),
@@ -22,7 +22,7 @@ class DepartmentTableSeeder extends Seeder
 
                 ],
                 [
-                    'name' => 'Accounting',
+                    'name' => 'accounting',
                     'letter' => 'A',
                     'number' => 1,
                     'created_at' => now(),
@@ -30,7 +30,7 @@ class DepartmentTableSeeder extends Seeder
 
                 ],
                 [
-                    'name' => 'Registrar',
+                    'name' => 'registrar',
                     'letter' => 'R',
                     'number' => 1,
                     'created_at' => now(),

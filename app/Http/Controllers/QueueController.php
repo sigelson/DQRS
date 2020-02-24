@@ -79,6 +79,19 @@ class QueueController extends Controller
         ]);
         $queue->save();
 
+        $report = new Report([
+            'name' => $request->get('name'),
+            'snumber' => $request->get('snumber'),
+            'email' => $request->get('email'),
+            'mobile' => $request->get('mobile'),
+            'department' => $request->get('department'),
+            'letter' => $request->get('letter'),
+            'number' =>  DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count()+1,
+            'transaction' => $request->get('transaction'),
+            'remarks' => $request->get('remarks'),
+        ]);
+        $report->save();
+
 
         $count=DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
         DB::table('departments')->where('name', $request->department)->update(['number'=> $count]);
@@ -127,18 +140,7 @@ class QueueController extends Controller
                         // END SMS
 
 
-        $report = new Report([
-            'name' => $request->get('name'),
-            'snumber' => $request->get('snumber'),
-            'email' => $request->get('email'),
-            'mobile' => $request->get('mobile'),
-            'department' => $request->get('department'),
-            'letter' => $request->get('letter'),
-            'number' =>  DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count()+1,
-            'transaction' => $request->get('transaction'),
-            'remarks' => $request->get('remarks'),
-        ]);
-        $report->save();
+        
 
 
 

@@ -30,12 +30,7 @@
                                     <div class="form-group{{ $errors->has('department') ? ' has-danger' : '' }} text-center">
                                         <div class="col">
                                         <label  class="form-control-label text-lg" for="input-department">{{ __('Choose Department') }}</label>
-                                        {{-- <select class="form-control form-control-lg" name="department" required>
-                                            <option class="text-lg" hidden>Choose Department...</option>
-                                            @foreach ($departments as $department)
-                                            <option name="department" value="{{ $department->name}}">{{$department->name}}</option>
-                                            @endforeach
-                                        </select> --}}
+                                            
                                     </div>
 
                                             <div class="col text-center" data-toggle="buttons">
@@ -224,7 +219,7 @@
                 setDropdown: function (type) {
                             this.selected = null;
                             this.dropdown = this.trans[type];
-                            console.log(this.trans[type])
+                            console.log(type)
                             }
 
             }
