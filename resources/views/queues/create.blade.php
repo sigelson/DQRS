@@ -19,6 +19,7 @@
                                 </div>
                             </div>
                         </div>
+                        <main>
                         <div class="card-body">
                             <form method="post" action="{{ route('queues.store') }}" autocomplete="off">
                                 @csrf
@@ -28,7 +29,7 @@
 
                                     <div class="form-group{{ $errors->has('department') ? ' has-danger' : '' }} text-center">
                                         <div class="col">
-                                        <label class="form-control-label text-lg" for="input-department">{{ __('Choose Department') }}</label>
+                                        <label  class="form-control-label text-lg" for="input-department">{{ __('Choose Department') }}</label>
                                         {{-- <select class="form-control form-control-lg" name="department" required>
                                             <option class="text-lg" hidden>Choose Department...</option>
                                             @foreach ($departments as $department)
@@ -41,7 +42,7 @@
                                                 <div class="row text-center">
                                                     @foreach ($departments as $department)
                                                     <div class=" btn-group-toggle col-sm-12 col-md-4 text-center mt-2">
-                                                        <label class="btn btn-secondary btn-lg w-100" onclick="getdept({{$department}})">
+                                                        <label @click="setDropdown('{{$department->name}}')" class="btn btn-secondary btn-lg w-100" onclick="getdept({{$department}})">
                                                             <input type="radio" name="department" value="{{ $department->name}}" sr-only required> {{ $department->name}}
                                                         </label>
                                                     </div>
@@ -108,10 +109,11 @@
 
 
 
-                                    <div id="transactions" class="form-group{{ $errors->has('transaction') ? ' has-danger' : '' }}">
+                                    <div class="form-group{{ $errors->has('transaction') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-transaction">{{ __('Transaction') }}</label>
-                                        <select class="form-control form-control-md" name="transaction" required>
-                                            <option hidden value="">Choose Transaction...</option>
+                                        <select class="form-control form-control-md" v-if="dropdown.length" v-model="selected" name="transaction" required>
+                                            {{-- <option hidden value="">Choose Transaction...</option> --}}
+                                            <option v-for="item in dropdown" :value="item">@{{ item }}</option>
                                             {{-- @foreach ($transactions as $transaction)
                                         <option>{{$transaction->name}}</option>
                                         @endforeach --}}
@@ -156,6 +158,7 @@
                                 </div>
                             </form>
                         </div>
+                    </main>
                     </div>
                 </div>
             </div>
@@ -177,26 +180,52 @@
     </script>
     <script>
         const app = new Vue({
-            el:'#transactions',
+            el:'main',
             data:{
-                trans:{}
+                dropdown: [],
+                selected: null,
+                trans:{
+    //                     accounting: [
+    //                         {id: 1, name: 'Statement of Account'},
+    //                         {id: 2, name: 'Examination Permit	'},
+    //                         {id: 3, name: 'Payment Breakdown'}
+
+    //                     ],
+    //                     registrar: [
+    //                         {id: 1, name: 'Request document'},
+    //                         {id: 2, name: 'Claim a document'}
+
+    //                     ],
+    //                     cashier: [
+    //                         {id: 1, name: 'Tuition Fee'},
+    //                         {id: 2, name: 'Miscellaneous Fee'},
+    //                         {id: 3, name: 'Business Centre'}
+
+
+    //   ]
+    }
 
             },
             mounted(){
                 this.getTrans();
+
             },
             methods:{
                 getTrans(){
                     axios.get('http://localhost/dqrs/api/transactions')
                     .then((response)=>{
                         this.trans=response.data
-                        console.log(this.trans.acc);
                     })
 
                     .catch(function (error){
                         console.log(error);
                     });
-                }
+                },
+                setDropdown: function (type) {
+                            this.selected = null;
+                            this.dropdown = this.trans[type];
+                            console.log(this.trans[type])
+                            }
 
             }
         })

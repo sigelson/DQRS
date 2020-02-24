@@ -152,14 +152,14 @@ class QueueController extends Controller
     public function transactions()
     {
 
-        $accounting=Transaction::where('department','accounting')->get();
-        $acc=$accounting->pluck('name')->all();
-        $registrar=Transaction::where('department','registrar')->get();
-        $reg=$registrar->pluck('name')->all();
-        $cashier=Transaction::where('department','cashier')->get();
-        $cas=$cashier->pluck('name')->all();
+        $accounting1=Transaction::where('department','accounting')->get();
+        $accounting=$accounting1->pluck('name')->all();
+        $registrar1=Transaction::where('department','registrar')->get();
+        $registrar=$registrar1->pluck('name')->all();
+        $cashier1=Transaction::where('department','cashier')->get();
+        $cashier=$cashier1->pluck('name')->all();
 
-        return response()->json(compact('acc','reg','cas'));
+        return response()->json(compact('accounting','registrar','cashier'));
 
     }
 
