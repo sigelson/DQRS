@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 Route::resource('queues', 'QueueController');
-// Route::get('queues',['as' => 'queues.create2', 'uses' => 'QueueController@create2']);
+Route::get('queues/create/transactions','QueueController@transactions');
 Route::get('queues/{id}', 'QueueController@show');
 
 Route::resource('display','DisplayController');

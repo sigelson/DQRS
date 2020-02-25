@@ -30,7 +30,7 @@
                                     <div class="form-group{{ $errors->has('department') ? ' has-danger' : '' }} text-center">
                                         <div class="col">
                                         <label  class="form-control-label text-lg" for="input-department">{{ __('Choose Department') }}</label>
-                                            
+
                                     </div>
 
                                             <div class="col text-center" data-toggle="buttons">
@@ -207,7 +207,7 @@
             },
             methods:{
                 getTrans(){
-                    axios.get('http://localhost/dqrs/api/transactions')
+                    axios.get('create/transactions')
                     .then((response)=>{
                         this.trans=response.data
                     })
