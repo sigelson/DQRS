@@ -18,16 +18,7 @@
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('assets/argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
         <link type="text/css" href="{{ asset('assets/argon') }}/css/animate.css" rel="stylesheet">
-
-        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
-<script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
-<script src="{{ asset('assets') }}/datatables/buttons.server-side.js"></script>
-
-
-<link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -46,13 +37,14 @@
             @include('layouts.footers.guest')
         @endguest
 
-        {{-- <script src="{{ asset('assets/argon') }}/vendor/jquery/dist/jquery.min.js"></script> --}}
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="{{ asset('assets/argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <!-- Argon JS -->
         <script src="{{ asset('assets/argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('assets/argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
-        @stack('js')
-
-        <!-- Argon JS -->
         <script src="{{ asset('assets/argon') }}/js/argon.js?v=1.0.0"></script>
+        @stack('js')
     </body>
 </html>
