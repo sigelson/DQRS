@@ -55,7 +55,7 @@
                             <tbody>
                             @foreach ($departments as $department)
                                 <tr>
-                                    <td>{{ $department->name }}</td>
+                                    <td class="text-capitalize">{{ $department->name }}</td>
                                     <td>
                                         {{ $department->letter }}</a>
                                     </td>
@@ -81,12 +81,6 @@
                                                         </button>
                                                     </form>
 
-{{--                                                    <form action="{{ route('departments.destroy', $department->id)}}" method="post">--}}
-{{--                                                        @csrf--}}
-{{--                                                        @method('DELETE')--}}
-{{--                                                        <a class="dropdown-item" href="{{ route('departments.edit', $department) }}">{{ __('Edit') }}</a>--}}
-{{--                                                    <button type="button" class="dropdown-item" type="submit">{{ __('Delete') }}</button>--}}
-{{--                                                    </form>--}}
 
                                             </div>
                                         </div>
