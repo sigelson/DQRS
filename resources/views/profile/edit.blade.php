@@ -57,7 +57,7 @@
 
 
                             <div>
-                                <i class="ni education_hat mr-2 mt-4"></i>{{ auth()->user()->department }}
+                                <span class="text-capitalize"><i class="ni education_hat mr-2 mt-4"></i>{{ auth()->user()->department }}</span>
                             </div>
                             <div class="h5">
                                 <i class="ni business_briefcase-24 mr-2"></i>{{ __('Department') }}
