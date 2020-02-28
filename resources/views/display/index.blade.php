@@ -32,8 +32,7 @@
                         <div  class="col-sm-6">
                           <div  class="card bg-gradient-lighter mt-3 shadow">
                               <div class="card-header-lg">
-                              <h3 class="text-default text-uppercase" v-if="queue.cashier1">@{{ (queue.cashier1 || {}).department}}</h3>
-                              <h3 class="text-default text-uppercase"  v-else>-</h3>
+                              <h3 class="text-default text-uppercase">CASHIER</h3>
                               </div>
                               <div class="card-body-sm">
                               <h1 class="display-1 font-weight-bold"  v-if="queue.cashier1"><strong>@{{ (queue.cashier1 || {}).letter}}-@{{ (queue.cashier1 || {}).number}}</strong></h1>
@@ -47,8 +46,7 @@
                         <div  class="col-sm-6">
                           <div class="card bg-gradient-lighter shadow mt-3">
                               <div class="card-header-lg">
-                                  <h3 class="text-default text-uppercase"  v-if="queue.cashier2">@{{ (queue.cashier2 || {}).department}}</h3>
-                                  <h3 class="text-default text-uppercase"  v-else>-</h3>
+                                  <h3 class="text-default text-uppercase">CASHIER</h3>
                               </div>
                               <div class="card-body-sm">
                                   <h1 class="display-1 font-weight-bold"  v-if="queue.cashier2"><strong>@{{ (queue.cashier2 || {}).letter}}-@{{ (queue.cashier2 || {}).number}}</strong></h1>
@@ -64,8 +62,7 @@
                               <div class="col-sm-6">
                                   <div class="card bg-gradient-lighter shadow mt-3">
                                       <div class="card-header-lg">
-                                          <h3 class="text-default text-uppercase"  v-if="queue.accounting1">@{{ (queue.accounting1 || {}).department}}</h3>
-                                          <h3 class="text-default text-uppercase"  v-else>-</h3>
+                                          <h3 class="text-default text-uppercase"  v-if="queue.accounting1">ACCOUNTING</h3>
                                       </div>
                                       <div class="card-body-sm">
                                           <h1 class="display-1 font-weight-bold"  v-if="queue.accounting1"><strong>@{{ (queue.accounting1 || {}).letter}}-@{{ (queue.accounting1 || {}).number}}</strong></h1>
@@ -81,8 +78,7 @@
                         <div class="col-sm-6">
                           <div class="card bg-gradient-lighter mt-3 shadow">
                               <div class="card-header-lg">
-                              <h3 class="text-default text-uppercase" v-if="queue.accounting2">@{{ (queue.accounting2 || {}).department}}</h3>
-                              <h3 class="text-default text-uppercase"  v-else>-</h3>
+                              <h3 class="text-default text-uppercase">ACCOUNTING</h3>
                               </div>
                               <div class="card-body-sm">
                                   <h1 class="display-1 font-weight-bold" v-if="queue.accounting2"><strong>@{{ (queue.accounting2 || {}).letter}}-@{{ (queue.accounting2 || {}).number}}</strong></h1>
@@ -98,8 +94,7 @@
                           <div class="col-sm-6">
                               <div class="card bg-gradient-lighter shadow mt-3">
                                   <div class="card-header-lg">
-                                      <h3 class="text-default text-uppercase" v-if="queue.registrar1">@{{ (queue.registrar1 || {}).department}}</h3>
-                                      <h3 class="text-default text-uppercase"  v-else>-</h3>
+                                      <h3 class="text-default text-uppercase">REGISTRAR</h3>
                                   </div>
                                   <div class="card-body-sm">
                                       <h1 class="display-1 font-weight-bold" v-if="queue.registrar1"><strong>@{{ (queue.registrar1 || {}).letter}}-@{{ (queue.registrar1 || {}).number}}</strong></h1>
@@ -114,8 +109,7 @@
                           <div class="col-sm-6">
                               <div class="card bg-gradient-lighter mt-3">
                                   <div class="card-header-lg">
-                                      <h3 class="text-default text-uppercase" v-if="queue.registrar2">@{{ (queue.registrar2 || {}).department}}</h3>
-                                      <h3 class="text-default text-uppercase"  v-else>-</h3>
+                                      <h3 class="text-default text-uppercase">REGISTRAR</h3>
                                   </div>
                                   <div class="card-body-sm">
                                       <h1 class="display-1 font-weight-bold" v-if="queue.registrar2"><strong>@{{ (queue.registrar2 || {}).letter}}-@{{ (queue.registrar2 || {}).number}}</strong></h1>
@@ -165,10 +159,10 @@
             </svg>
         </div> --}}
     </div>
-    <script type="text/javascript" src="{{ asset('assets/js/voice.min.js') }}"></script>
+@endsection
+@push('js')
+<script type="text/javascript" src="{{ asset('assets/js/voice.min.js') }}"></script>
     <script>
-
-
         const app1 = new Vue({
                 el:'#queue',
                 data:{
@@ -287,6 +281,4 @@ var todisplay = pad(hours) + ':' + pad(minutes)+" "+ampm;
 document.getElementById("time").innerHTML = todisplay;
 },1000);
 </script>
-
-
-@endsection
+@endpush

@@ -48,7 +48,7 @@
 
                         </div>
                     </div>
-                    <div class="table-responsive">
+                    <div id="queuelist" class="table-responsive">
                         <!-- Projects table -->
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
@@ -130,3 +130,17 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
+@push('js')
+<script>
+    $(document).ready(
+ function() {
+ setInterval(function() {
+    $('#queuelist').load('admin #queuelist');
+    console.log('refresh');
+ }, 5000);  //Delay here = 5 seconds
+});
+</script>
+@endpush
+
+
+
