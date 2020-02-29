@@ -1,4 +1,4 @@
-@extends('layouts.appw', ['class' => 'bg-dark'])
+@extends('layouts.appw', ['class' => 'bg-lighter'])
 @section('content')
     <div class="header bg-gradient-lighter pt-3 pb-7">
         <div class="container">
@@ -140,7 +140,7 @@
 
                                     <div class="custom-control custom-control-alternative custom-checkbox mb-3">
                                         <input class="custom-control-input" id="customCheck6" type="checkbox" required>
-                                        <label class="custom-control-label" for="customCheck6">I confirm that the information given in this form is true, complete and accurate.</label>
+                                        <label class="custom-control-label font-weight-bold" for="customCheck6">I confirm that the information given in this form is true, complete and accurate.</label>
                                       </div>
 
                                     <div class="text-center">
@@ -157,11 +157,11 @@
             </div>
 
         </div>
-        <div class="separator separator-bottom separator-skew zindex-100">
+        {{-- <div class="separator separator-bottom separator-skew zindex-100">
             <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <polygon class="fill-light" points="2560 0 2560 100 0 100"></polygon>
             </svg>
-        </div>
+        </div> --}}
     </div>
 
     <div class="container mt--10 pb-5"></div>

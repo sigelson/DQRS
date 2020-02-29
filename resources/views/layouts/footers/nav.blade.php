@@ -1,12 +1,12 @@
 
-    <div class="row align-items-center">
+    <div class="row align-items-center justify-content-xl-between">
     <div class="col-sm-12 col-md-6 text-center ">
         <div class="copyright float-md-left">
             &copy; {{ now()->year }} <a href="http://stdominiccollege.edu.ph" class="font-weight-bold ml-1 text-muted" target="_blank">DQRS</a>
         </div>
     </div>
     <div class="col-sm-12 col-md-6 text-center">
-        <ul class="nav nav-footer justify-content-center align-items-center float-md-right">
+        <ul class="nav nav-footer justify-content-center justify-content-md-end align-items-center">
             <li class="nav-item">
                 <a href="http://stdominiccollege.edu.ph" class="nav-link font-weight-bold" target="_blank">St Dominic College of Asia</a>
             </li>

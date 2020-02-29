@@ -62,7 +62,7 @@
                               <div class="col-sm-6">
                                   <div class="card bg-gradient-lighter shadow mt-3">
                                       <div class="card-header-lg">
-                                          <h3 class="text-default text-uppercase"  v-if="queue.accounting1">ACCOUNTING</h3>
+                                          <h3 class="text-default text-uppercase" >ACCOUNTING</h3>
                                       </div>
                                       <div class="card-body-sm">
                                           <h1 class="display-1 font-weight-bold"  v-if="queue.accounting1"><strong>@{{ (queue.accounting1 || {}).letter}}-@{{ (queue.accounting1 || {}).number}}</strong></h1>
