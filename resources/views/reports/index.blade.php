@@ -88,7 +88,7 @@
                  <th scope="col">Department</th>
                  <th scope="col">Transaction</th>
                  <th scope="col">Remarks</th>
-                 <th scope="col">Served by:</th>
+                 {{-- <th scope="col">Served by:</th> --}}
                  <th scope="col">Created at</th>
                 </tr>
                 </thead>
@@ -128,7 +128,7 @@
                    { data: 'department', name: 'department' },
                    { data: 'transaction', name: 'transaction' },
                    { data: 'remarks', name: 'remarks' },
-                   { data: 'server', name: 'server' },
+                //    { data: 'server', name: 'server' },
                    { data: 'created_at', name: 'created_at' },
                 ],
                 buttons:['csv'],
