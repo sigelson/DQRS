@@ -1,6 +1,6 @@
 @extends('layouts.appw', ['class' => 'bg-lighter'])
 @section('content')
-    <div class="header bg-gradient-lighter pt-3 pb-7">
+    <div class="header bg-gradient-lighter py-3">
         <div class="container">
 
             <div class="row">
@@ -157,71 +157,67 @@
             </div>
 
         </div>
-        {{-- <div class="separator separator-bottom separator-skew zindex-100">
-            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <polygon class="fill-light" points="2560 0 2560 100 0 100"></polygon>
-            </svg>
-        </div> --}}
     </div>
 
-    <div class="container mt--10 pb-5"></div>
-
-    <script>
-        function getdept(dept) {
-            document.getElementById('letter').value = dept.letter;
-        }
-    </script>
-    <script>
-        const app = new Vue({
-            el:'main',
-            data:{
-                dropdown: [],
-                selected: null,
-                trans:{
-    //                     accounting: [
-    //                         {id: 1, name: 'Statement of Account'},
-    //                         {id: 2, name: 'Examination Permit	'},
-    //                         {id: 3, name: 'Payment Breakdown'}
-
-    //                     ],
-    //                     registrar: [
-    //                         {id: 1, name: 'Request document'},
-    //                         {id: 2, name: 'Claim a document'}
-
-    //                     ],
-    //                     cashier: [
-    //                         {id: 1, name: 'Tuition Fee'},
-    //                         {id: 2, name: 'Miscellaneous Fee'},
-    //                         {id: 3, name: 'Business Centre'}
-
-
-    //   ]
-    }
-
-            },
-            mounted(){
-                this.getTrans();
-
-            },
-            methods:{
-                getTrans(){
-                    axios.get('create/transactions')
-                    .then((response)=>{
-                        this.trans=response.data
-                    })
-
-                    .catch(function (error){
-                        console.log(error);
-                    });
-                },
-                setDropdown: function (type) {
-                            this.selected = null;
-                            this.dropdown = this.trans[type];
-                            console.log(type)
-                            }
-
-            }
-        })
-    </script>
 @endsection
+
+@push('js')
+<script>
+    function getdept(dept) {
+        document.getElementById('letter').value = dept.letter;
+    }
+</script>
+<script>
+    const app = new Vue({
+        el:'main',
+        data:{
+            dropdown: [],
+            selected: null,
+            trans:{
+//                     accounting: [
+//                         {id: 1, name: 'Statement of Account'},
+//                         {id: 2, name: 'Examination Permit	'},
+//                         {id: 3, name: 'Payment Breakdown'}
+
+//                     ],
+//                     registrar: [
+//                         {id: 1, name: 'Request document'},
+//                         {id: 2, name: 'Claim a document'}
+
+//                     ],
+//                     cashier: [
+//                         {id: 1, name: 'Tuition Fee'},
+//                         {id: 2, name: 'Miscellaneous Fee'},
+//                         {id: 3, name: 'Business Centre'}
+
+
+//   ]
+}
+
+        },
+        mounted(){
+            this.getTrans();
+
+        },
+        methods:{
+            getTrans(){
+                axios.get('create/transactions')
+                .then((response)=>{
+                    this.trans=response.data
+                })
+
+                .catch(function (error){
+                    console.log(error);
+                });
+            },
+            setDropdown: function (type) {
+                        this.selected = null;
+                        this.dropdown = this.trans[type];
+                        console.log(type)
+                        }
+
+        }
+    })
+</script>
+@endpush
 

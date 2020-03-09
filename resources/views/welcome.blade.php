@@ -1,7 +1,7 @@
 @extends('layouts.appw', ['class' => 'bg-lighter'])
 
 @section('content')
-    <div class="header bg-gradient-lighter my-9">
+    <div class="header bg-gradient-lighter py-9">
         <div class="container">
             <div class="col-12">
                 @if (session('status'))

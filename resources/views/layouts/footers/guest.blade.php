@@ -1,5 +1,5 @@
-<footer class="footer fixed-bottom py-3">
-    <div class="container">
+
+    <div class="container fixed-bottom">
         @include('layouts.footers.nav')
     </div>
-</footer>
+

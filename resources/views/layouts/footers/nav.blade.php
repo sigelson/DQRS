@@ -1,5 +1,5 @@
 
-    <div class="row align-items-center justify-content-xl-between">
+<div class="row align-items-center justify-content-xl-between">
     <div class="col-sm-12 col-md-6 text-center ">
         <div class="copyright float-md-left">
             &copy; {{ now()->year }} <a href="http://stdominiccollege.edu.ph" class="font-weight-bold ml-1 text-muted" target="_blank">DQRS</a>

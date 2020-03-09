@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('counters','CounterController',['except' => ['show']]);
     Route::resource('reports','ReportController');
     Route::put('admin/call',['as'=>'home.callqueue','uses'=>'HomeController@callqueue']);
+    Route::get('admin/recall/{id}',['as'=>'home.recall','uses'=>'HomeController@recall']);
     Route::put('admin/notif',['as'=>'home.updatenotif','uses'=>'HomeController@updatenotif']);
 
 

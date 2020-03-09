@@ -95,5 +95,17 @@ class HomeController extends Controller
 
     }
 
+    // FOR RECALL
+
+    public function recall($id)
+    {
+        $call=Queue::find($id);
+        $call->get();
+        event(new NewQueue($call));
+
+        return redirect('admin')->withStatus(__('Queue has been recalled.'));
+
+    }
+
 
 }

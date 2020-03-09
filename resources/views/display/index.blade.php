@@ -131,7 +131,7 @@
 
            </div>
 
-           <div class="py-2"></div>
+           {{-- <div class="py-2"></div> --}}
            <div id="notif">
            <div class="d-none d-md-block bg-dark p-0">
             {{-- <marquee behavior="" direction="left"><h1 class="display-1 text-white">TESTING NOTIFICATION DQRS TESTING</h1></marquee> --}}
