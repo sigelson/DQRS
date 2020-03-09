@@ -31,9 +31,9 @@
         <div class="main-content">
             @yield('content')
         </div>
-        @guest
+        {{-- @guest
         @include('layouts.footers.guest')
-        @endguest
+        @endguest --}}
 
 
 
