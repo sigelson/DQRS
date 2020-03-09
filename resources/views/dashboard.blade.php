@@ -59,7 +59,7 @@
                                     <th scope="col">Transaction</th>
                                     <th scope="col">Remarks</th>
                                     <th scope="col">Called</th>
-                                    {{-- <th scope="col">Actions</th> --}}
+                                    <th scope="col" class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,7 +83,7 @@
                                     <td>
                                         {{ $queue->called }}
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         <a href="{{ route('home.recall',$queue) }}" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
                                         <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i>  Remove</a>
                                     </td>
