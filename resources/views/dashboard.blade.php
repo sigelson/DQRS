@@ -84,7 +84,12 @@
                                         {{ $queue->called }}
                                     </td>
                                     <td class="text-center">
+                                        @if( $queue->called =="yes")
                                         <a href="{{ route('home.recall',$queue) }}" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
+                                        @else
+                                        <a class="btn btn-sm btn-light text-white disabled"  aria-disabled="true"><i class="fas fa-redo-alt"></i> Recall</a>
+                                        @endif
+                                        <a href="#" class="btn btn-sm btn-info"><i class="fas fa-exchange-alt"></i> Transfer</a>
                                         <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i>  Remove</a>
                                     </td>
                                 </tr>

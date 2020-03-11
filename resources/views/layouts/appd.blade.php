@@ -22,6 +22,11 @@
 
 
     </head>
+    <style>
+        html{
+            overflow-y: scroll;
+        }
+    </style>
     <body class="{{ $class ?? '' }}">
 
 
