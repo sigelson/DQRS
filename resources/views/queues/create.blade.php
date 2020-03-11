@@ -136,7 +136,6 @@
                                     </div>
 
                                     <input type="hidden" name="letter" id="letter" value="">
-                                    {{-- <input type="hidden" name="number" id="number" value=""> --}}
 
                                     <div class="custom-control custom-control-alternative custom-checkbox mb-3">
                                         <input class="custom-control-input" id="customCheck6" type="checkbox" required>
@@ -168,6 +167,7 @@
 <script>
     function getdept(dept) {
         document.getElementById('letter').value = dept.letter;
+        console.log(dept.letter);
     }
 </script>
 <script>

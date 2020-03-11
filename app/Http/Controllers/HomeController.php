@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Events\NewQueue;
 use App\Events\NewNotif;
+use App\Department;
 
 
 
@@ -32,6 +33,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $depts = Department::all();
         $dept=Auth::user()->department;
         $notification = DB::table('notifications')->where('id', '1')->value('text');
         $queues=Queue::where('department',$dept)
@@ -40,7 +42,7 @@ class HomeController extends Controller
                        ->paginate(10);
 
         $counters=Counter::all();
-        return view('dashboard',compact('queues','notification','counters'));
+        return view('dashboard',compact('queues','notification','counters','depts'));
     }
 
     public function updatenotif(Request $request)
@@ -109,6 +111,9 @@ class HomeController extends Controller
 
     public function transfer($id)
     {
+
+        $depts = Department::all();
+        $queues=Queue::all();
         $transfer=Queue::find($id);
         $queue = new Queue([
             'name' => $transfer->get('name'),

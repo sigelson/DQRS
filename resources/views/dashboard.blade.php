@@ -101,37 +101,34 @@
                             </tbody>
                         </table>
                     </div>
-                    {{-- <!-- Modal -->
+                    <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Transfer Queue</h5>
+          <h3 class="modal-title" id="exampleModalLabel" class="text-primary font-weight-bold">Transfer Queue</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <h3>Information</h3>
-        <p>Name: <strong>{{$queue->name}}</strong></p>
-            <hr>
             <form>
+                @csrf
                 <div class="row">
                   <div class="col-sm-12 col-md-6">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Department</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
+                        <label for="exampleFormControlSelect1" class="text-default font-weight-bold">Department</label>
+                        <select onclick="getdept({{$depts}})" class="form-control text-capitalize" id="exampleFormControlSelect1">
+                            <option value="" hidden>Choose Department...</option>
+                            @foreach ($depts as $dept)
+                        <option class="text-capitalize" value="{{$dept->name}}">{{$dept->name}}</option>
+                          @endforeach
                         </select>
                     </div>
                   </div>
                   <div class="col-sm-12 col-md-6">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Transaction</label>
+                        <label for="exampleFormControlSelect1" class="text-default font-weight-bold">Transaction</label>
                         <select class="form-control" id="exampleFormControlSelect1">
                           <option>1</option>
                           <option>2</option>
@@ -145,22 +142,23 @@
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Remarks</label>
-                        <textarea class="form-control form-control-alternative" rows="3" placeholder="Write a large text here ..."></textarea>
+                        <label for="exampleFormControlSelect1" class="text-default font-weight-bold">Remarks</label>
+                        <textarea class="form-control form-control-alternative" rows="3" placeholder="Transaction notes or remarks..."></textarea>
                     </div>
                   </div>
                 </div>
               </form>
         </div>
         <div class="modal-footer">
+            <input type="hidden" name="letter" id="letter" value="">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Submit</button>
         </div>
       </div>
     </div>
-  </div> --}}
+  </div>
 
-  {{-- END MODAL --}}
+  {{-- END MODAL--}}
 
 
 
@@ -213,6 +211,12 @@
     console.log('refresh');
  }, 5000);  //Delay here = 5 seconds
 });
+</script>
+<script>
+    function getdept(dept) {
+        document.getElementById('letter').value = dept.option.letter;
+        console.log(dept.value.letter);
+    }
 </script>
 @endpush
 
