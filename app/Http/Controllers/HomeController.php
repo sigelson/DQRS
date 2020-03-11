@@ -107,5 +107,24 @@ class HomeController extends Controller
 
     }
 
+    public function transfer($id)
+    {
+        $transfer=Queue::find($id);
+        $queue = new Queue([
+            'name' => $transfer->get('name'),
+            'snumber' => $transfer->get('snumber'),
+            'email' => $transfer->get('email'),
+            'mobile' => $transfer->get('mobile'),
+            'department' => $request->get('department'),
+            'transaction' => $request->get('transaction'),
+            'letter' => $request->get('letter'),
+            'number' =>  DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count()+1,
+            'remarks' => $request->get('remarks'),
+            'called' => 'no',
+
+        ]);
+        $queue->save();
+    }
+
 
 }
