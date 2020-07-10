@@ -264,16 +264,15 @@ class Sheet
                 $sheetRow = new Row($row, $headingRow);
 
                 if ($import instanceof WithValidation) {
-                    $toValidate = [$sheetRow->getIndex() => $sheetRow->toArray(null, $import instanceof WithCalculatedFormulas)];
+                    $toValidate = [$sheetRow->toArray(null, $import instanceof WithCalculatedFormulas)];
 
                     try {
                         app(RowValidator::class)->validate($toValidate, $import);
-                        $import->onRow($sheetRow);
                     } catch (RowSkippedException $e) {
                     }
-                } else {
-                    $import->onRow($sheetRow);
                 }
+
+                $import->onRow($sheetRow);
 
                 if ($import instanceof WithProgressBar) {
                     $import->getConsoleOutput()->progressAdvance();

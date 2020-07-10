@@ -121,12 +121,12 @@
                         {{ __('Departments') }}</strong>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('counters.index') }}"><strong>
                         <i class="fas fa-desktop"></i>
                         {{ __('Counters') }}</strong>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('transactions.index') }}"><strong>
                         <i class="fas fa-project-diagram"></i>

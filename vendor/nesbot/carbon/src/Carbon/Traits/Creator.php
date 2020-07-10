@@ -52,10 +52,6 @@ trait Creator
      */
     public function __construct($time = null, $tz = null)
     {
-        if ($time instanceof DateTimeInterface) {
-            $time = $this->constructTimezoneFromDateTime($time, $tz)->format('Y-m-d H:i:s.u');
-        }
-
         if (is_int($time)) {
             $time = "@$time";
         }
@@ -78,7 +74,7 @@ trait Creator
             setlocale(LC_NUMERIC, 'C');
         }
 
-        parent::__construct($time ?: 'now', static::safeCreateDateTimeZone($tz) ?: null);
+        parent::__construct($time ?: 'now', static::safeCreateDateTimeZone($tz));
 
         $this->constructedObjectId = spl_object_hash($this);
 
@@ -87,31 +83,6 @@ trait Creator
         }
 
         static::setLastErrors(parent::getLastErrors());
-    }
-
-    /**
-     * Get timezone from a datetime instance.
-     *
-     * @param DateTimeInterface        $date
-     * @param DateTimeZone|string|null $tz
-     *
-     * @return DateTimeInterface
-     */
-    private function constructTimezoneFromDateTime(DateTimeInterface $date, &$tz)
-    {
-        if ($tz !== null) {
-            $safeTz = static::safeCreateDateTimeZone($tz);
-
-            if ($safeTz) {
-                return $date->setTimezone($safeTz);
-            }
-
-            return $date;
-        }
-
-        $tz = $date->getTimezone();
-
-        return $date;
     }
 
     /**
@@ -125,7 +96,7 @@ trait Creator
     /**
      * Create a Carbon instance from a DateTime one.
      *
-     * @param DateTimeInterface $date
+     * @param \DateTimeInterface $date
      *
      * @return static
      */

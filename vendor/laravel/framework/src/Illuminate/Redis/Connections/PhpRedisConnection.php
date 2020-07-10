@@ -25,7 +25,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
      * Create a new PhpRedis connection.
      *
      * @param  \Redis  $client
-     * @param  callable|null  $connector
+     * @param  callable  $connector
      * @return void
      */
     public function __construct($client, callable $connector = null)
@@ -58,6 +58,21 @@ class PhpRedisConnection extends Connection implements ConnectionContract
         return array_map(function ($value) {
             return $value !== false ? $value : null;
         }, $this->command('mget', [$keys]));
+    }
+
+    /**
+     * Determine if the given keys exist.
+     *
+     * @param  mixed  $keys
+     * @return int
+     */
+    public function exists(...$keys)
+    {
+        $keys = collect($keys)->map(function ($key) {
+            return $this->applyPrefix($key);
+        })->all();
+
+        return $this->executeRaw(array_merge(['exists'], $keys));
     }
 
     /**
@@ -207,17 +222,9 @@ class PhpRedisConnection extends Connection implements ConnectionContract
             }
         }
 
-        $options = [];
+        $key = $this->applyPrefix($key);
 
-        foreach (array_slice($dictionary, 0, 3) as $i => $value) {
-            if (in_array($value, ['nx', 'xx', 'ch', 'incr', 'NX', 'XX', 'CH', 'INCR'], true)) {
-                $options[] = $value;
-
-                unset($dictionary[$i]);
-            }
-        }
-
-        return $this->command('zadd', array_merge([$key], [$options], array_values($dictionary)));
+        return $this->executeRaw(array_merge(['zadd', $key], $dictionary));
     }
 
     /**

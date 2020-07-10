@@ -1171,17 +1171,15 @@ class TestResponse implements ArrayAccess
     /**
      * Dump the session from the response.
      *
-     * @param  string|array  $keys
+     * @param  array  $keys
      * @return $this
      */
-    public function dumpSession($keys = [])
+    public function dumpSession($keys = null)
     {
-        $keys = (array) $keys;
-
-        if (empty($keys)) {
-            dump($this->session()->all());
-        } else {
+        if (is_array($keys)) {
             dump($this->session()->only($keys));
+        } else {
+            dump($this->session()->all());
         }
 
         return $this;

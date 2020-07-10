@@ -23,13 +23,6 @@ use ReflectionProperty;
 use Reflector;
 use RuntimeException;
 use UnexpectedValueException;
-use function array_merge;
-use function file_exists;
-use function file_get_contents;
-use function get_class;
-use function is_string;
-use function token_get_all;
-use function trim;
 use const T_AS;
 use const T_CLASS;
 use const T_CURLY_OPEN;
@@ -38,6 +31,13 @@ use const T_NAMESPACE;
 use const T_NS_SEPARATOR;
 use const T_STRING;
 use const T_USE;
+use function array_merge;
+use function file_exists;
+use function file_get_contents;
+use function get_class;
+use function is_string;
+use function token_get_all;
+use function trim;
 
 /**
  * Convenience class to create a Context for DocBlocks when not using the Reflection Component of phpDocumentor.
@@ -172,13 +172,11 @@ final class ContextFactory
 
                         $tokens->next();
                     }
-
                     break;
                 case T_USE:
                     if ($currentNamespace === $namespace) {
                         $useStatements = array_merge($useStatements, $this->parseUseStatement($tokens));
                     }
-
                     break;
             }
 
@@ -221,10 +219,6 @@ final class ContextFactory
             $uses = array_merge($uses, $this->extractUseStatements($tokens));
             if ($tokens->current()[0] === self::T_LITERAL_END_OF_USE) {
                 return $uses;
-            }
-
-            if ($tokens->current() === false) {
-                break;
             }
         }
 
@@ -284,7 +278,6 @@ final class ContextFactory
                         default:
                             break;
                     }
-
                     break;
                 case 'start-alias':
                     switch ($tokenId) {
@@ -298,7 +291,6 @@ final class ContextFactory
                         default:
                             break;
                     }
-
                     break;
                 case 'grouped':
                     switch ($tokenId) {
@@ -322,7 +314,6 @@ final class ContextFactory
                         default:
                             break;
                     }
-
                     break;
                 case 'grouped-alias':
                     switch ($tokenId) {

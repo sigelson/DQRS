@@ -29,9 +29,6 @@
 
 namespace HighlightUtilities;
 
-require_once __DIR__ . '/_internals.php';
-require_once __DIR__ . '/_themeColors.php';
-
 /**
  * Get a list of available stylesheets.
  *
@@ -70,25 +67,6 @@ function getAvailableStyleSheets($filePaths = false)
     }
 
     return $results;
-}
-
-/**
- * Get the RGB representation used for the background of a given theme as an
- * array of three numbers.
- *
- * @api
- *
- * @since 9.18.1.1
- *
- * @param string $name The stylesheet name (with or without the extension)
- *
- * @throws \DomainException when no stylesheet with this name exists
- *
- * @return float[] An array representing RGB numerical values
- */
-function getThemeBackgroundColor($name)
-{
-    return _getThemeBackgroundColor(_getNoCssExtension($name));
 }
 
 /**
@@ -143,7 +121,10 @@ function getStyleSheetFolder()
  */
 function getStyleSheetPath($name)
 {
-    $name = _getNoCssExtension($name);
+    if (substr($name, -4, 4) === ".css") {
+        $name = preg_replace("/\.css$/", "", $name);
+    }
+
     $path = implode(DIRECTORY_SEPARATOR, array(getStyleSheetFolder(), $name)) . ".css";
 
     if (!file_exists($path)) {

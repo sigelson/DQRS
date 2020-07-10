@@ -185,7 +185,6 @@ class MimeType
         'odm' => 'application/vnd.oasis.opendocument.text-master',
         'odb' => 'application/vnd.oasis.opendocument.database',
         'ott' => 'application/vnd.oasis.opendocument.text-template',
-        'webp' => 'image/webp',
     ];
 
     /**

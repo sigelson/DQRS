@@ -139,7 +139,7 @@ class NumberFormat extends Supervisor
      *
      * @throws PhpSpreadsheetException
      *
-     * @return $this
+     * @return NumberFormat
      */
     public function applyFromArray(array $pStyles)
     {
@@ -176,7 +176,7 @@ class NumberFormat extends Supervisor
      *
      * @param string $pValue see self::FORMAT_*
      *
-     * @return $this
+     * @return NumberFormat
      */
     public function setFormatCode($pValue)
     {
@@ -213,7 +213,7 @@ class NumberFormat extends Supervisor
      *
      * @param int $pValue
      *
-     * @return $this
+     * @return NumberFormat
      */
     public function setBuiltInFormatCode($pValue)
     {
@@ -367,7 +367,7 @@ class NumberFormat extends Supervisor
         self::fillBuiltInFormatCodes();
 
         // Lookup format code
-        if (array_key_exists($formatCode, self::$flippedBuiltInFormats)) {
+        if (isset(self::$flippedBuiltInFormats[$formatCode])) {
             return self::$flippedBuiltInFormats[$formatCode];
         }
 

@@ -42,7 +42,7 @@ class MorphToMany extends BelongsToMany
      * @param  string  $relatedPivotKey
      * @param  string  $parentKey
      * @param  string  $relatedKey
-     * @param  string|null  $relationName
+     * @param  string  $relationName
      * @param  bool  $inverse
      * @return void
      */
@@ -120,7 +120,7 @@ class MorphToMany extends BelongsToMany
      *
      * @return \Illuminate\Database\Query\Builder
      */
-    public function newPivotQuery()
+    protected function newPivotQuery()
     {
         return parent::newPivotQuery()->where($this->morphType, $this->morphClass);
     }

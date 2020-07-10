@@ -103,7 +103,13 @@ trait InteractsWithInput
 
         $input = $this->all();
 
-        return Arr::hasAny($input, $keys);
+        foreach ($keys as $key) {
+            if (Arr::has($input, $key)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

@@ -281,10 +281,6 @@ class Worksheet extends BIFFwriter
     {
         $phpSheet = $this->phpSheet;
 
-        // Storing selected cells and active sheet because it changes while parsing cells with formulas.
-        $selectedCells = $this->phpSheet->getSelectedCells();
-        $activeSheetIndex = $this->phpSheet->getParent()->getActiveSheetIndex();
-
         // Write BOF record
         $this->storeBof(0x0010);
 
@@ -445,29 +441,7 @@ class Worksheet extends BIFFwriter
                     case DataType::TYPE_FORMULA:
                         $calculatedValue = $this->preCalculateFormulas ?
                             $cell->getCalculatedValue() : null;
-                        if (self::WRITE_FORMULA_EXCEPTION == $this->writeFormula($row, $column, $cVal, $xfIndex, $calculatedValue)) {
-                            if ($calculatedValue === null) {
-                                $calculatedValue = $cell->getCalculatedValue();
-                            }
-                            $calctype = gettype($calculatedValue);
-                            switch ($calctype) {
-                                case 'integer':
-                                case 'double':
-                                    $this->writeNumber($row, $column, $calculatedValue, $xfIndex);
-
-                                    break;
-                                case 'string':
-                                    $this->writeString($row, $column, $calculatedValue, $xfIndex);
-
-                                    break;
-                                case 'boolean':
-                                    $this->writeBoolErr($row, $column, $calculatedValue, 0, $xfIndex);
-
-                                    break;
-                                default:
-                                    $this->writeString($row, $column, $cVal, $xfIndex);
-                            }
-                        }
+                        $this->writeFormula($row, $column, $cVal, $xfIndex, $calculatedValue);
 
                         break;
                     case DataType::TYPE_BOOL:
@@ -485,9 +459,6 @@ class Worksheet extends BIFFwriter
         // Append
         $this->writeMsoDrawing();
 
-        // Restoring active sheet.
-        $this->phpSheet->getParent()->setActiveSheetIndex($activeSheetIndex);
-
         // Write WINDOW2 record
         $this->writeWindow2();
 
@@ -499,9 +470,6 @@ class Worksheet extends BIFFwriter
         if ($phpSheet->getFreezePane()) {
             $this->writePanes();
         }
-
-        // Restoring selected cells.
-        $this->phpSheet->setSelectedCells($selectedCells);
 
         // Write SELECTION record
         $this->writeSelection();
@@ -796,20 +764,14 @@ class Worksheet extends BIFFwriter
         return 0;
     }
 
-    const WRITE_FORMULA_NORMAL = 0;
-    const WRITE_FORMULA_ERRORS = -1;
-    const WRITE_FORMULA_RANGE = -2;
-    const WRITE_FORMULA_EXCEPTION = -3;
-
     /**
      * Write a formula to the specified row and column (zero indexed).
      * The textual representation of the formula is passed to the parser in
      * Parser.php which returns a packed binary string.
      *
-     * Returns  0 : WRITE_FORMULA_NORMAL  normal termination
-     *         -1 : WRITE_FORMULA_ERRORS formula errors (bad formula)
-     *         -2 : WRITE_FORMULA_RANGE  row or column out of range
-     *         -3 : WRITE_FORMULA_EXCEPTION parse raised exception, probably due to definedname
+     * Returns  0 : normal termination
+     *         -1 : formula errors (bad formula)
+     *         -2 : row or column out of range
      *
      * @param int $row Zero indexed row
      * @param int $col Zero indexed column
@@ -867,7 +829,7 @@ class Worksheet extends BIFFwriter
             // Error handling
             $this->writeString($row, $col, 'Unrecognised character for formula', 0);
 
-            return self::WRITE_FORMULA_ERRORS;
+            return -1;
         }
 
         // Parse the formula using the parser in Parser.php
@@ -890,9 +852,9 @@ class Worksheet extends BIFFwriter
                 $this->writeStringRecord($stringValue);
             }
 
-            return self::WRITE_FORMULA_NORMAL;
+            return 0;
         } catch (PhpSpreadsheetException $e) {
-            return self::WRITE_FORMULA_EXCEPTION;
+            // do nothing
         }
     }
 
@@ -1260,6 +1222,7 @@ class Worksheet extends BIFFwriter
         $fFrozenNoSplit = 0; // 0 - bit
         // no support in PhpSpreadsheet for selected sheet, therefore sheet is only selected if it is the active sheet
         $fSelected = ($this->phpSheet === $this->phpSheet->getParent()->getActiveSheet()) ? 1 : 0;
+        $fPaged = 1; // 2
         $fPageBreakPreview = $this->phpSheet->getSheetView()->getView() === SheetView::SHEETVIEW_PAGE_BREAK_PREVIEW;
 
         $grbit = $fDspFmla;
@@ -1271,8 +1234,8 @@ class Worksheet extends BIFFwriter
         $grbit |= $fArabic << 6;
         $grbit |= $fDspGuts << 7;
         $grbit |= $fFrozenNoSplit << 8;
-        $grbit |= $fSelected << 9; // Selected sheets.
-        $grbit |= $fSelected << 10; // Active sheet.
+        $grbit |= $fSelected << 9;
+        $grbit |= $fPaged << 10;
         $grbit |= $fPageBreakPreview << 11;
 
         $header = pack('vv', $record, $length);

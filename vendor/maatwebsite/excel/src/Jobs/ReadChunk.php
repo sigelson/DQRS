@@ -23,16 +23,6 @@ class ReadChunk implements ShouldQueue
     use Queueable, HasEventBus;
 
     /**
-     * @var int
-     */
-    public $timeout;
-
-    /**
-     * @var int
-     */
-    public $tries;
-
-    /**
      * @var WithChunkReading
      */
     private $import;
@@ -85,8 +75,6 @@ class ReadChunk implements ShouldQueue
         $this->sheetImport   = $sheetImport;
         $this->startRow      = $startRow;
         $this->chunkSize     = $chunkSize;
-        $this->timeout       = $import->timeout ?? null;
-        $this->tries         = $import->tries ?? null;
     }
 
     /**

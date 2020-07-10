@@ -54,13 +54,12 @@ class Builder
      */
     public $bindings = [
         'select' => [],
-        'from' => [],
-        'join' => [],
-        'where' => [],
-        'groupBy' => [],
+        'from'   => [],
+        'join'   => [],
+        'where'  => [],
         'having' => [],
-        'order' => [],
-        'union' => [],
+        'order'  => [],
+        'union'  => [],
         'unionOrder' => [],
     ];
 
@@ -1687,22 +1686,6 @@ class Builder
     }
 
     /**
-     * Add a raw groupBy clause to the query.
-     *
-     * @param  string  $sql
-     * @param  array  $bindings
-     * @return $this
-     */
-    public function groupByRaw($sql, array $bindings = [])
-    {
-        $this->groups[] = new Expression($sql);
-
-        $this->addBinding($bindings, 'groupBy');
-
-        return $this;
-    }
-
-    /**
      * Add a "having" clause to the query.
      *
      * @param  string  $column
@@ -2327,13 +2310,7 @@ class Builder
      */
     protected function stripTableForPluck($column)
     {
-        if (is_null($column)) {
-            return $column;
-        }
-
-        $seperator = strpos(strtolower($column), ' as ') !== false ? ' as ' : '\.';
-
-        return last(preg_split('~'.$seperator.'~i', $column));
+        return is_null($column) ? $column : last(preg_split('~\.| ~', $column));
     }
 
     /**

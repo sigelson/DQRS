@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Events\NewQueue;
 use App\Events\NewNotif;
-use App\Department;
 
 
 
@@ -33,7 +32,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $depts = Department::all();
         $dept=Auth::user()->department;
         $notification = DB::table('notifications')->where('id', '1')->value('text');
         $queues=Queue::where('department',$dept)
@@ -42,7 +40,7 @@ class HomeController extends Controller
                        ->paginate(10);
 
         $counters=Counter::all();
-        return view('dashboard',compact('queues','notification','counters','depts'));
+        return view('dashboard',compact('queues','notification','counters'));
     }
 
     public function updatenotif(Request $request)
@@ -107,28 +105,6 @@ class HomeController extends Controller
 
         return redirect('admin')->withStatus(__('Queue has been recalled.'));
 
-    }
-
-    public function transfer($id)
-    {
-
-        $depts = Department::all();
-        $queues=Queue::all();
-        $transfer=Queue::find($id);
-        $queue = new Queue([
-            'name' => $transfer->get('name'),
-            'snumber' => $transfer->get('snumber'),
-            'email' => $transfer->get('email'),
-            'mobile' => $transfer->get('mobile'),
-            'department' => $request->get('department'),
-            'transaction' => $request->get('transaction'),
-            'letter' => $request->get('letter'),
-            'number' =>  DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count()+1,
-            'remarks' => $request->get('remarks'),
-            'called' => 'no',
-
-        ]);
-        $queue->save();
     }
 
 

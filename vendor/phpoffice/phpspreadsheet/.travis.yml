@@ -1,11 +1,11 @@
 language: php
-dist: bionic
+dist: trusty
 
 php:
   - 7.1
   - 7.2
   - 7.3
-  - 7.4
+  - 7.4snapshot
 
 cache:
   directories:
@@ -15,7 +15,7 @@ cache:
 
 before_script:
   # Deactivate xdebug
-  - phpenv config-rm xdebug.ini
+  - if [ -z "$KEEP_XDEBUG" ]; then rm -rfv /home/travis/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ; fi
   - composer install --ignore-platform-reqs
 
 script:
@@ -32,11 +32,9 @@ jobs:
 
     - stage: Coverage
       php: 7.2
+      env: KEEP_XDEBUG=1
       script:
-        - pecl install pcov
-        - composer require pcov/clobber --dev
-        - ./vendor/bin/pcov clobber
-        - ./vendor/bin/phpunit --coverage-clover coverage-clover.xml
+        - travis_wait 40 ./vendor/bin/phpunit --debug --coverage-clover coverage-clover.xml
       after_script:
         - wget https://scrutinizer-ci.com/ocular.phar
         - php ocular.phar code-coverage:upload --format=php-clover tests/coverage-clover.xml

@@ -78,7 +78,7 @@ class Drawing extends BaseDrawing
      *
      * @throws PhpSpreadsheetException
      *
-     * @return $this
+     * @return Drawing
      */
     public function setPath($pValue, $pVerifyFile = true)
     {

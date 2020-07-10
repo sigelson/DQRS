@@ -2,8 +2,8 @@
 
 namespace Laravel\Ui;
 
-use Illuminate\Console\Command;
 use InvalidArgumentException;
+use Illuminate\Console\Command;
 
 class AuthCommand extends Command
 {
@@ -44,8 +44,6 @@ class AuthCommand extends Command
      * Execute the console command.
      *
      * @return void
-     *
-     * @throws \InvalidArgumentException
      */
     public function handle()
     {

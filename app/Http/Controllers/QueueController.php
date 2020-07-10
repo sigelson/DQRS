@@ -133,14 +133,14 @@ class QueueController extends Controller
 
                         'to'   => '639972255631', //for testing purposes
                         'from' => 'DQRS',
-                        'text' => ("Hi! Your Queue number is\n".$request->letter."-".$currnum."\nThank you for using DQRS.\n \n")
+                        'text' => ("Hi! Your Queue number is\n".$request->letter."-".$currnum."\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n \n")
                             ]);
 
                         }
                         // END SMS
 
 
-        
+
 
 
 

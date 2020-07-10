@@ -955,7 +955,7 @@ class Spreadsheet
      * @param string $namedRange
      * @param null|Worksheet $pSheet scope: use null for global scope
      *
-     * @return $this
+     * @return Spreadsheet
      */
     public function removeNamedRange($namedRange, Worksheet $pSheet = null)
     {

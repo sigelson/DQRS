@@ -297,7 +297,7 @@ class Html extends BaseWriter
      *
      * @param int $pValue Sheet index
      *
-     * @return $this
+     * @return HTML
      */
     public function setSheetIndex($pValue)
     {
@@ -321,7 +321,7 @@ class Html extends BaseWriter
      *
      * @param bool $pValue Flag indicating whether the sheet navigation block should be generated or not
      *
-     * @return $this
+     * @return HTML
      */
     public function setGenerateSheetNavigationBlock($pValue)
     {
@@ -332,8 +332,6 @@ class Html extends BaseWriter
 
     /**
      * Write all sheets (resets sheetIndex to NULL).
-     *
-     * @return $this
      */
     public function writeAllSheets()
     {
@@ -1440,7 +1438,7 @@ class Html extends BaseWriter
      *
      * @param string $pValue
      *
-     * @return $this
+     * @return HTML
      */
     public function setImagesRoot($pValue)
     {
@@ -1464,7 +1462,7 @@ class Html extends BaseWriter
      *
      * @param bool $pValue
      *
-     * @return $this
+     * @return HTML
      */
     public function setEmbedImages($pValue)
     {
@@ -1488,7 +1486,7 @@ class Html extends BaseWriter
      *
      * @param bool $pValue
      *
-     * @return $this
+     * @return HTML
      */
     public function setUseInlineCss($pValue)
     {
@@ -1512,7 +1510,7 @@ class Html extends BaseWriter
      *
      * @param bool $pValue
      *
-     * @return $this
+     * @return HTML
      */
     public function setUseEmbeddedCSS($pValue)
     {

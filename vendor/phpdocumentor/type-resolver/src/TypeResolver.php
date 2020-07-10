@@ -16,7 +16,6 @@ namespace phpDocumentor\Reflection;
 use ArrayIterator;
 use InvalidArgumentException;
 use phpDocumentor\Reflection\Types\Array_;
-use phpDocumentor\Reflection\Types\ClassString;
 use phpDocumentor\Reflection\Types\Collection;
 use phpDocumentor\Reflection\Types\Compound;
 use phpDocumentor\Reflection\Types\Context;
@@ -26,6 +25,8 @@ use phpDocumentor\Reflection\Types\Nullable;
 use phpDocumentor\Reflection\Types\Object_;
 use phpDocumentor\Reflection\Types\String_;
 use RuntimeException;
+use const PREG_SPLIT_DELIM_CAPTURE;
+use const PREG_SPLIT_NO_EMPTY;
 use function array_keys;
 use function array_pop;
 use function class_exists;
@@ -38,8 +39,6 @@ use function strpos;
 use function strtolower;
 use function substr;
 use function trim;
-use const PREG_SPLIT_DELIM_CAPTURE;
-use const PREG_SPLIT_NO_EMPTY;
 
 final class TypeResolver
 {
@@ -67,7 +66,6 @@ final class TypeResolver
      */
     private $keywords = [
         'string' => Types\String_::class,
-        'class-string' => Types\ClassString::class,
         'int' => Types\Integer::class,
         'integer' => Types\Integer::class,
         'bool' => Types\Boolean::class,
@@ -223,11 +221,7 @@ final class TypeResolver
 
                 $classType = array_pop($types);
                 if ($classType !== null) {
-                    if ((string) $classType === 'class-string') {
-                        $types[] = $this->resolveClassString($tokens, $context);
-                    } else {
-                        $types[] = $this->resolveCollection($tokens, $classType, $context);
-                    }
+                    $types[] = $this->resolveCollection($tokens, $classType, $context);
                 }
 
                 $tokens->next();
@@ -295,7 +289,6 @@ final class TypeResolver
                 return $this->resolveTypedObject($type);
             case $this->isPartialStructuralElementName($type):
                 return $this->resolveTypedObject($type, $context);
-
             // @codeCoverageIgnoreStart
             default:
                 // I haven't got the foggiest how the logic would come here but added this as a defense.
@@ -309,8 +302,6 @@ final class TypeResolver
 
     /**
      * Adds a keyword to the list of Keywords and associates it with a specific Value Object.
-     *
-     * @psalm-param class-string<Type> $typeClassName
      */
     public function addKeyword(string $keyword, string $typeClassName) : void
     {
@@ -382,7 +373,6 @@ final class TypeResolver
     private function resolveKeyword(string $type) : Type
     {
         $className = $this->keywords[strtolower($type)];
-
         return new $className();
     }
 
@@ -395,47 +385,16 @@ final class TypeResolver
     }
 
     /**
-     * Resolves class string
-     */
-    private function resolveClassString(ArrayIterator $tokens, Context $context) : Type
-    {
-        $tokens->next();
-
-        $classType = $this->parseTypes($tokens, $context, self::PARSER_IN_COLLECTION_EXPRESSION);
-
-        if (!$classType instanceof Object_ || $classType->getFqsen() === null) {
-            throw new RuntimeException(
-                $classType . ' is not a class string'
-            );
-        }
-
-        if ($tokens->current() !== '>') {
-            if (empty($tokens->current())) {
-                throw new RuntimeException(
-                    'class-string: ">" is missing'
-                );
-            }
-
-            throw new RuntimeException(
-                'Unexpected character "' . $tokens->current() . '", ">" is missing'
-            );
-        }
-
-        return new ClassString($classType->getFqsen());
-    }
-
-    /**
      * Resolves the collection values and keys
      *
-     * @return Array_|Iterable_|Collection
+     * @return Array_|Collection
      */
     private function resolveCollection(ArrayIterator $tokens, Type $classType, Context $context) : Type
     {
-        $isArray    = ((string) $classType === 'array');
-        $isIterable = ((string) $classType === 'iterable');
+        $isArray = ((string) $classType === 'array');
 
-        // allow only "array", "iterable" or class name before "<"
-        if (!$isArray && !$isIterable
+        // allow only "array" or class name before "<"
+        if (!$isArray
             && (!$classType instanceof Object_ || $classType->getFqsen() === null)) {
             throw new RuntimeException(
                 $classType . ' is not a collection'
@@ -494,10 +453,6 @@ final class TypeResolver
 
         if ($isArray) {
             return new Array_($valueType, $keyType);
-        }
-
-        if ($isIterable) {
-            return new Iterable_($valueType, $keyType);
         }
 
         /** @psalm-suppress RedundantCondition */
