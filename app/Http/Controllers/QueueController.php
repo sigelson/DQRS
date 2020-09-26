@@ -165,6 +165,20 @@ class QueueController extends Controller
 
     }
 
+    public function transactions2()
+    {
+
+        $accounting1=Transaction::where('department','accounting')->get();
+        $accounting=$accounting1->pluck('name')->all();
+        $registrar1=Transaction::where('department','registrar')->get();
+        $registrar=$registrar1->pluck('name')->all();
+        $cashier1=Transaction::where('department','cashier')->get();
+        $cashier=$cashier1->pluck('name')->all();
+
+        return response()->json(compact('accounting','registrar','cashier'));
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -184,7 +198,10 @@ class QueueController extends Controller
      */
     public function edit($id)
     {
-        //
+        $queues=Queue::find($id);
+        $departments=Department::all();
+        $transactions=Transaction::all();
+        return view('queues.edit',['departments' => $departments],['queues' => $queues],['transactions' => $transactions]);
     }
 
     /**
@@ -196,7 +213,61 @@ class QueueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'department'=>'required|max:255',
+            'transaction'=>'required|max:255',
+            'letter'=>'required|max:255',
+            'remarks' => 'nullable|max:255'
+        ]);
+
+        $queue = Queue::find($id);
+        $queue->department = $request->get('department');
+        $queue->remarks = $request->get('remarks');
+        $queue->letter = $request->get('letter');
+        $queue->number = DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count()+1;
+        $queue->called = 'no';
+        $queue->save();
+
+        if ( ! is_null($queue->email))
+                        {
+
+                        $data=array(
+                            'name'=>$queue->name,
+                            'snumber'=>$queue->snumber,
+                            'email'=>$queue->email,
+                            'department'=>$queue->department,
+                            'letter'=>$queue->letter,
+                            'number'=>$queue->number,
+                            'transaction'=>$queue->transaction,
+                            'remarks'=>$queue->remarks
+                        );
+
+                         Mail::send('emails.queue', $data, function ($message) use ($data){
+                        $message->from('dqrshelper@gmail.com');
+                        $message->to($data['email']);
+                        $message->subject('DQRS: Your Queue number has been transferred');
+                        });
+
+                        }
+                        // END EMAIL
+
+
+                        // START SMS
+                        if ( ! is_null($queue->mobile))
+                        {
+
+                        Nexmo::message()->send([
+                        //'to'   => '63'.$request->mobile, //for live with full functioning SMS API
+
+                        'to'   => '639972255631', //for testing purposes
+                        'from' => 'DQRS',
+                        'text' => ("Hi! Your Queue has been transfered.\nYour new queue number is:\n".$queue->letter."-".$queue->number."\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n \n")
+                            ]);
+
+                        }
+                        // END SMS
+
+        return redirect('admin')->withStatus(__('Queue has been transferred successfully.'));
     }
 
     /**

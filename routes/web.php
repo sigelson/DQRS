@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::resource('queues', 'QueueController');
 Route::get('queues/create/transactions','QueueController@transactions');
+Route::get('queues/{id}/edit/transactions2','QueueController@transactions2');
 Route::get('queues/{id}', 'QueueController@show');
 
 Route::resource('display','DisplayController');

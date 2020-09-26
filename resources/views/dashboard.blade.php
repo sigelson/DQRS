@@ -85,7 +85,7 @@
                                     </td>
                                     <td class="text-center">
                                         <a href="{{ route('home.recall',$queue) }}" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
-                                        {{-- <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times"></i>  Remove</a> --}}
+                                        <a href="{{ route('queues.edit',$queue) }}" class="btn btn-sm btn-info"><i class="fas fa-exchange"></i>  Transfer</a>
                                     </td>
                                 </tr>
                                 @endforeach
