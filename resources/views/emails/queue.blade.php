@@ -88,7 +88,8 @@
 </table>
 
 <h1 class=" text-center " style="margin-top: 0; margin-bottom: 0; font-weight: 700; color: inherit; vertical-align: baseline; font-size: 42px; line-height: 43.2px;" align="center">{{$letter}}-{{$number}}</h1>
-      <h5 class="text-muted text-center" style="margin-top: 0; margin-bottom: 0; font-weight: 500; color: #636c72; vertical-align: baseline; font-size: 20px; line-height: 24px;" align="center">{{$department}}</h5>
+      <h4 class="text-muted text-center" style="margin-top: 0; margin-bottom: 0; font-weight: 500; color: #636c72; vertical-align: baseline; font-size: 20px; line-height: 24px;" align="center">{{$department}}</h4>
+      <h5 class="text-muted text-center" style="margin-top: 0; margin-bottom: 0; font-weight: 500; color: #636c72; vertical-align: baseline; font-size: 20px; line-height: 24px;" align="center">Estimated waiting time: {{$wtime}} minutes</h5>
 
       <div class="hr " style="width: 100%; margin: 20px 0; border: 0;">
   <table border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, Arial, sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0px; border-collapse: collapse; width: 100%;">
@@ -161,14 +162,6 @@
 
 
 
-  <!--<div class="card w-100 mb-4">
-    <div class="card-body">
-      <img width="50" height="50" class="mx-auto" src="">
-      <h4 class="text-center">Make expensing business rides easy</h4>
-      <p class="text-center">Enable business profile on Lyft to make expensing rides quick and easy.</p>
-      <a class="btn btn-primary btn-lg mx-auto mt-2" href="https://lyft.com">Get Business Profile</a>
-    </div>
-  </div>-->
 <table class="mx-auto" align="center" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, Arial, sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0px; border-collapse: collapse; margin: 0 auto;">
   <tbody>
     <tr>

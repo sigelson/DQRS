@@ -97,6 +97,10 @@ class QueueController extends Controller
         DB::table('departments')->where('name', $request->department)->update(['number'=> $count]);
         $currnum=DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
 
+        $qtime = DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
+        $wtimecount= $qtime-1;
+        $wtime= $wtimecount*3;
+
 
 
                         // START EMAIL
@@ -111,7 +115,8 @@ class QueueController extends Controller
                             'letter'=>$request->letter,
                             'number'=>$currnum,
                             'transaction'=>$request->transaction,
-                            'remarks'=>$request->remarks
+                            'remarks'=>$request->remarks,
+                            'wtime'=>$wtime
                         );
 
                          Mail::send('emails.queue', $data, function ($message) use ($data){
@@ -133,7 +138,7 @@ class QueueController extends Controller
 
                         'to'   => '639972255631', //for testing purposes
                         'from' => 'DQRS',
-                        'text' => ("Hi! Your Queue number is\n".$request->letter."-".$currnum."\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n \n")
+                        'text' => ("Hi! Your Queue number is\n".$request->letter."-".$currnum."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
                             ]);
 
                         }
@@ -220,6 +225,8 @@ class QueueController extends Controller
             'remarks' => 'nullable|max:255'
         ]);
 
+
+
         $queue = Queue::find($id);
         $queue->department = $request->get('department');
         $queue->remarks = $request->get('remarks');
@@ -227,6 +234,12 @@ class QueueController extends Controller
         $queue->number = DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count()+1;
         $queue->called = 'no';
         $queue->save();
+
+
+        $qtime = DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
+        $wtimecount= $qtime-1;
+        $wtime= $wtimecount*3;
+
 
         if ( ! is_null($queue->email))
                         {
@@ -239,7 +252,8 @@ class QueueController extends Controller
                             'letter'=>$queue->letter,
                             'number'=>$queue->number,
                             'transaction'=>$queue->transaction,
-                            'remarks'=>$queue->remarks
+                            'remarks'=>$queue->remarks,
+                            'wtime'=>$wtime
                         );
 
                          Mail::send('emails.queue', $data, function ($message) use ($data){
@@ -261,7 +275,7 @@ class QueueController extends Controller
 
                         'to'   => '639972255631', //for testing purposes
                         'from' => 'DQRS',
-                        'text' => ("Hi! Your Queue has been transfered.\nYour new queue number is:\n".$queue->letter."-".$queue->number."\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n \n")
+                        'text' => ("Hi! Your Queue has been transfered.\nYour new queue number is:\n".$queue->letter."-".$queue->number."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
                             ]);
 
                         }
