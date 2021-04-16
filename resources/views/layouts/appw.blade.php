@@ -10,7 +10,7 @@
         <title>{{ config('app.name', 'DQRS') }}</title>
         <!-- Favicon -->
         <link href="{{ url('argon/img/brand/favicon.png') }}" rel="icon" type="image/png">
-        <script src="{{ url('js/app.js') }}"></script>
+        <script src="{{ url('assets/js/app.js') }}"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <!-- Icons -->
@@ -44,6 +44,7 @@
 
         <!-- Argon JS -->
         <script src="{{ url('argon/js/argon.js?v=1.0.0') }}"></script>
-
+        {{-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
     </body>
 </html>

@@ -13,8 +13,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <!-- Icons -->
-        <link href="{{ url('argon/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-        <link href="{{ url('argon/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="{{ url('argon/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+        <link href="{{ url('argon/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
         <link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css" rel="stylesheet">
 
 
@@ -25,7 +25,7 @@
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
-            <form id="logout-form" action="{{ route('new.logout" method="POST" style="display: none;">
+            <form id="logout-form" action="{{ route('new.logout')}}" method="POST" style="display: none;">
                 @csrf
             </form>
             @include('layouts.navbars.sidebar')
@@ -56,6 +56,8 @@
         <script src="{{ url('argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ url('argon/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
         <script src="{{ url('argon/js/argon.js?v=1.0.0') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         @stack('js')
     </body>
 </html>

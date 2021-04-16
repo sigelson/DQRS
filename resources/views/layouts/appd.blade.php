@@ -31,7 +31,7 @@
         </div>
 
 
-        <script src="{{ url('js/app.js') }}"></script>
+        <script src="{{ url('assets/js/app.js') }}"></script>
         <script src="{{ url('argon/vendor/jquery/dist/jquery.min.js') }}"></script>
         <!-- Argon JS -->
         <script src="{{ url('argon/js/argon.js?v=1.0.0') }}"></script>

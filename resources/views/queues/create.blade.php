@@ -161,8 +161,8 @@
                                      Are you a PWD or Senior Citizen?
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" onclick="isPrio(0)">NO</button>
-                                      <button type="button" class="btn btn-info" onclick="isPrio(1)">YES</button>
+                                      <button type="button" class="btn btn-secondary" @click="isPrio(0)">NO</button>
+                                      <button type="button" class="btn btn-info" @click="isPrio(1)">YES</button>
                                     </div>
                                   </div>
                                 </div>
@@ -174,7 +174,7 @@
 
         </div>
     </div>
-    
+
 
     <div class="container static-bottom py-3">
         @include('layouts.footers.nav')
@@ -185,15 +185,9 @@
 @push('js')
 
 <script>
-    $('#confirmModal').modal({
-        backdrop: 'static',
-        keyboard: false
-    });
 
-    function isPrio(value) {
-        document.getElementById('prio').value = value;
-        $('#confirmModal').modal('hide');
-    }
+
+
 
     function getdept(dept) {
         document.getElementById('letter').value = dept.letter;
@@ -234,6 +228,10 @@
             //     backdrop: 'static',
             //     keyboard: false
             // });
+            $('#confirmModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    });
         },
         methods:{
             getTrans(){
@@ -250,7 +248,12 @@
                         this.selected = null;
                         this.dropdown = this.trans[type];
                         console.log(type)
-                        }
+                        },
+
+                        isPrio(value) {
+        document.getElementById('prio').value = value;
+        $('#confirmModal').modal('hide');
+    }
 
         }
     })

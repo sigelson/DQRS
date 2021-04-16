@@ -101,7 +101,7 @@ class HomeController extends Controller
         }
     }
 
-    public function notifyNextOnQueue($nowServing, $dept) 
+    public function notifyNextOnQueue($nowServing, $dept)
     {
         $queue = Queue::where([
             ['department',$dept],
@@ -126,9 +126,9 @@ class HomeController extends Controller
             $this->notify($queue->get(2), 3);
         }
 
-        if (count($queue) == 2) {
-            $this->notify($queue->get(1), 2);
-        }
+        // if (count($queue) == 2) {
+        //     $this->notify($queue->get(1), 2);
+        // }
     }
 
     public function notify($notifiable, $qtime)
@@ -144,12 +144,12 @@ class HomeController extends Controller
                 'email' => $notifiable->email,
                 'department' => $notifiable->department,
                 'letter' => $notifiable->letter,
-                'number' => $currnum,
+                'number' => $notifiable->number,
                 'transaction' => $notifiable->transaction,
                 'remarks' => $notifiable->remarks,
                 'wtime' => $wtime,
                 'is_next' => true,
-                'is_next_message' => 'Hi! Be ready you are ' . $qtime == 3 ? 'rd' : 'nd' . ' in the queue.'
+                'is_next_message' => 'Hi! Be ready you are 3rd in the queue.'
             );
 
             Mail::send('emails.queue', $data, function ($message) use ($data){
@@ -161,11 +161,11 @@ class HomeController extends Controller
         // END EMAIL
 
         // START SMS
-        if ( ! is_null($request->mobile)) {
+        if ( ! is_null($notifiable->mobile)) {
             Nexmo::message()->send([
                 'to'   => '639972255631', //for testing purposes
                 'from' => 'DQRS',
-                'text' => ("Hi! Be ready you are " . $qtime == 3 ? 'rd' : 'nd' . " in the queue.")
+                'text' => ("Hi! Be ready you are 3rd in the queue.\nYour Queue number is ".$notifiable->letter."-".$notifiable->number)
             ]);
         }
         // END SMS
