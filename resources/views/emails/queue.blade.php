@@ -12,7 +12,9 @@
  <!-- Edit the code below this line -->
  <body style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; margin: 0; padding: 0; border: 0;">
 <div class="preview" style="display: none; max-height: 0px; overflow: hidden;">
-  DQRS: Your Queue Number                                                                             
+  @if (!$is_next)
+    DQRS: Your Queue Number                  
+  @endif                                                       
 </div>
 <table valign="top" class="bg-light body" style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0px; border-collapse: collapse; margin: 0; padding: 0; border: 0;" bgcolor="#f8f9fa">
   <tbody>
@@ -76,7 +78,13 @@
     <tr>
       <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; width: 100%; margin: 0; padding: 20px;" align="left">
         <div>
-      <h4 class="text-center" style="margin-top: 0; margin-bottom: 0; font-weight: 500; color: inherit; vertical-align: baseline; font-size: 24px; line-height: 28.8px;" align="center">Hi {{$name}}! Here is your queue number</h4>
+      <h4 class="text-center" style="margin-top: 0; margin-bottom: 0; font-weight: 500; color: inherit; vertical-align: baseline; font-size: 24px; line-height: 28.8px;" align="center">
+        @if ($is_next)
+          {{ $is_next_message }}        
+        @else
+          Hi {{$name}}! Here is your queue number
+        @endif
+      </h4>
       <table class="s-5 w-100" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
   <tbody>
     <tr>

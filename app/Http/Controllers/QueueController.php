@@ -104,44 +104,46 @@ class QueueController extends Controller
 
 
                         // START EMAIL
-                        // if ( ! is_null($request->email))
-                        // {
+                        if ( ! is_null($request->email))
+                        {
 
-                        // $data=array(
-                        //     'name'=>$request->name,
-                        //     'snumber'=>$request->snumber,
-                        //     'email'=>$request->email,
-                        //     'department'=>$request->department,
-                        //     'letter'=>$request->letter,
-                        //     'number'=>$currnum,
-                        //     'transaction'=>$request->transaction,
-                        //     'remarks'=>$request->remarks,
-                        //     'wtime'=>$wtime
-                        // );
+                        $data=array(
+                            'name'=>$request->name,
+                            'snumber'=>$request->snumber,
+                            'email'=>$request->email,
+                            'department'=>$request->department,
+                            'letter'=>$request->letter,
+                            'number'=>$currnum,
+                            'transaction'=>$request->transaction,
+                            'remarks'=>$request->remarks,
+                            'wtime'=>$wtime,
+                            'is_next' => false,
+                            'is_next_message' => ''
+                        );
 
-                        //  Mail::send('emails.queue', $data, function ($message) use ($data){
-                        // $message->from('dqrshelper@gmail.com');
-                        // $message->to($data['email']);
-                        // $message->subject('DQRS: Here is your Queue number');
-                        // });
+                         Mail::send('emails.queue', $data, function ($message) use ($data){
+                        $message->from('dqrshelper@gmail.com');
+                        $message->to($data['email']);
+                        $message->subject('DQRS: Here is your Queue number');
+                        });
 
-                        // }
+                        }
                         // END EMAIL
 
 
                         // START SMS
-                        // if ( ! is_null($request->mobile))
-                        // {
+                        if ( ! is_null($request->mobile))
+                        {
 
-                        // Nexmo::message()->send([
-                        // //'to'   => '63'.$request->mobile, //for live with full functioning SMS API
+                        Nexmo::message()->send([
+                        //'to'   => '63'.$request->mobile, //for live with full functioning SMS API
 
-                        // 'to'   => '639972255631', //for testing purposes
-                        // 'from' => 'DQRS',
-                        // 'text' => ("Hi! Your Queue number is\n".$request->letter."-".$currnum."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
-                        //     ]);
+                        'to'   => '639972255631', //for testing purposes
+                        'from' => 'DQRS',
+                        'text' => ("Hi! Your Queue number is\n".$request->letter."-".$currnum."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
+                            ]);
 
-                        // }
+                        }
                         // END SMS
 
 
@@ -253,7 +255,9 @@ class QueueController extends Controller
                             'number'=>$queue->number,
                             'transaction'=>$queue->transaction,
                             'remarks'=>$queue->remarks,
-                            'wtime'=>$wtime
+                            'wtime'=>$wtime,
+                            'is_next' => false,
+                            'is_next_message' => ''
                         );
 
                          Mail::send('emails.queue', $data, function ($message) use ($data){
@@ -267,18 +271,18 @@ class QueueController extends Controller
 
 
                         // START SMS
-                        // if ( ! is_null($queue->mobile))
-                        // {
+                        if ( ! is_null($queue->mobile))
+                        {
 
-                        // Nexmo::message()->send([
-                        // //'to'   => '63'.$request->mobile, //for live with full functioning SMS API
+                        Nexmo::message()->send([
+                        //'to'   => '63'.$request->mobile, //for live with full functioning SMS API
 
-                        // 'to'   => '639972255631', //for testing purposes
-                        // 'from' => 'DQRS',
-                        // 'text' => ("Hi! Your Queue has been transfered.\nYour new queue number is:\n".$queue->letter."-".$queue->number."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
-                        //     ]);
+                        'to'   => '639972255631', //for testing purposes
+                        'from' => 'DQRS',
+                        'text' => ("Hi! Your Queue has been transfered.\nYour new queue number is:\n".$queue->letter."-".$queue->number."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
+                            ]);
 
-                        // }
+                        }
                         // END SMS
 
         return redirect('admin')->withStatus(__('Queue has been transferred successfully.'));
