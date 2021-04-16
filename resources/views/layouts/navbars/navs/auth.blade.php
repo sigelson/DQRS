@@ -75,7 +75,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <a href="{{ route('logout') }}" class="btn btn-danger" onclick="event.preventDefault();
+          <a href="{{ route('new.logout') }}" class="btn btn-danger" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
 
                         <span>{{ __('Logout') }}</span>

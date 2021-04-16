@@ -147,10 +147,26 @@
                                         <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                                     </div>
 
-
+                                    <input type="hidden" name="is_priority" id="prio" value="0">
                                 </div>
                             </form>
                         </div>
+                            <div class="modal fade bd-example-modal-sm" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                     Are you a PWD or Senior Citizen?
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" onclick="isPrio(0)">NO</button>
+                                      <button type="button" class="btn btn-info" onclick="isPrio(1)">YES</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
                     </main>
                     </div>
                 </div>
@@ -158,6 +174,8 @@
 
         </div>
     </div>
+    
+
     <div class="container static-bottom py-3">
         @include('layouts.footers.nav')
     </div>
@@ -165,7 +183,18 @@
 @endsection
 
 @push('js')
+
 <script>
+    $('#confirmModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+
+    function isPrio(value) {
+        document.getElementById('prio').value = value;
+        $('#confirmModal').modal('hide');
+    }
+
     function getdept(dept) {
         document.getElementById('letter').value = dept.letter;
     }
@@ -201,6 +230,10 @@
         mounted(){
             this.getTrans();
 
+            // $('#confirmModal').modal({
+            //     backdrop: 'static',
+            //     keyboard: false
+            // });
         },
         methods:{
             getTrans(){

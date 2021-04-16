@@ -108,10 +108,26 @@
 @push('js')
 <script>
     $(document).ready( function () {
-     $('#reporttable').DataTable({
+     $('#reporttable thead tr').clone(true).appendTo( '#reporttable thead' );
+      $('#reporttable thead tr:eq(1) th').each( function (i) {
+          var title = $(this).text();
+          $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+   
+          $( 'input', this ).on( 'keyup change', function () {
+              if ( table.column(i).search() !== this.value ) {
+                  table
+                      .column(i)
+                      .search( this.value )
+                      .draw();
+              }
+          } );
+      } );
+
+     var table = $('#reporttable').DataTable({
         dom: 'Bfrtip',
+          orderCellsTop: true,
           processing: true,
-          serverSide: true,
+          serverSide: false,
          ajax: {
            url: "{{ url('/reports') }}",
            type: 'GET',
@@ -121,20 +137,48 @@
            }
           },
         columns: [
-                   { data: 'name', name: 'name' },
-                   { data: 'snumber', name: 'snumber' },
-                   { data: 'email', name: 'email' },
-                   { data: 'mobile', name: 'mobile' },
-                   { data: 'department', name: 'department' },
-                   { data: 'transaction', name: 'transaction' },
-                   { data: 'remarks', name: 'remarks' },
-                //    { data: 'server', name: 'server' },
-                   { data: 'created_at', name: 'created_at' },
-                ],
-                buttons:['csv'],
-
+           { data: 'name', name: 'name' },
+           { data: 'snumber', name: 'snumber' },
+           { data: 'email', name: 'email' },
+           { data: 'mobile', name: 'mobile' },
+           { data: 'department', name: 'department' },
+           { data: 'transaction', name: 'transaction' },
+           { data: 'remarks', name: 'remarks' },
+        //    { data: 'server', name: 'server' },
+           { data: 'created_at', name: 'created_at' },
+        ],
+        buttons:[
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'A4'
+            }, 
+            'excel', 
+            'print'
+        ],
       });
     });
+
+    $.fn.dataTable.ext.search.push(
+        function( settings, data, dataIndex ) {
+            var min  = $('#from_date').val();
+            var max  = $('#to_date').val();
+            var createdAt = data[7] || 0; // Our date column in the table
+
+            if  ( 
+                    ( min == "" || max == "" )
+                    || 
+                    ( moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max) ) 
+                )
+            {
+                return true;
+            }
+            return false;
+        }
+    );
+
+
+
    $('#btn-search').click(function(){
       $('#reporttable').DataTable().draw(true);
    });

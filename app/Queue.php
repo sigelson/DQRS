@@ -18,7 +18,8 @@ class Queue extends Model
         'letter',
         'number',
         'counter',
-        'called'
+        'called',
+        'is_priority'
     ];
 
     use SoftDeletes;

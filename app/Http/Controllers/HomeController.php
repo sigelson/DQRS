@@ -56,43 +56,46 @@ class HomeController extends Controller
 
 
     public function callqueue(Request $request)
-
     {
-
-
-
         $request->validate([
-            'called'=>['max:255'],
-            'counter'=>['max:255']
+            'called' => ['max:255'],
+            'counter' => ['max:255']
         ]);
 
-        $dept=Auth::user()->department;
-        $call=Queue::where([
+        $dept = Auth::user()->department;
+
+        $call = Queue::where([
+            ['department',$dept],
+            ['called', 'no']
+            ])
+            ->whereIsPriority(true)
+            ->whereDate('created_at', Carbon::today())
+            ->orderBy('id', 'asc')
+            ->first();
+
+        if (!$call) {
+            $call = Queue::where([
             ['department',$dept],
             ['called', 'no']
             ])
             ->whereDate('created_at', Carbon::today())
             ->orderBy('id', 'asc')
             ->first();
-            // ->update(['called'=>$request->called,'counter'=>$request->counter]);
+        }
 
-                    if ( ! is_null($call))
-                    {
-                        $call->update(['called'=>$request->called,'counter'=>$request->counter]);
-                        $call->save();
-                        event(new NewQueue($call));
+        // ->update(['called'=>$request->called,'counter'=>$request->counter]);
 
-                       return redirect('admin')->withStatus(__('Queue has been called.'));
-                    }
-                    else{
-                        return redirect('admin')->withStatus(__('No available queue for calling.'));
-                    }
+        if ( ! is_null($call)) {
+            $call->update(['called'=>$request->called,'counter'=>$request->counter]);
 
+            $call->save();
 
+            event(new NewQueue($call));
 
-
-
-
+            return redirect('admin')->withStatus(__('Queue has been called.'));
+        } else {
+            return redirect('admin')->withStatus(__('No available queue for calling.'));
+        }
     }
 
     // FOR RECALL

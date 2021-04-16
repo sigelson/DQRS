@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('login', [ 'as' => 'login', 'uses' => 'LoginController@loginIndex']);
+Route::post('logout', 'LoginController@logout')->name('new.logout')->middleware('auth');
+Route::post('login', 'LoginController@login')->name('new.login');
 
 Route::resource('queues', 'QueueController');
 Route::get('queues/create/transactions','QueueController@transactions');
@@ -27,9 +30,9 @@ Route::resource('display','DisplayController');
 
 
 
-Auth::routes([
-    'register' => false
-]);
+// Auth::routes([
+//     'register' => false
+// ]);
 
 
 Route::get('/admin', 'HomeController@index')->name('home');
@@ -49,6 +52,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
+});
+
+Route::get('test-session', function() {
+    return \Session::getId();
 });
 
 

@@ -21,6 +21,17 @@
                         </div>
                     </div> --}}
                     <div class="card-body px-lg-5 py-lg-5">
+                        @if (session()->get('error'))
+                            <div class="alert alert-danger" role="alert">
+                              {{ session()->get('error') }}
+                            </div>
+                        @endif
+
+                        @if (session()->get('info'))
+                            <div class="alert alert-info" role="alert">
+                              {{ session()->get('info') }}
+                            </div>
+                        @endif
 
                         <div class="text-center text-muted mb-3">
                             <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInUp">
@@ -37,7 +48,7 @@
                             <h1 class="text-dark lead animated fadeInUp">Login into your account</h1>
                         </div>
 
-                        <form role="form" method="POST" action="{{ route('login') }}">
+                        <form role="form" method="POST" action="{{ route('new.login') }}">
                             @csrf
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
