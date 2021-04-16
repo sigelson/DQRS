@@ -9,15 +9,15 @@
 
         <title>{{ config('app.name', 'DQRS') }}</title>
         <!-- Favicon -->
-        <link href="{{ asset('assets/argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
+        <link href="{{ url('argon/img/brand/favicon.png') }}" rel="icon" type="image/png">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <!-- Icons -->
-        <link href="{{ asset('assets/argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-        <link href="{{ asset('assets/argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="{{ url('argon/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+        <link href="{{ url('argon/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
         <!-- Argon CSS -->
-        <link type="text/css" href="{{ asset('assets/argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
-        <link type="text/css" href="{{ asset('assets/argon') }}/css/animate.css" rel="stylesheet">
+        <link type="text/css" href="{{ url('argon/css/argon.css?v=1.0.0') }}" rel="stylesheet">
+        <link type="text/css" href="{{ url('argon/css/animate.css') }}" rel="stylesheet">
 
 
 
@@ -31,10 +31,10 @@
         </div>
 
 
-        <script src="{{ asset('assets') }}/js/app.js"></script>
-        <script src="{{ asset('assets/argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="{{ url('js/app.js') }}"></script>
+        <script src="{{ url('argon/vendor/jquery/dist/jquery.min.js') }}"></script>
         <!-- Argon JS -->
-        <script src="{{ asset('assets/argon') }}/js/argon.js?v=1.0.0"></script>
+        <script src="{{ url('argon/js/argon.js?v=1.0.0') }}"></script>
 
 
         @stack('js')
