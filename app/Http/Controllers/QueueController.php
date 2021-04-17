@@ -230,31 +230,35 @@ class QueueController extends Controller
 
 
         $queue = Queue::find($id);
-        $queue->department = $request->get('department');
-        $queue->remarks = $request->get('remarks');
-        $queue->letter = $request->get('letter');
-        $queue->number = DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count()+1;
-        $queue->called = 'no';
-        $queue->save();
+        $newQueue = $queue->replicate();
+        $newQueue->department = $request->get('department');
+        $newQueue->remarks = $request->get('remarks');
+        $newQueue->letter = $request->get('letter');
+        $newQueue->transaction = $request->get('transaction');
+        $newQueue->number = DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count()+1;
+        $newQueue->called = 'no';
+        $newQueue->save();
 
+        $queue->is_cancelled = true;
+        $queue->update();
 
         $qtime = DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
         $wtimecount= $qtime-1;
         $wtime= $wtimecount*3;
 
 
-        if ( ! is_null($queue->email))
+        if ( ! is_null($newQueue->email))
                         {
 
                         $data=array(
-                            'name'=>$queue->name,
-                            'snumber'=>$queue->snumber,
-                            'email'=>$queue->email,
-                            'department'=>$queue->department,
-                            'letter'=>$queue->letter,
-                            'number'=>$queue->number,
-                            'transaction'=>$queue->transaction,
-                            'remarks'=>$queue->remarks,
+                            'name'=>$newQueue->name,
+                            'snumber'=>$newQueue->snumber,
+                            'email'=>$newQueue->email,
+                            'department'=>$newQueue->department,
+                            'letter'=>$newQueue->letter,
+                            'number'=>$newQueue->number,
+                            'transaction'=>$newQueue->transaction,
+                            'remarks'=>$newQueue->remarks,
                             'wtime'=>$wtime,
                             'is_next' => false,
                             'is_next_message' => ''
@@ -271,7 +275,7 @@ class QueueController extends Controller
 
 
                         // START SMS
-                        if ( ! is_null($queue->mobile))
+                        if ( ! is_null($newQueue->mobile))
                         {
 
                         Nexmo::message()->send([
@@ -279,7 +283,7 @@ class QueueController extends Controller
 
                         'to'   => '639972255631', //for testing purposes
                         'from' => 'DQRS',
-                        'text' => ("Hi! Your Queue has been transfered.\nYour new queue number is:\n".$queue->letter."-".$queue->number."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
+                        'text' => ("Hi! Your Queue has been transfered.\nYour new queue number is:\n".$newQueue->letter."-".$newQueue->number."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
                             ]);
 
                         }

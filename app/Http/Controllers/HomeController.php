@@ -38,6 +38,8 @@ class HomeController extends Controller
         $queues=Queue::where('department',$dept)
                        ->whereDate('created_at', Carbon::today())
                        ->orderBy('id', 'desc')
+                       ->whereIsNoShow(false)
+                       ->whereIsCancelled(false)
                        ->paginate(10);
 
         $counters=Counter::all();
@@ -72,6 +74,8 @@ class HomeController extends Controller
             ->whereIsPriority(true)
             ->whereDate('created_at', Carbon::today())
             ->orderBy('id', 'asc')
+            ->whereIsNoShow(false)
+            ->whereIsCancelled(false)
             ->first();
 
         if (!$call) {
@@ -81,6 +85,8 @@ class HomeController extends Controller
             ])
             ->whereDate('created_at', Carbon::today())
             ->orderBy('id', 'asc')
+            ->whereIsNoShow(false)
+            ->whereIsCancelled(false)
             ->first();
         }
 
@@ -110,6 +116,8 @@ class HomeController extends Controller
             ->whereIsPriority(true)
             ->whereDate('created_at', Carbon::today())
             ->orderBy('id', 'asc')
+            ->whereIsNoShow(false)
+            ->whereIsCancelled(false)
             ->take(3)->get();
 
         if (count($queue) < 2) {
@@ -119,6 +127,8 @@ class HomeController extends Controller
             ])
             ->whereDate('created_at', Carbon::today())
             ->orderBy('id', 'asc')
+            ->whereIsNoShow(false)
+            ->whereIsCancelled(false)
             ->take(3)->get();
         }
 
@@ -180,8 +190,60 @@ class HomeController extends Controller
         event(new NewQueue($call));
 
         return redirect('admin')->withStatus(__('Queue has been recalled.'));
-
     }
 
+    public function noShow($id)
+    {
+        $queue = Queue::find($id);
 
+        $queueCount = DB::table('queues')->where('department', $queue->department)
+                        ->whereDate('created_at', Carbon::today())
+                        ->count();
+
+        $newQueue = $queue->replicate();
+        $newQueue->called = 'no';
+        $newQueue->number = $queueCount + 1;
+        $newQueue->save();
+
+        if ($queue) {
+            $queue->is_no_show = true;
+            $queue->update();
+        }
+
+        $wtimecount = $queueCount - 1;
+        $wtime = $wtimecount * 3;
+
+        // START EMAIL
+        if ( ! is_null($newQueue->email)) {
+            $data = array(
+                'name' => $newQueue->name,
+                'snumber' => $newQueue->snumber,
+                'email' => $newQueue->email,
+                'department' => $newQueue->department,
+                'letter' => $newQueue->letter,
+                'number' => $newQueue->number,
+                'transaction' => $newQueue->transaction,
+                'remarks' => $newQueue->remarks,
+                'wtime' => $wtime
+            );
+
+            Mail::send('emails.queue', $data, function ($message) use ($data){
+                $message->from('dqrshelper@gmail.com');
+                $message->to($data['email']);
+                $message->subject('DQRS: Here is your new Queue number');
+            });
+        }
+        // END EMAIL
+
+        // START SMS
+        if ( ! is_null($newQueue->mobile)) {
+            Nexmo::message()->send([
+                'to'   => '639972255631', //for testing purposes
+                'from' => 'DQRS',
+                'text' => ("Hi! Your new Queue number is\n".$newQueue->letter."-".$newQueue->number."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
+            ]);
+        }
+        // END SMS
+        return redirect('admin')->withStatus(__('Successfully updated.'));
+    }
 }

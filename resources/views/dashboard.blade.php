@@ -59,6 +59,7 @@
                                     <th scope="col">Transaction</th>
                                     <th scope="col">Remarks</th>
                                     <th scope="col">Called</th>
+                                    <th scope="col">Is Priority</th>
                                     <th scope="col" class="text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -83,9 +84,34 @@
                                     <td>
                                         {{ $queue->called }}
                                     </td>
+                                    <td>
+                                        {{ $queue->is_priority ? 'Yes' : 'No' }}
+                                    </td>
                                     <td class="text-center">
-                                        <a href="{{ route('home.recall',$queue) }}" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
-                                        <a href="{{ route('queues.edit',$queue) }}" class="btn btn-sm btn-info"><i class="fas fa-exchange"></i>  Transfer</a>
+                                        @if ($queue->called == 'yes')
+                                            <a href="{{ route('home.recall',$queue) }}" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
+                                            <a href="{{ route('queues.edit',$queue) }}" class="btn btn-sm btn-info"><i class="fas fa-exchange"></i>  Transfer</a>
+                                        @endif
+                                        @if ($queue->called == 'yes')
+                                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#areYouSureModal-{{$queue->id}}"><i class="fas fa-exchange"></i>  No Show</button>
+                                        <div class="modal fade bd-example-modal-sm" id="areYouSureModal-{{$queue->id}}" tabindex="-1" role="dialog" aria-labelledby="areYouSureModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                 Are you sure you wan't to do this?
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                                                  <a href="{{ route('home.noShow', $queue) }}" type="button" class="btn btn-info" @click="isPrio(1)">YES</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

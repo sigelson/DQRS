@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('admin/call',['as'=>'home.callqueue','uses'=>'HomeController@callqueue']);
     Route::get('admin/recall/{id}',['as'=>'home.recall','uses'=>'HomeController@recall']);
     Route::put('admin/notif',['as'=>'home.updatenotif','uses'=>'HomeController@updatenotif']);
+    Route::get('admin/no-show/{id}',['as'=>'home.noShow','uses'=>'HomeController@noShow']);
 
 
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
