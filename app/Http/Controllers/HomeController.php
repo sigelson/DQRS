@@ -224,7 +224,9 @@ class HomeController extends Controller
                 'number' => $newQueue->number,
                 'transaction' => $newQueue->transaction,
                 'remarks' => $newQueue->remarks,
-                'wtime' => $wtime
+                'wtime' => $wtime,
+                'is_next' => false,
+                'is_next_message' => ''
             );
 
             Mail::send('emails.queue', $data, function ($message) use ($data){
