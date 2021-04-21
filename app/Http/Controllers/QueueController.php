@@ -138,7 +138,7 @@ class QueueController extends Controller
                         Nexmo::message()->send([
                         //'to'   => '63'.$request->mobile, //for live with full functioning SMS API
 
-                        'to'   => '639972255631', //for testing purposes
+                        'to'   => '639760026792', //for testing purposes
                         'from' => 'DQRS',
                         'text' => ("Hi! Your Queue number is\n".$request->letter."-".$currnum."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
                             ]);
@@ -281,7 +281,7 @@ class QueueController extends Controller
                         Nexmo::message()->send([
                         //'to'   => '63'.$request->mobile, //for live with full functioning SMS API
 
-                        'to'   => '639972255631', //for testing purposes
+                        'to'   => '639760026792', //for testing purposes
                         'from' => 'DQRS',
                         'text' => ("Hi! Your Queue has been transfered.\nYour new queue number is:\n".$newQueue->letter."-".$newQueue->number."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
                             ]);

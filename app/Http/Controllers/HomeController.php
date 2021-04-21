@@ -173,7 +173,7 @@ class HomeController extends Controller
         // START SMS
         if ( ! is_null($notifiable->mobile)) {
             Nexmo::message()->send([
-                'to'   => '639972255631', //for testing purposes
+                'to'   => '639760026792', //for testing purposes
                 'from' => 'DQRS',
                 'text' => ("Hi! Be ready you are 3rd in the queue.\nYour Queue number is ".$notifiable->letter."-".$notifiable->number)
             ]);
@@ -240,7 +240,7 @@ class HomeController extends Controller
         // START SMS
         if ( ! is_null($newQueue->mobile)) {
             Nexmo::message()->send([
-                'to'   => '639972255631', //for testing purposes
+                'to'   => '639760026792', //for testing purposes
                 'from' => 'DQRS',
                 'text' => ("Hi! Your new Queue number is\n".$newQueue->letter."-".$newQueue->number."\n\nEstimated waiting time: ".$wtime." minutes.\n\nPlease wait for your turn.\n\nThank you for using DQRS.\n\n")
             ]);
