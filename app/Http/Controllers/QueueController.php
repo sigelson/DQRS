@@ -97,7 +97,7 @@ class QueueController extends Controller
         DB::table('departments')->where('name', $request->department)->update(['number'=> $count]);
         $currnum=DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
 
-        $qtime = DB::table('queues')->where('department',$request->department)->whereDate('created_at',Carbon::today())->count();
+        $qtime = DB::table('queues')->where('department',$request->department)->where('called',"no")->whereDate('created_at',Carbon::today())->count();
         $wtimecount= $qtime-1;
         $wtime= $wtimecount*3;
 
