@@ -67,6 +67,12 @@ class HomeController extends Controller
 
         $dept = Auth::user()->department;
 
+        Queue::where([
+            ['department', $dept],
+            ['called', 'now serving'],
+            ['counter', $request->counter],
+        ])->update([ 'called' => 'yes']);
+
         $call = Queue::where([
             ['department',$dept],
             ['called', 'no']
@@ -93,7 +99,7 @@ class HomeController extends Controller
         // ->update(['called'=>$request->called,'counter'=>$request->counter]);
 
         if ( ! is_null($call)) {
-            $call->update(['called'=>$request->called,'counter'=>$request->counter]);
+            $call->update([ 'called' => 'now serving','counter'=>$request->counter]);
 
             $call->save();
 

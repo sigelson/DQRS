@@ -22,7 +22,7 @@
                         <main>
                         <div class="card-body">
                             <form method="post" action="{{ route('queues.store') }}" autocomplete="off">
-                                @csrf
+                                {{ csrf_field() }}
 
                                 <h6 class="heading-small text-muted mb-4">{{ __('Queue Fill-up form') }}</h6>
                                 <div class="pl-lg-4">

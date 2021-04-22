@@ -88,11 +88,11 @@
                                         {{ $queue->is_priority ? 'Yes' : 'No' }}
                                     </td>
                                     <td class="text-center">
-                                        @if ($queue->called == 'yes')
+                                        @if ($queue->called != 'no')
                                             <a href="{{ route('home.recall',$queue) }}" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
                                             <a href="{{ route('queues.edit',$queue) }}" class="btn btn-sm btn-info"><i class="fas fa-exchange"></i>  Transfer</a>
                                         @endif
-                                        @if ($queue->called == 'yes')
+                                        @if ($queue->called != 'no')
                                         <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#areYouSureModal-{{$queue->id}}"><i class="fas fa-exchange"></i>  No Show</button>
                                         <div class="modal fade bd-example-modal-sm" id="areYouSureModal-{{$queue->id}}" tabindex="-1" role="dialog" aria-labelledby="areYouSureModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-sm" role="document">

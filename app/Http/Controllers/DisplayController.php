@@ -19,32 +19,32 @@ class DisplayController extends Controller
     {
         $cashier1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'cashier'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
         $cashier2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'cashier'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
         $accounting1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'accounting'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
         $accounting2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'accounting'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
         $registrar1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'registrar'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
         $registrar2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'registrar'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
         $notification=DB::table('notifications')->where('id', '1')->value('text');
@@ -58,32 +58,32 @@ class DisplayController extends Controller
 
         $cashier1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'cashier'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
         $cashier2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'cashier'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
         $accounting1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'accounting'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
         $accounting2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'accounting'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
         $registrar1=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'registrar'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 1']])->orderBy('number', 'DESC')->first();
 
         $registrar2=DB::table('queues')->whereDate('created_at',Carbon::today())->where([
             ['department', '=', 'registrar'],
-            ['called', '=', 'yes'],
+            ['called', '=', 'now serving'],
             ['counter', '=', 'Counter 2']])->orderBy('number', 'DESC')->first();
 
             $notification=DB::table('notifications')->where('id', '1')->value('text');
