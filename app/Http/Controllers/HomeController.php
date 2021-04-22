@@ -102,10 +102,10 @@ class HomeController extends Controller
             $call->update([ 'called' => 'now serving','counter'=>$request->counter]);
 
             $call->save();
-
+            $this->notifyNextOnQueue($call, $dept);
             event(new NewQueue($call));
 
-            $this->notifyNextOnQueue($call, $dept);
+           
 
             return redirect('admin')->withStatus(__('Queue has been called.'));
         } else {
