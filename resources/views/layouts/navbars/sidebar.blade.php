@@ -79,8 +79,13 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('home') }}">
+                    <a class="nav-link text-dark" href="{{ route('dashboard') }}">
                         <strong><i class="fas fa-tachometer-alt"></i> {{ __('Dashboard') }}</strong>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="{{ route('home') }}">
+                        <strong><i class="fas fa-list"></i> {{ __('Queue List') }}</strong>
                     </a>
                 </li>
                 <li class="nav-item">

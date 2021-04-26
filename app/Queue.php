@@ -23,4 +23,20 @@ class Queue extends Model
     ];
 
     use SoftDeletes;
+
+    public function scopeIsNoShow($query, $value)
+    {
+        if ($value) {
+            $value = $value == 'No Show' ? true : false;
+            return $query->where('is_no_show', $value);
+        }
+    }
+
+    public function scopeIsPriority($query, $value)
+    {
+        if ($value) {
+            $value = $value == 'Priority' ? true : false;
+            return $query->where('is_priority', $value);
+        }
+    }
 }

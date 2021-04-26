@@ -35,7 +35,8 @@ Route::resource('display','DisplayController');
 // ]);
 
 
-Route::get('/admin', 'HomeController@index')->name('home');
+Route::get('/queue-list', 'HomeController@index')->name('home');
+Route::get('/admin-dashboard', 'HomeController@dashboardIndex')->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);

@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.headers.cards')
+
+    @include('layouts.headers.department-serving-header')
+
 
     <div class="container-fluid mt--7">
         <div class="row">
-
             <div class="col-12">
                 @if (session('status'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -16,7 +17,7 @@
                     </div>
                 @endif
             </div>
-            <div class="col-sm-12 py-5 mb-xl-0">
+            <div class="col-sm-12  mb-xl-0">
 
                 <div class="card shadow">
 
@@ -126,7 +127,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-12">
+            <!-- <div class="col-sm-12">
                 <div class="card shadow">
                     <div class="card-body">
                                 <h2 class="mb-2">Notification message</h2>
@@ -150,10 +151,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
-        @include('layouts.footers.auth')
+        <!-- @include('layouts.footers.auth') -->
     </div>
 @endsection
 @push('js')

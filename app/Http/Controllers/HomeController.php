@@ -31,6 +31,96 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
+    public function dashboardIndex()
+    {
+        $filterBy = request('filter_by') ?? 'week';
+        $byStatus = request('by_status');
+        $byPriority = request('by_priority');
+        $labels = [];
+        $chartData = [];
+        
+        $notification = DB::table('notifications')->where('id', '1')->value('text');
+
+        if ($filterBy == 'week') {
+            $labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+            $data = Queue::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])
+                ->isNoShow($byStatus)
+                ->isPriority($byPriority)
+                ->get()->groupBy(function($date) {
+                    return Carbon::parse($date->created_at)->format('l');
+                });
+
+            foreach ($labels as $key => $day) {
+                if (isset($data[$day])) {
+                    $chartData[] = count($data[$day]);
+                } else {
+                    $chartData[] = 0;
+                }
+            }
+        }
+
+        if ($filterBy == 'month') {
+            $labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+            $data = Queue::isNoShow($byStatus)
+                    ->isPriority($byPriority)
+                    ->get()->groupBy(function($date) {
+                    return Carbon::parse($date->created_at)->format('F'); 
+                });
+
+            foreach ($labels as $key => $day) {
+                if (isset($data[$day])) {
+                    $chartData[] = count($data[$day]);
+                } else {
+                    $chartData[] = 0;
+                }
+            }
+        }
+
+        if ($filterBy == 'year') {
+            for ($i = 2021; $i < 2030; $i++) { 
+                $labels[] = $i;
+            }
+
+            $data = Queue::isNoShow($byStatus)
+                ->isPriority($byPriority)
+                ->get()->groupBy(function($date) {
+                    return Carbon::parse($date->created_at)->format('Y'); 
+                });
+
+            foreach ($labels as $key => $day) {
+                if (isset($data[$day])) {
+                    $chartData[] = count($data[$day]);
+                } else {
+                    $chartData[] = 0;
+                }
+            }
+        }
+
+        return view('adminDashboard')
+             ->with('notification', $notification)
+             ->with('labels', $labels)
+             ->with('chartData', $chartData);
+    }
+
+    //by days
+    // $data = Queue::select([
+    //           DB::raw('count(id) as `count`'), 
+    //           DB::raw('DATE(created_at) as day')
+    //         ])->groupBy('day')
+    //         ->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])
+    //         ->get();
+
+    //     $output = [];
+
+    //     foreach($data as $entry) {
+    //         $output[$entry->day] = $entry->count;
+    //     }
+
+    //     print_r($output);
+    //     exit;
+
     public function index()
     {
         $dept=Auth::user()->department;
