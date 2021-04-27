@@ -12,7 +12,7 @@ use App\Events\NewQueue;
 use App\Events\NewNotif;
 use Mail;
 use Nexmo;
-
+use App\Department;
 
 class HomeController extends Controller
 {
@@ -36,10 +36,13 @@ class HomeController extends Controller
         $filterBy = request('filter_by') ?? 'week';
         $byStatus = request('by_status');
         $byPriority = request('by_priority');
+        $byDepartment = request('by_department');
+
         $labels = [];
         $chartData = [];
-        
+
         $notification = DB::table('notifications')->where('id', '1')->value('text');
+        $department = Department::all();
 
         if ($filterBy == 'week') {
             $labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -47,6 +50,7 @@ class HomeController extends Controller
             $data = Queue::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])
                 ->isNoShow($byStatus)
                 ->isPriority($byPriority)
+                ->byDepartment($byDepartment)
                 ->get()->groupBy(function($date) {
                     return Carbon::parse($date->created_at)->format('l');
                 });
@@ -65,6 +69,7 @@ class HomeController extends Controller
 
             $data = Queue::isNoShow($byStatus)
                     ->isPriority($byPriority)
+                    ->byDepartment($byDepartment)
                     ->get()->groupBy(function($date) {
                     return Carbon::parse($date->created_at)->format('F'); 
                 });
@@ -85,6 +90,7 @@ class HomeController extends Controller
 
             $data = Queue::isNoShow($byStatus)
                 ->isPriority($byPriority)
+                ->byDepartment($byDepartment)
                 ->get()->groupBy(function($date) {
                     return Carbon::parse($date->created_at)->format('Y'); 
                 });
@@ -101,7 +107,8 @@ class HomeController extends Controller
         return view('adminDashboard')
              ->with('notification', $notification)
              ->with('labels', $labels)
-             ->with('chartData', $chartData);
+             ->with('chartData', $chartData)
+             ->with('departments', $department);
     }
 
     //by days

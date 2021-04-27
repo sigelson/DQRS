@@ -39,4 +39,11 @@ class Queue extends Model
             return $query->where('is_priority', $value);
         }
     }
+
+    public function scopeByDepartment($query, $value)
+    {
+        if ($value) {
+            return $query->where('department', $value);
+        }
+    }
 }

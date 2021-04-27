@@ -96,6 +96,17 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color: white;">Get Data By Department:</label>
+                            <select class="form-control" name="by_department" onchange="changeDayFilter()">
+                                <option value="" {{ request('by_department') == '' ? 'selected' : '' }}>All</option>
+                                @foreach($departments as $department)
+                                <option value="{{ $department->name }}" {{ request('by_department') == $department->name ? 'selected' : '' }}>{{ $department->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="card shadow">
                     <div class="card-body">
