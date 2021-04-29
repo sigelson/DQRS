@@ -71,7 +71,7 @@ class HomeController extends Controller
                     ->isPriority($byPriority)
                     ->byDepartment($byDepartment)
                     ->get()->groupBy(function($date) {
-                    return Carbon::parse($date->created_at)->format('F'); 
+                    return Carbon::parse($date->created_at)->format('F');
                 });
 
             foreach ($labels as $key => $day) {
@@ -84,7 +84,7 @@ class HomeController extends Controller
         }
 
         if ($filterBy == 'year') {
-            for ($i = 2021; $i < 2030; $i++) { 
+            for ($i = 2021; $i < 2030; $i++) {
                 $labels[] = $i;
             }
 
@@ -92,7 +92,7 @@ class HomeController extends Controller
                 ->isPriority($byPriority)
                 ->byDepartment($byDepartment)
                 ->get()->groupBy(function($date) {
-                    return Carbon::parse($date->created_at)->format('Y'); 
+                    return Carbon::parse($date->created_at)->format('Y');
                 });
 
             foreach ($labels as $key => $day) {
@@ -113,7 +113,7 @@ class HomeController extends Controller
 
     //by days
     // $data = Queue::select([
-    //           DB::raw('count(id) as `count`'), 
+    //           DB::raw('count(id) as `count`'),
     //           DB::raw('DATE(created_at) as day')
     //         ])->groupBy('day')
     //         ->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])
@@ -150,7 +150,7 @@ class HomeController extends Controller
 
         DB::table('notifications')->where('id', '1')->update(['text'=>$request->text]);
         event(new NewNotif());
-        return redirect('admin')->withStatus(__('Notification message updated successfully.'));
+        return redirect('queue-list')->withStatus(__('Notification message updated successfully.'));
 
     }
 
@@ -202,11 +202,11 @@ class HomeController extends Controller
             $this->notifyNextOnQueue($call, $dept);
             event(new NewQueue($call));
 
-           
 
-            return redirect('admin')->withStatus(__('Queue has been called.'));
+
+            return redirect('queue-list')->withStatus(__('Queue has been called.'));
         } else {
-            return redirect('admin')->withStatus(__('No available queue for calling.'));
+            return redirect('queue-list')->withStatus(__('No available queue for calling.'));
         }
     }
 
@@ -292,7 +292,7 @@ class HomeController extends Controller
         $call->get();
         event(new NewQueue($call));
 
-        return redirect('admin')->withStatus(__('Queue has been recalled.'));
+        return redirect('queue-list')->withStatus(__('Queue has been recalled.'));
     }
 
     public function noShow($id)
@@ -349,6 +349,6 @@ class HomeController extends Controller
             ]);
         }
         // END SMS
-        return redirect('admin')->withStatus(__('Successfully updated.'));
+        return redirect('queue-list')->withStatus(__('Successfully updated.'));
     }
 }

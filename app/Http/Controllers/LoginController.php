@@ -24,16 +24,16 @@ class LoginController extends Controller
         ]);
 
         if (\Auth::attempt(['email' =>  request('email'), 'password' => request('password')])) {
-        	
+
         	//Logout old device
         	auth()->logoutOtherDevices(request('password'));
 
-            return redirect()->intended('/admin');
+            return redirect()->intended('/admin-dashboard');
 
         } else {
-        
+
             return redirect('/login')->with('error', 'You are not authorized');
-    
+
         }
     }
 
@@ -41,6 +41,6 @@ class LoginController extends Controller
     {
         auth()->logout();
 
-    	return redirect('/admin');
+    	return redirect('/admin-dashboard');
     }
 }

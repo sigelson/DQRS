@@ -289,7 +289,7 @@ class QueueController extends Controller
                         }
                         // END SMS
 
-        return redirect('admin')->withStatus(__('Queue has been transferred successfully.'));
+        return redirect('queue-list')->withStatus(__('Queue has been transferred successfully.'));
     }
 
     /**
