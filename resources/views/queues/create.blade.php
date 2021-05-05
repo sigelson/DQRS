@@ -145,7 +145,7 @@
 
                                       <div class="custom-control custom-control-alternative custom-checkbox mb-3">
                                         <input class="custom-control-input" id="customCheck7" type="checkbox" required>
-                                        <label class="custom-control-label font-weight-bold" for="customCheck7">By checking the box and clicking the submit button, I agree to the system's <a class="text-info text-bold" data-toggle="modal" data-target="#policyModal">Privacy Policy.</a></label>
+                                        <label class="custom-control-label font-weight-bold" for="customCheck7">By checking the box and clicking the submit button, I agree to the system's <a class="text-info text-bold" href="https://www.stdominiccollege.edu.ph/index.php/data-privacy" target='_blank'>Privacy Policy.</a></label>
                                       </div>
 
                                       <!-- Modal -->
