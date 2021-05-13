@@ -26,5 +26,8 @@
     "dependencies": {
         "laravel-echo": "^1.6.1",
         "pusher-js": "^5.1.1"
-    }
+    },
+    "scripts": {
+        "postinstall": "npm run prod"
+        }
 }
