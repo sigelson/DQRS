@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-                <a href="{{('/dqrs')}}" class="btn btn-default mt-5">Close</a>
+                <a href="{{('/')}}" class="btn btn-default mt-5">Close</a>
                 </div>
 
 
