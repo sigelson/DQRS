@@ -1,0 +1,1 @@
+web: vendor/php/apache2 public/
