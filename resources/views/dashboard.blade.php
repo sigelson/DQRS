@@ -162,7 +162,7 @@
     $(document).ready(
  function() {
  setInterval(function() {
-    $('#queuelist').load('admin #queuelist');
+    $('#queuelist').load('queue-list #queuelist');
     console.log('refresh');
  }, 5000);  //Delay here = 5 seconds
 });
