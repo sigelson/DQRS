@@ -2,12 +2,12 @@
     <div class="container px-4">
         @auth
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-dark.png" />
+            <img src="{{ asset('assets/argon') }}/img/brand/logo-dark.png" />
         </a>
         @endauth
         @guest
         <a class="navbar-brand">
-            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-dark.png" />
+            <img src="{{ asset('assets/argon') }}/img/brand/logo-dark.png" />
         </a>
         @endguest
         @guest
@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png">
+                            <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -55,7 +55,7 @@
                         <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="media align-items-center">
                                 <span class="avatar avatar-sm rounded-circle">
-                                    <img alt="Image placeholder" src="{{ secure_asset('assets/argon') }}/img/brand/logo_in_white.jpg">
+                                    <img alt="Image placeholder" src="{{ asset('assets/argon') }}/img/brand/logo_in_white.jpg">
                                 </span>
                                 <div class="media-body ml-2 d-none d-lg-block">
                                     <span class="mb-0 text-sm  font-weight-bold text-dark">{{ auth()->user()->name }}</span>

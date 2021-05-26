@@ -129,7 +129,7 @@
           processing: true,
           serverSide: false,
          ajax: {
-           url: "{{ secure_asset('/reports') }}",
+           url: "{{ url('/reports') }}",
            type: 'GET',
            data: function (d) {
            d.from_date = $('#from_date').val();

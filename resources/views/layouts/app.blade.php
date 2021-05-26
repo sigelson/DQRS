@@ -9,18 +9,18 @@
 
         <title>{{ config('app.name', 'DQRS') }}</title>
         <!-- Favicon -->
-        <link href="{{ secure_asset('argon/img/brand/favicon.png') }}" rel="icon" type="image/png">
+        <link href="{{ url('argon/img/brand/favicon.png') }}" rel="icon" type="image/png">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <!-- Icons -->
-        <link href="{{ secure_asset('argon/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
-        <link href="{{ secure_asset('argon/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+        <link href="{{ url('argon/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+        <link href="{{ url('argon/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
         <link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css" rel="stylesheet">
 
 
         <!-- Argon CSS -->
-        <link type="text/css" href="{{ secure_asset('argon/css/argon.css?v=1.0.0') }}" rel="stylesheet">
-        <link type="text/css" href="{{ secure_asset('argon/css/animate.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{ url('argon/css/argon.css?v=1.0.0') }}" rel="stylesheet">
+        <link type="text/css" href="{{ url('argon/css/animate.css') }}" rel="stylesheet">
         <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     </head>
     <body class="{{ $class ?? '' }}">
@@ -42,7 +42,7 @@
 
 
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-        <script src="{{ secure_asset('argon/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ url('argon/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
         <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
@@ -53,9 +53,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <!-- Argon JS -->
-        <script src="{{ secure_asset('argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ secure_asset('argon/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-        <script src="{{ secure_asset('argon/js/argon.js?v=1.0.0') }}"></script>
+        <script src="{{ url('argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url('argon/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ url('argon/js/argon.js?v=1.0.0') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         @stack('js')
