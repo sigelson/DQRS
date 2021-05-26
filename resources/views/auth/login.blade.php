@@ -11,11 +11,11 @@
                         <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in with') }}</small></div>
                         <div class="btn-wrapper text-center">
                             <a href="#" class="btn btn-neutral btn-icon">
-                                <span class="btn-inner--icon"><img src="{{ asset('assets/argon') }}/img/icons/common/github.svg"></span>
+                                <span class="btn-inner--icon"><img src="{{ secure_asset('assets/argon') }}/img/icons/common/github.svg"></span>
                                 <span class="btn-inner--text">{{ __('Github') }}</span>
                             </a>
                             <a href="#" class="btn btn-neutral btn-icon">
-                                <span class="btn-inner--icon"><img src="{{ asset('assets/argon') }}/img/icons/common/google.svg"></span>
+                                <span class="btn-inner--icon"><img src="{{ secure_asset('assets/argon') }}/img/icons/common/google.svg"></span>
                                 <span class="btn-inner--text">{{ __('Google') }}</span>
                             </a>
                         </div>
@@ -34,7 +34,7 @@
                         @endif
 
                         <div class="text-center text-muted mb-3">
-                            <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInUp">
+                            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInUp">
                             {{-- <small>
                                 <a href="{{ route('register') }}"><strong>{{ __('Create new account') }}</strong></a> {{ __('OR Sign in with these credentials:') }}
                             </small>

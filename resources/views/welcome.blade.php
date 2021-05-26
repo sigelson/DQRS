@@ -17,7 +17,7 @@
                 <div class="row justify-content-center">
                     <div class="col-sm-8 col-md-7 text-center">
                         {{-- <h1 class="text-white">{{ __('Dominican Queue Reservation System') }}</h1> --}}
-                        <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInDown">
+                        <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInDown">
 
                     </div>
                     @auth

@@ -5,14 +5,14 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                    {{-- <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="img img-fluid w-25" alt="..."> --}}
+                    {{-- <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" class="img img-fluid w-25" alt="..."> --}}
                 </div>
                 <div class="col-sm-12">
                     <div class="card bg-secondary shadow">
                         <div class="card-header bg-white border-0">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="img img-fluid w-25" alt="...">
+                                    <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" class="img img-fluid w-25" alt="...">
                                 </div>
                                 <div class="col-4 text-right">
                                     <a href="{{url('/')}}" class="btn btn-md btn-dark">{{ __('Go Back') }}</a>
