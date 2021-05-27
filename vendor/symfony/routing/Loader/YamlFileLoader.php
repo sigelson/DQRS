@@ -135,7 +135,7 @@ class YamlFileLoader extends FileLoader
         }
 
         if (\is_array($config['path'])) {
-            $route = new secure_url('', $defaults, $requirements, $options, $host, $schemes, $methods, $condition);
+            $route = new Route('', $defaults, $requirements, $options, $host, $schemes, $methods, $condition);
 
             foreach ($config['path'] as $locale => $path) {
                 $localizedRoute = clone $route;

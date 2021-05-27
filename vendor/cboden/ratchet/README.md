@@ -68,8 +68,8 @@ class MyChat implements MessageComponentInterface {
 
     // Run the server application through the WebSocket protocol on port 8080
     $app = new Ratchet\App('localhost', 8080);
-    $app->secure_url('/chat', new MyChat, array('*'));
-    $app->secure_url('/echo', new Ratchet\Server\EchoServer, array('*'));
+    $app->route('/chat', new MyChat, array('*'));
+    $app->route('/echo', new Ratchet\Server\EchoServer, array('*'));
     $app->run();
 ```
 

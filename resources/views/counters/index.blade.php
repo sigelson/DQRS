@@ -25,7 +25,7 @@
                                 <h3 class="mb-0">{{ __('Counters') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ secure_url('counters.create') }}" class="btn btn-md btn-success"><i class="fas fa-plus"> </i> {{ __(' Add Counter') }}</a>
+                                <a href="{{ route('counters.create') }}" class="btn btn-md btn-success"><i class="fas fa-plus"> </i> {{ __(' Add Counter') }}</a>
                             </div>
                         </div>
                     </div>
@@ -63,11 +63,11 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 
-                                                    <form action="{{ secure_url('counters.destroy', $counter->id) }}" method="post">
+                                                    <form action="{{ route('counters.destroy', $counter->id) }}" method="post">
                                                         @csrf
                                                         @method('delete')
 
-                                                        <a class="dropdown-item" href="{{ secure_url('counters.edit', $counter) }}">{{ __('Edit') }}</a>
+                                                        <a class="dropdown-item" href="{{ route('counters.edit', $counter) }}">{{ __('Edit') }}</a>
                                                         <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this counter?") }}') ? this.parentElement.submit() : ''">
                                                             {{ __('Delete') }}
                                                         </button>

@@ -32,9 +32,9 @@
 
                                 @foreach ($counters as $counter)
                                 <div class="col">
-                            {{-- <a href="{{ secure_url('home.callqueue')}}" class="btn btn-md btn-success">Call Next: {{$counter->name}}</a> --}}
+                            {{-- <a href="{{ route('home.callqueue')}}" class="btn btn-md btn-success">Call Next: {{$counter->name}}</a> --}}
 
-                            <form method="post" action="{{ secure_url('home.callqueue') }}" autocomplete="off">
+                            <form method="post" action="{{ route('home.callqueue') }}" autocomplete="off">
                                 @csrf
                             @method('put')
                             <input type="hidden" name="called" value="yes">
@@ -90,8 +90,8 @@
                                     </td>
                                     <td class="text-center">
                                         @if ($queue->called != 'no')
-                                            <a href="{{ secure_url('home.recall',$queue) }}" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
-                                            <a href="{{ secure_url('queues.edit',$queue) }}" class="btn btn-sm btn-info"><i class="fas fa-exchange"></i>  Transfer</a>
+                                            <a href="{{ route('home.recall',$queue) }}" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Recall</a>
+                                            <a href="{{ route('queues.edit',$queue) }}" class="btn btn-sm btn-info"><i class="fas fa-exchange"></i>  Transfer</a>
                                         @endif
                                         @if ($queue->called != 'no')
                                         <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#areYouSureModal-{{$queue->id}}"><i class="fas fa-exchange"></i>  No Show</button>
@@ -106,7 +106,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-                                                  <a href="{{ secure_url('home.noShow', $queue) }}" type="button" class="btn btn-info" @click="isPrio(1)">YES</a>
+                                                  <a href="{{ route('home.noShow', $queue) }}" type="button" class="btn btn-info" @click="isPrio(1)">YES</a>
                                                 </div>
                                               </div>
                                             </div>
@@ -131,13 +131,13 @@
                 <div class="card shadow">
                     <div class="card-body">
                                 <h2 class="mb-2">Notification message</h2>
-                                <form method="post" action="{{ secure_url('home.updatenotif') }}" autocomplete="off">
+                                <form method="post" action="{{ route('home.updatenotif') }}" autocomplete="off">
                                     @csrf
                                 @method('put')
                                     <textarea class="form-control" name="text" id="notif" rows="1" placeholder="Notification text">{{$notification}}</textarea>
                                     <div class="row mt-3 align-items-center">
                                         <div class="col-sm-12 col-md-6">
-                                            <p class="text-muted"><small>This message will be displayed at the bottom of the <a href="{{secure_url('display.index')}}" class="text-info" target="_blank">Queue Display</a>.</small></p>
+                                            <p class="text-muted"><small>This message will be displayed at the bottom of the <a href="{{route('display.index')}}" class="text-info" target="_blank">Queue Display</a>.</small></p>
                                         </div>
                                         <div class="col-sm-12 col-md-6 text-right">
                                             <button type="submit" class="btn btn-success">Apply</button>

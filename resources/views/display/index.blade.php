@@ -6,7 +6,7 @@
            <div class="row">
 
                 <div class="col-sm-12 col-md-8 d-none d-md-block align-self-center">
-                    <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" class="img-fluid" width="25%"  alt="...">
+                    <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="img-fluid" width="25%"  alt="...">
                 </div>
                 <div class="col-sm-12 col-md-4 d-none d-md-block text-right">
                     <p id="time" class="display-1 text-red text-right"></p>
@@ -14,13 +14,13 @@
 
 
                <div class="col-sm-12 d-sm-block d-md-none text-center mb-3">
-                <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" class="img-fluid w-50" alt="...">
+                <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="img-fluid w-50" alt="...">
 
                </div>
                <div class="col-sm-12 col-md-8  d-none d-md-block text-center">
-                {{-- <iframe width="100%" height="100%" src="{{ secure_asset('assets') }}/vid/sdca-vid.mp4" frameborder="0" controls=0 onloadstart="this.volume=0.05" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                {{-- <iframe width="100%" height="100%" src="{{ asset('assets') }}/vid/sdca-vid.mp4" frameborder="0" controls=0 onloadstart="this.volume=0.05" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
                 <video onloadstart="this.volume=0.05" width="100%" height="100%" loop="true" autoplay="autoplay">
-                    <source src="{{ secure_asset('assets') }}/vid/sdca-vid.mp4" type="video/mp4" >
+                    <source src="{{ asset('assets') }}/vid/sdca-vid.mp4" type="video/mp4" >
                   </video>
             </div>
                <div class="col-sm-12 col-md-4 text-center">
@@ -161,7 +161,7 @@
     </div>
 @endsection
 @push('js')
-<script type="text/javascript" src="{{ secure_asset('assets/js/voice.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/voice.min.js') }}"></script>
     <script>
         const app1 = new Vue({
                 el:'#queue',

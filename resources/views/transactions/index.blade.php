@@ -25,7 +25,7 @@
                                 <h3 class="mb-0">{{ __('Transactions') }}</h3>
                             </div>
                             <div class="col-sm-12 col-md-4 text-center text-md-right">
-                                <a href="{{ secure_url('transactions.create') }}" class="btn btn-md btn-success"><i class="fas fa-plus"> </i> {{ __(' Add Transaction') }}</a>
+                                <a href="{{ route('transactions.create') }}" class="btn btn-md btn-success"><i class="fas fa-plus"> </i> {{ __(' Add Transaction') }}</a>
                             </div>
                         </div>
                     </div>
@@ -88,11 +88,11 @@
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 
-                                                                    <form action="{{ secure_url('transactions.destroy', $accounting->id) }}" method="post">
+                                                                    <form action="{{ route('transactions.destroy', $accounting->id) }}" method="post">
                                                                         @csrf
                                                                         @method('delete')
 
-                                                                        <a class="dropdown-item" href="{{ secure_url('transactions.edit', $accounting) }}">{{ __('Edit') }}</a>
+                                                                        <a class="dropdown-item" href="{{ route('transactions.edit', $accounting) }}">{{ __('Edit') }}</a>
                                                                         <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this transaction?") }}') ? this.parentElement.submit() : ''">
                                                                             {{ __('Delete') }}
                                                                         </button>
@@ -133,11 +133,11 @@
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 
-                                                                    <form action="{{ secure_url('transactions.destroy', $cashier->id) }}" method="post">
+                                                                    <form action="{{ route('transactions.destroy', $cashier->id) }}" method="post">
                                                                         @csrf
                                                                         @method('delete')
 
-                                                                        <a class="dropdown-item" href="{{ secure_url('transactions.edit', $cashier) }}">{{ __('Edit') }}</a>
+                                                                        <a class="dropdown-item" href="{{ route('transactions.edit', $cashier) }}">{{ __('Edit') }}</a>
                                                                         <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this transaction?") }}') ? this.parentElement.submit() : ''">
                                                                             {{ __('Delete') }}
                                                                         </button>
@@ -178,11 +178,11 @@
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 
-                                                                    <form action="{{ secure_url('transactions.destroy', $registrar->id) }}" method="post">
+                                                                    <form action="{{ route('transactions.destroy', $registrar->id) }}" method="post">
                                                                         @csrf
                                                                         @method('delete')
 
-                                                                        <a class="dropdown-item" href="{{ secure_url('transactions.edit', $registrar) }}">{{ __('Edit') }}</a>
+                                                                        <a class="dropdown-item" href="{{ route('transactions.edit', $registrar) }}">{{ __('Edit') }}</a>
                                                                         <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this transaction?") }}') ? this.parentElement.submit() : ''">
                                                                             {{ __('Delete') }}
                                                                         </button>

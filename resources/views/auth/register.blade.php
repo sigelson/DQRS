@@ -12,24 +12,24 @@
                         <div class="text-muted text-center mt-2 mb-4"><small>{{ __('Sign up with') }}</small></div>
                         <div class="text-center">
                             <a href="#" class="btn btn-neutral btn-icon mr-4">
-                                <span class="btn-inner--icon"><img src="{{ secure_asset('assets/argon') }}/img/icons/common/github.svg"></span>
+                                <span class="btn-inner--icon"><img src="{{ asset('assets/argon') }}/img/icons/common/github.svg"></span>
                                 <span class="btn-inner--text">{{ __('Github') }}</span>
                             </a>
                             <a href="#" class="btn btn-neutral btn-icon">
-                                <span class="btn-inner--icon"><img src="{{ secure_asset('assets/argon') }}/img/icons/common/google.svg"></span>
+                                <span class="btn-inner--icon"><img src="{{ asset('assets/argon') }}/img/icons/common/google.svg"></span>
                                 <span class="btn-inner--text">{{ __('Google') }}</span>
                             </a>
                         </div>
                     </div> --}}
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center mb-3">
-                            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid w-75">
+                            <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid w-75">
 
                         </div>
                         <div class="text-center mb-4">
                             <h1 class="text-dark lead">Create an account</h1>
                         </div>
-                        <form role="form" method="POST" action="{{ secure_url('register') }}">
+                        <form role="form" method="POST" action="{{ route('register') }}">
                             @csrf
 
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">

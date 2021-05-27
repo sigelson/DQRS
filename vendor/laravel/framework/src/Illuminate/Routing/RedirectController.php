@@ -25,7 +25,7 @@ class RedirectController extends Controller
 
         $parameters->forget('status')->forget('destination');
 
-        $route = (new secure_url('GET', $destination, [
+        $route = (new Route('GET', $destination, [
             'as' => 'laravel_route_redirect_destination',
         ]))->bind($request);
 

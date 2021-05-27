@@ -1,13 +1,13 @@
 <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container px-4">
         @auth
-        <a class="navbar-brand" href="{{ secure_url('home') }}">
-            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-dark.png" />
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <img src="{{ asset('assets/argon') }}/img/brand/logo-dark.png" />
         </a>
         @endauth
         @guest
         <a class="navbar-brand">
-            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-dark.png" />
+            <img src="{{ asset('assets/argon') }}/img/brand/logo-dark.png" />
         </a>
         @endguest
         @guest
@@ -20,8 +20,8 @@
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="{{ secure_url('home') }}">
-                            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png">
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -37,13 +37,13 @@
             @guest
             {{-- <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="btn btn-lg btn-secondary" href="{{ secure_url('register') }}">
+                    <a class="btn btn-lg btn-secondary" href="{{ route('register') }}">
                         {{ __('Register') }}
                     </a>
                     <br>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-lg btn-primary" href="{{ secure_url('login') }}">
+                    <a class="btn btn-lg btn-primary" href="{{ route('login') }}">
                         {{ __('Login') }}
                     </a>
                 </li>
@@ -55,7 +55,7 @@
                         <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="media align-items-center">
                                 <span class="avatar avatar-sm rounded-circle">
-                                    <img alt="Image placeholder" src="{{ secure_asset('assets/argon') }}/img/brand/logo_in_white.jpg">
+                                    <img alt="Image placeholder" src="{{ asset('assets/argon') }}/img/brand/logo_in_white.jpg">
                                 </span>
                                 <div class="media-body ml-2 d-none d-lg-block">
                                     <span class="mb-0 text-sm  font-weight-bold text-dark">{{ auth()->user()->name }}</span>
@@ -66,7 +66,7 @@
                             <div class=" dropdown-header noti-title">
                                 <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
                             </div>
-                            <a href="{{ secure_url('profile.edit') }}" class="dropdown-item">
+                            <a href="{{ route('profile.edit') }}" class="dropdown-item">
                                 <i class="ni ni-single-02"></i>
                                 <span>{{ __('My profile') }}</span>
                             </a>
@@ -116,7 +116,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <a href="{{ secure_url('logout') }}" class="btn btn-danger" onclick="event.preventDefault();
+          <a href="{{ route('logout') }}" class="btn btn-danger" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
 
                         <span>{{ __('Logout') }}</span>

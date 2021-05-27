@@ -22,7 +22,7 @@
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
-            <form id="logout-form" action="{{ secure_url('new.logout') }}" method="POST" style="display: none;">
+            <form id="logout-form" action="{{ route('new.logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
             @include('layouts.navbars.sidebar')

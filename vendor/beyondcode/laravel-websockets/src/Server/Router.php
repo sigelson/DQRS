@@ -51,27 +51,27 @@ class Router
 
     public function get(string $uri, $action)
     {
-        $this->addsecure_url('GET', $uri, $action);
+        $this->addRoute('GET', $uri, $action);
     }
 
     public function post(string $uri, $action)
     {
-        $this->addsecure_url('POST', $uri, $action);
+        $this->addRoute('POST', $uri, $action);
     }
 
     public function put(string $uri, $action)
     {
-        $this->addsecure_url('PUT', $uri, $action);
+        $this->addRoute('PUT', $uri, $action);
     }
 
     public function patch(string $uri, $action)
     {
-        $this->addsecure_url('PATCH', $uri, $action);
+        $this->addRoute('PATCH', $uri, $action);
     }
 
     public function delete(string $uri, $action)
     {
-        $this->addsecure_url('DELETE', $uri, $action);
+        $this->addRoute('DELETE', $uri, $action);
     }
 
     public function webSocket(string $uri, $action)
