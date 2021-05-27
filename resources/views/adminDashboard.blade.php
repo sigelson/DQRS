@@ -62,7 +62,7 @@
             </div>
         </div>
 
-    <form action="{{ route('dashboard') }}" method="get" id="filter">
+    <form action="{{ secure_url('dashboard') }}" method="get" id="filter">
         <div class="container-fluid mt--7">
             <div class="col-sm-12">
                 <div class="row">
@@ -126,13 +126,13 @@
             <div class="card shadow">
                 <div class="card-body">
                     <h2 class="mb-2">Notification message</h2>
-                    <form method="post" action="{{ route('home.updatenotif') }}" autocomplete="off">
+                    <form method="post" action="{{ secure_url('home.updatenotif') }}" autocomplete="off">
                         @csrf
                     @method('put')
                         <textarea class="form-control" name="text" id="notif" rows="1" placeholder="Notification text">{{$notification}}</textarea>
                         <div class="row mt-3 align-items-center">
                             <div class="col-sm-12 col-md-6">
-                                <p class="text-muted"><small>This message will be displayed at the bottom of the <a href="{{route('display.index')}}" class="text-info" target="_blank">Queue Display</a>.</small></p>
+                                <p class="text-muted"><small>This message will be displayed at the bottom of the <a href="{{secure_url('display.index')}}" class="text-info" target="_blank">Queue Display</a>.</small></p>
                             </div>
                             <div class="col-sm-12 col-md-6 text-right">
                                 <button type="submit" class="btn btn-success">Apply</button>

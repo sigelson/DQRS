@@ -13,12 +13,12 @@
                                 <h2 class="mb-0">{{ __('Department Management') }}</h2>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('departments.index') }}" class="btn btn-md btn-primary">{{ __('Back to list') }}</a>
+                                <a href="{{ secure_url('departments.index') }}" class="btn btn-md btn-primary">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('departments.store') }}" autocomplete="off">
+                        <form method="post" action="{{ secure_url('departments.store') }}" autocomplete="off">
                             @csrf
 
                             <h6 class="heading-small text-muted mb-4">{{ __('Department information') }}</h6>

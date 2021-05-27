@@ -39,7 +39,7 @@
                         <div class="card-footer text-center">
                             <div class="row justify-content-center">
                                 <div class="col-sm-12 col-md-4 text-center">
-                                    <img src="{{ asset('assets/argon') }}/img/brand/logo-dark.png" alt="" class="img-fluid animated fadeInDown">
+                                    <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-dark.png" alt="" class="img-fluid animated fadeInDown">
                                 </div>
                             </div>
                         </div>

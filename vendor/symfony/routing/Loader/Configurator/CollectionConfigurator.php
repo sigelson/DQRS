@@ -31,7 +31,7 @@ class CollectionConfigurator
         $this->parent = $parent;
         $this->name = $name;
         $this->collection = new RouteCollection();
-        $this->route = new Route('');
+        $this->route = new secure_url('');
         $this->parentConfigurator = $parentConfigurator; // for GC control
         $this->parentPrefixes = $parentPrefixes;
     }

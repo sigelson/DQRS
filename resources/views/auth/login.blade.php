@@ -11,11 +11,11 @@
                         <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in with') }}</small></div>
                         <div class="btn-wrapper text-center">
                             <a href="#" class="btn btn-neutral btn-icon">
-                                <span class="btn-inner--icon"><img src="{{ asset('assets/argon') }}/img/icons/common/github.svg"></span>
+                                <span class="btn-inner--icon"><img src="{{ secure_asset('assets/argon') }}/img/icons/common/github.svg"></span>
                                 <span class="btn-inner--text">{{ __('Github') }}</span>
                             </a>
                             <a href="#" class="btn btn-neutral btn-icon">
-                                <span class="btn-inner--icon"><img src="{{ asset('assets/argon') }}/img/icons/common/google.svg"></span>
+                                <span class="btn-inner--icon"><img src="{{ secure_asset('assets/argon') }}/img/icons/common/google.svg"></span>
                                 <span class="btn-inner--text">{{ __('Google') }}</span>
                             </a>
                         </div>
@@ -34,9 +34,9 @@
                         @endif
 
                         <div class="text-center text-muted mb-3">
-                            <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInUp">
+                            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInUp">
                             {{-- <small>
-                                <a href="{{ route('register') }}"><strong>{{ __('Create new account') }}</strong></a> {{ __('OR Sign in with these credentials:') }}
+                                <a href="{{ secure_url('register') }}"><strong>{{ __('Create new account') }}</strong></a> {{ __('OR Sign in with these credentials:') }}
                             </small>
                             <br>
                             <small>
@@ -48,7 +48,7 @@
                             <h1 class="text-dark lead animated fadeInUp">Login into your account</h1>
                         </div>
 
-                        <form role="form" method="POST" action="{{ route('new.login') }}">
+                        <form role="form" method="POST" action="{{ secure_url('new.login') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
@@ -92,7 +92,7 @@
                 <div class="row mt-3">
                     <div class="col-6">
                         @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="text-danger">
+                            <a href="{{ secure_url('password.request') }}" class="text-danger">
                                 <small>{{ __('Forgot password?') }}</small>
                             </a>
                         @endif

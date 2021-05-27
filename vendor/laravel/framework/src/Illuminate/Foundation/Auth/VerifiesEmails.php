@@ -33,11 +33,11 @@ trait VerifiesEmails
      */
     public function verify(Request $request)
     {
-        if (! hash_equals((string) $request->route('id'), (string) $request->user()->getKey())) {
+        if (! hash_equals((string) $request->secure_url('id'), (string) $request->user()->getKey())) {
             throw new AuthorizationException;
         }
 
-        if (! hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))) {
+        if (! hash_equals((string) $request->secure_url('hash'), sha1($request->user()->getEmailForVerification()))) {
             throw new AuthorizationException;
         }
 

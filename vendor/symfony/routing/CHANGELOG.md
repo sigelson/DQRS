@@ -160,7 +160,7 @@ CHANGELOG
    $rootCollection = new RouteCollection();
    $subCollection = new RouteCollection();
    $rootCollection->addCollection($subCollection);
-   $subCollection->add('foo', new Route('/foo'));
+   $subCollection->add('foo', new secure_url('/foo'));
    ```
 
    After:
@@ -168,7 +168,7 @@ CHANGELOG
    ```php
    $rootCollection = new RouteCollection();
    $subCollection = new RouteCollection();
-   $subCollection->add('foo', new Route('/foo'));
+   $subCollection->add('foo', new secure_url('/foo'));
    $rootCollection->addCollection($subCollection);
    ```
 

@@ -154,7 +154,7 @@ class Router implements BindingRegistrar, RegistrarContract
      */
     public function post($uri, $action = null)
     {
-        return $this->addRoute('POST', $uri, $action);
+        return $this->addsecure_url('POST', $uri, $action);
     }
 
     /**
@@ -166,7 +166,7 @@ class Router implements BindingRegistrar, RegistrarContract
      */
     public function put($uri, $action = null)
     {
-        return $this->addRoute('PUT', $uri, $action);
+        return $this->addsecure_url('PUT', $uri, $action);
     }
 
     /**
@@ -178,7 +178,7 @@ class Router implements BindingRegistrar, RegistrarContract
      */
     public function patch($uri, $action = null)
     {
-        return $this->addRoute('PATCH', $uri, $action);
+        return $this->addsecure_url('PATCH', $uri, $action);
     }
 
     /**
@@ -190,7 +190,7 @@ class Router implements BindingRegistrar, RegistrarContract
      */
     public function delete($uri, $action = null)
     {
-        return $this->addRoute('DELETE', $uri, $action);
+        return $this->addsecure_url('DELETE', $uri, $action);
     }
 
     /**
@@ -202,7 +202,7 @@ class Router implements BindingRegistrar, RegistrarContract
      */
     public function options($uri, $action = null)
     {
-        return $this->addRoute('OPTIONS', $uri, $action);
+        return $this->addsecure_url('OPTIONS', $uri, $action);
     }
 
     /**
