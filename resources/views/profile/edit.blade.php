@@ -15,7 +15,7 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="{{ asset('assets/argon') }}/img/brand/logo_in_white.jpg" class="rounded-circle img-fluid">
+                                    <img src="{{ secure_asset('assets/argon') }}/img/brand/logo_in_white.jpg" class="rounded-circle img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
+                        <form method="post" action="{{ secure_url('profile.update') }}" autocomplete="off">
                             @csrf
                             @method('put')
 
@@ -140,7 +140,7 @@
                             </div>
                         </form>
                         <hr class="my-4" />
-                        <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
+                        <form method="post" action="{{ secure_url('profile.password') }}" autocomplete="off">
                             @csrf
                             @method('put')
 

@@ -18,7 +18,7 @@
                             </div>
                         @endif
 
-                        <form role="form" method="POST" action="{{ route('password.email') }}">
+                        <form role="form" method="POST" action="{{ secure_url('password.email') }}">
                             @csrf
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">

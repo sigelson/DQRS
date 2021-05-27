@@ -3,7 +3,7 @@
         <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-6">
-                    {{-- <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid w-75"> --}}
+                    {{-- <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid w-75"> --}}
                 </div>
             </div>
         </div>

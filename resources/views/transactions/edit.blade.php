@@ -13,12 +13,12 @@
                                 <h3 class="mb-0">{{ __('Transaction Management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('transactions.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                <a href="{{ secure_url('transactions.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('transactions.update', $transaction) }}" autocomplete="off">
+                        <form method="post" action="{{ secure_url('transactions.update', $transaction) }}" autocomplete="off">
                             @csrf
                             @method('put')
 

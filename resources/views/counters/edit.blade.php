@@ -13,12 +13,12 @@
                                 <h3 class="mb-0">{{ __('Counter Management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('counters.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                <a href="{{ secure_url('counters.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('counters.update', $counter) }}" autocomplete="off">
+                        <form method="post" action="{{ secure_url('counters.update', $counter) }}" autocomplete="off">
                             @csrf
                             @method('put')
 
