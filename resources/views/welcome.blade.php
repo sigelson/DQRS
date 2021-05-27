@@ -17,7 +17,7 @@
                 <div class="row justify-content-center">
                     <div class="col-sm-8 col-md-7 text-center">
                         {{-- <h1 class="text-white">{{ __('Dominican Queue Reservation System') }}</h1> --}}
-                        <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInDown">
+                        <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" alt="" class="img-fluid animated fadeInDown">
 
                     </div>
                     @auth
@@ -30,7 +30,7 @@
                 <div class="row justify-content-center">
                     @guest
                     <div class="col-sm-12 col-md-6 text-center mt-5 animated fadeInUp">
-                    <a href="{{ secure_url('queues.create') }}" class="btn btn-success btn-lg w-100 animated pulse infinite slower delay-1s" {{-- data-toggle="modal" data-target="#startModal" --}} >Get Started</a>
+                    <a href="{{ route('queues.create') }}" class="btn btn-success btn-lg w-100 animated pulse infinite slower delay-1s" {{-- data-toggle="modal" data-target="#startModal" --}} >Get Started</a>
                     </div>
                     @endguest
 

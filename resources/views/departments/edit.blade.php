@@ -13,12 +13,12 @@
                                 <h3 class="mb-0">{{ __('Department Management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ secure_url('departments.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                <a href="{{ route('departments.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ secure_url('departments.update', $department) }}" autocomplete="off">
+                        <form method="post" action="{{ route('departments.update', $department) }}" autocomplete="off">
                             @csrf
                             @method('put')
 

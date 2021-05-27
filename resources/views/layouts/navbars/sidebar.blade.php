@@ -5,8 +5,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="{{ secure_url('home') }}">
-            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png" class="navbar-brand-img" alt="...">
+        <a class="navbar-brand pt-0" href="{{ route('home') }}">
+            <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ secure_asset('assets/argon') }}/img/brand/logo_in_white.jpg">
+                        <img alt="Image placeholder" src="{{ asset('assets/argon') }}/img/brand/logo_in_white.jpg">
                         </span>
                     </div>
                 </a>
@@ -22,7 +22,7 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
                     </div>
-                    <a href="{{ secure_url('profile.edit') }}" class="dropdown-item">
+                    <a href="{{ route('profile.edit') }}" class="dropdown-item">
                         {{-- <i class="ni ni-single-02"></i> --}}
                         <span>{{ __('My profile') }}</span>
                     </a>
@@ -39,7 +39,7 @@
                         <span>{{ __('Support') }}</span>
                     </a> --}}
                     <div class="dropdown-divider"></div>
-                    <a href="{{ secure_url('new.logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                    <a href="{{ route('new.logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         {{-- <i class="ni ni-user-run"></i> --}}
                         <span>{{ __('Logout') }}</span>
@@ -53,8 +53,8 @@
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="{{ secure_url('home') }}">
-                            <img src="{{ secure_asset('assets/argon') }}/img/brand/logo-red.png">
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset('assets/argon') }}/img/brand/logo-red.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -79,12 +79,12 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ secure_url('dashboard') }}">
+                    <a class="nav-link text-dark" href="{{ route('dashboard') }}">
                         <strong><i class="fas fa-tachometer-alt"></i> {{ __('Dashboard') }}</strong>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ secure_url('home') }}">
+                    <a class="nav-link text-dark" href="{{ route('home') }}">
                         <strong><i class="fas fa-list"></i> {{ __('Queue List') }}</strong>
                     </a>
                 </li>
@@ -97,14 +97,14 @@
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="{{ secure_url('profile.edit') }}">
+                                <a class="nav-link text-dark" href="{{ route('profile.edit') }}">
                                     <i class="fas fa-angle-right"></i>
                                     {{ __('User profile') }}
                                 </a>
                             </li>
                             @if(\Auth::user()->role=='admin')
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="{{ secure_url('user.index') }}">
+                                <a class="nav-link text-dark" href="{{ route('user.index') }}">
                                     <i class="fas fa-angle-right"></i>
                                     {{ __('User Management') }}
                                 </a>
@@ -121,26 +121,26 @@
                 </li> --}}
                 @if(\Auth::user()->role=='admin')
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ secure_url('departments.index') }}">
+                    <a class="nav-link text-dark" href="{{ route('departments.index') }}">
                         <strong><i class="far fa-building"></i>
                         {{ __('Departments') }}</strong>
                     </a>
                 </li>
                 {{-- <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ secure_url('counters.index') }}"><strong>
+                    <a class="nav-link text-dark" href="{{ route('counters.index') }}"><strong>
                         <i class="fas fa-desktop"></i>
                         {{ __('Counters') }}</strong>
                     </a>
                 </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ secure_url('transactions.index') }}"><strong>
+                    <a class="nav-link text-dark" href="{{ route('transactions.index') }}"><strong>
                         <i class="fas fa-project-diagram"></i>
                         {{ __('Transactions') }}</strong>
                     </a>
                 </li>
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ secure_url('reports.index') }}"><strong>
+                    <a class="nav-link text-dark" href="{{ route('reports.index') }}"><strong>
                         <i class="far fa-file-alt"></i>
                         {{ __('Reports') }}</strong>
                     </a>
