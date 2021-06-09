@@ -139,7 +139,7 @@
                                     <input type="hidden" name="letter" id="letter" value="">
                                     {{-- <input type="hidden" name="number" id="number" value=""> --}}
 
-                                    <div class="custom-control custom-control-alternative custom-checkbox mb-3">
+                                    {{-- <div class="custom-control custom-control-alternative custom-checkbox mb-3">
                                         <input class="custom-control-input" id="customCheck6" type="checkbox" required>
                                         <label class="custom-control-label font-weight-bold" for="customCheck6">I confirm that the information given in this form is true, complete and accurate.</label>
                                       </div>
@@ -147,7 +147,7 @@
                                       <div class="custom-control custom-control-alternative custom-checkbox mb-3">
                                         <input class="custom-control-input" id="customCheck7" type="checkbox" required>
                                         <label class="custom-control-label font-weight-bold" for="customCheck7">By checking the box and clicking the submit button, I agree to the system's <a class="text-info text-bold" data-toggle="modal" data-target="#policyModal">Privacy Policy.</a></label>
-                                      </div>
+                                      </div> --}}
 
                                       <!-- Modal -->
                                     <div class="modal fade" id="policyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
